@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seeking feedback</title>
+<style>
+:root { --bg: #fafaf8; --surface: #ffffff; --border: #c8c8c0; --text: #1a1a1a; --muted: #4a4a45; --accent: #1e4f78; --prompt-bg: #f0f0ec; --ts-color: #5a5a55; --mono: 'Courier New', monospace; --serif: Georgia, serif; }
+@media (prefers-color-scheme: dark) { :root { --bg: #111110; --surface: #1c1c1a; --border: #3a3a34; --text: #e8e8e0; --muted: #b0b0a8; --accent: #7bbde8; --prompt-bg: #222220; } }
+body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 800px; margin: 0 auto; padding: 2rem; line-height: 1.6; }
+header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+h1 { font-family: var(--serif); font-weight: normal; margin: 0 0 0.5rem 0; color: var(--accent); }
+.summary-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; }
+details { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 1rem; overflow: hidden; }
+summary { padding: 1rem; cursor: pointer; background: var(--prompt-bg); display: flex; justify-content: space-between; font-weight: 500; gap: 1rem; }
+summary::-webkit-details-marker { display: none; }
+.ptext { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ts { font-size: 0.85em; color: var(--ts-color); white-space: nowrap; }
+.exchange { padding: 1.5rem; border-top: 1px solid var(--border); }
+.full-prompt-block { background: var(--prompt-bg); padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem; font-style: italic; white-space: pre-wrap; border-left: 4px solid var(--accent); }
+pre { background: var(--bg); padding: 1rem; border-radius: 4px; overflow-x: auto; font-family: var(--mono); font-size: 0.9em; }
+code { font-family: var(--mono); font-size: 0.9em; }
+blockquote { border-left: 3px solid var(--accent); margin: 0; padding-left: 1rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<header><h1>Seeking feedback</h1><p style="color: var(--muted);">AI Literacy Curriculum Project — Generated Record</p></header>
+<div class="summary-box"><p><strong>Conversation Overview</strong></p>
+<p>the authorn M. Schneider is a Professor of Communications &amp; Humanities and Co-Director of the Artificial Intelligence Exploration (AIX) Center at SUNY Polytechnic Institute, currently serving as a SUNY AI Fellow for the Public Good (2025–2026). The conversation centered on developing and refining a faculty-facing document articulating a framework for generative AI literacy in general education, grounded in his RTW (Read, Think, Write) definition of literacy and connected to the SUNY Board of Trustees Resolution 2024-64 mandating AI inclusion in the Information Literacy competency by Fall 2026.</p>
+<p>The conversation moved through several distinct phases: Claude first responded to an email exchange the author was having with a colleague (Shyam, a writing professor) about AI and writing pedagogy, offering analysis through a hypertext/Ted Nelson lens. the author then refined his own email responses with Claude's input, ultimately deciding to hold his position and not over-explain. The bulk of the conversation involved generating and iteratively refining an HTML document for general education faculty, then a plain text version for use in Speechify. Key editorial decisions included: stripping sycophantic or "sloppy" prose, rewriting the RTW grid to accurately reflect the two-mode writing model (writing for knowledge vs. writing for production), removing a section on prompt-failure pedagogy, replacing Kate Crawford with Geoffrey Hinton in the further reading, and updating the mandate section heading. The final and most precise editorial intervention was removing all second-person address ("you've probably seen the demos") from the document — not depersonalizing the prose, but eliminating simulated intimacy. the author's preferred replacement register was "Many faculty have seen a demonstration. Few have had a framework to go with it."</p>
+<p>the author demonstrated consistent editorial instincts throughout: he flags "slop" as a specific quality failure (prose that performs relatability or expertise without earning it), distinguishes between fluency and literacy with precision, and holds a strong position that the prompt/response transcript is the primary evidence of student thinking. He is developing the Learner's Permit (a 15-exercise scaffold) and an AI First-Year Experience (AI-FYE) pilot cohort architecture. The conversation closed with the author sharing a generated literature review paragraph attributed to outside scholars; Claude identified it as an example of the exact problem the framework's provenance note warns against — authoritative-sounding text with unverifiable citations, softened claims, and a performed scholarly structure that substitutes for actual argument.</p></div>
+<details><summary><span class="ptext">thoughts?</span><span class="ts">12:32 AM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>thoughts?</div><p>The Ted Nelson reference you slipped in is the key to this whole exchange, and Shyam missed it.</p>
+<p>Nelson's <em>Literary Machines</em> wasn't about documents — it was about <strong>the trail of thought</strong>. Xanadu was never a publishing system; it was a thinking system where the links <em>are</em> the argument. The prompt/response transcript you're describing is closer to Nelson's vision than anything a word processor produces. The conversation <em>is</em> the text.</p>
+<p>Shyam's objection — "why is the artifact the model's final response?" — assumes a linear writing model: draft → revise → submit. That's codex thinking. What you're building is <strong>hypertext thinking</strong>: the node (artifact) only has meaning in relation to the links (prompts) that produced it. Separating them destroys the intellectual provenance, which is exactly why you insist on both.</p>
+<p>The choose-your-own-adventure parallel is precise here. In CYOA, the reader's <em>choices</em> are the reading. You can't assess a CYOA student by just handing them the ending — you need the path. Your transcript-plus-artifact requirement is the same logic.</p>
+<p>Where Shyam has a real point: the prompt box as <em>sole</em> composing surface narrows the student's experience of writing-as-thinking. Your handoff idea — draft in the model, pull it out, mark it up, bring it back — is the right fix. That's the hypertext move: transclusion, not just generation.</p>
+<p>The friction you mention when the model ignores the prompt? That's worth a dedicated exercise. It's the hypertext equivalent of a broken link — and learning to repair it is core literacy.</p></div></details>
+<details><summary><span class="ptext">&gt;&gt;&gt; is my response  suggested revisions? Or should i be true to my last comment?</span><span class="ts">12:33 AM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>&gt;&gt;&gt; is my response
+
+suggested revisions? Or should i be true to my last comment?</div><p>Your <code>&gt;&gt;</code> responses are already doing the work. They're honest, specific, and move the thinking forward without over-explaining. The handoff idea (draft → pull out → mark up → bring back) is a genuine addition to your position, not just defense of it.</p>
+<p>The closing line — <em>"I've done a chunk of thinking with LLM on this topic. But – not on this message!"</em> — is exactly right. It's a boundary and an invitation simultaneously. Hold it.</p>
+<p>The only response I'd tighten is this one:</p>
+<blockquote>
+<p><em>"No theory at all that I'm starting from..."</em></p>
+</blockquote>
+<p>That reads as more apologetic than it should. You're not theorizing from nothing — you're building from practice, which is a legitimate epistemological stance, especially in a field where theory chases application. Something like:</p>
+<blockquote>
+<p><em>"I'm building from practice, not theory — which may be the honest response to a technology that's outrunning its own literature."</em></p>
+</blockquote>
+<p>That turns a concession into a position. Shyam is a writing professor; he'll respect the move.</p>
+<p>Everything else: keep as written.</p></div></details>
+<details><summary><span class="ptext">i&#x27;m taking that last phrase out. I don&#x27;t feel like fixin this:: I want the model to have as much of the students&#x27; thinking as possible. The more context the model has, the more likely the student will be able to express themselves through the model.  I’m trying to get to is that all of the words a student would have generated in a document, or a  after is that the core of the class involves students doing their writing in that prompt box. I hadn’t thought of all surfaces that you mention, and was focused on the act of generating words on a keyboard, phone, or perhaps by voice … (and this gets at a core critique, that I have to frame this all as Generative AI Literacy, not AI Literacy). So I want that act of cognition that results in words to be (ultimately) submitted as a prompt. Rather than composing in a google doc, compose in __claude.ai__ ….. And i think that the prompt/response writing model is a flash-in-the-pan, where we had the real opportunity to create Literary Machines, but ...</span><span class="ts">12:45 AM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>i&#x27;m taking that last phrase out. I don&#x27;t feel like fixin this:: I want the model to have as much of the students&#x27; thinking as possible. The more context the model has, the more likely the student will be able to express themselves through the model.  I’m trying to get to is that all of the words a student would have generated in a document, or a  after is that the core of the class involves students doing their writing in that prompt box. I hadn’t thought of all surfaces that you mention, and was focused on the act of generating words on a keyboard, phone, or perhaps by voice … (and this gets at a core critique, that I have to frame this all as Generative AI Literacy, not AI Literacy). So I want that act of cognition that results in words to be (ultimately) submitted as a prompt. Rather than composing in a google doc, compose in __claude.ai__ ….. And i think that the prompt/response writing model is a flash-in-the-pan, where we had the real opportunity to create Literary Machines, but it will slop into copilot / guide by the side / Clippy AI. I’ve digressed.</div><p>The core idea buried in there is strong. Here's a cleaned version:</p>
+<hr />
+<p>What I'm after is that the model should have as much of the student's thinking as possible — the more context, the more likely the student can express themselves <em>through</em> the model. So the composing surface should be the prompt box itself. Rather than drafting in a Google doc and then prompting, the student drafts <em>as</em> they prompt. The act of cognition that produces words becomes the prompt.</p>
+<p>This is also why I have to frame this as Generative AI Literacy specifically — the surfaces you name (paper, screen, other humans) matter, but my focus is on that particular cognitive act: words produced for and with the model.</p>
+<p>And yes — I think the prompt/response model is transitional. We had a real opportunity to build Literary Machines. Instead it's collapsing into Copilot. Clippy with better PR.</p>
+<hr />
+<p>The digression note can go — the Literary Machines line earns its place as a closing punch, not a digression. Shyam will catch the Nelson reference.</p></div></details>
+<details><summary><span class="ptext">Here is what I sent: Shyam, thanks for responding. I really appreciate our dialogue (we&#x27;ve spared the list a few rounds).   I&#x27;ve got responses inline below to specific paragraphs, in bold italic.  //steve.   Steven M. Schneider Professor, SUNY Polytechnic Institute Co-Director, Artificial Intelligence Exploration (AIX) Center SUNY AI for the Public Good Fellow, 2025-2026   The contents of this message may, in part or in whole, reflect collaboration with large language models.   Image Book time to meet with me   From: SUNY AI Fellows 2025 &lt;SUNY-AIFELLOWS-2025@LS.SYSADM.SUNY.EDU&gt; on behalf of Shyam Sharma &lt;0000048c83cc3f42-dmarc-request@LS.SYSADM.SUNY.EDU&gt; Sent: Monday, March 2, 2026 7:13 PM To: SUNY-AIFELLOWS-2025@LS.SYSADM.SUNY.EDU &lt;SUNY-AIFELLOWS-2025@LS.SYSADM.SUNY.EDU&gt; Subject: Re: AI Literacy Conversations - Wednesdays starting March 25 (and LiveStream tonight)   Steven, The description of your first/foundational curriculum makes my heart sing: &quot;...grounded in reading, thinking, an...</span><span class="ts">02:09 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>Here is what I sent: Shyam, thanks for responding. I really appreciate our dialogue (we&#x27;ve spared the list a few rounds). 
+
+I&#x27;ve got responses inline below to specific paragraphs, in bold italic.
+
+//steve.
+ 
+Steven M. Schneider
+Professor, SUNY Polytechnic Institute
+Co-Director, Artificial Intelligence Exploration (AIX) Center
+SUNY AI for the Public Good Fellow, 2025-2026
+ 
+The contents of this message may, in part or in whole, reflect collaboration with large language models.
+ 
+Image
+Book time to meet with me
+
+
+From: SUNY AI Fellows 2025 &lt;SUNY-AIFELLOWS-2025@LS.SYSADM.SUNY.EDU&gt; on behalf of Shyam Sharma &lt;0000048c83cc3f42-dmarc-request@LS.SYSADM.SUNY.EDU&gt;
+Sent: Monday, March 2, 2026 7:13 PM
+To: SUNY-AIFELLOWS-2025@LS.SYSADM.SUNY.EDU &lt;SUNY-AIFELLOWS-2025@LS.SYSADM.SUNY.EDU&gt;
+Subject: Re: AI Literacy Conversations - Wednesdays starting March 25 (and LiveStream tonight)
+ 
+Steven,
+The description of your first/foundational curriculum makes my heart sing: &quot;...grounded in reading, thinking, and writing.&quot; Especially if we can help students do these BOTH without and with AI, we will prepare them for a lifetime of academic, information, and civic literacy with which they can navigate this and future technological/social changes/disruptions. Btw, the title of a special-topic upper-division course I&#x27;m teaching in fall is titled &quot;Writing With And Without AI.&quot; The calculator analogy is woefully inadequate with AI, but the premise of the course is that students need to learn whether, when, how, and why they should use the calculator -- AI raises many more complex questions, which students will explore. 
+
+Love it! I’ve implemented Wiki edu curriculum (https://dashboard.wikiedu.org/) in my course. Their training is the most thorough and detailed “no ai” explanation I’ve seen. Students learn to edit and write in the Wikipedia frame. My class then pivots to LLM composition on Wikiversity. I like the tension. Students are beginning to appreciate it, I think.
+
+I must add, however, that going deeper into your course details made my heart sink a little bit as well. In particular, this one: 
+Write — writing in this course means prompting. A prompt is a piece of writing that causes the model to generate text toward a specific outcome. The model&#x27;s response is also writing. Prompting is how generation is directed.
+The artifact is the model&#x27;s final response. The student shapes through prompting. The model writes the final response. The artifact is that response, copied out of the conversation and saved to /artifacts.
+
+Obviously, you&#x27;re not a writing professor and your goals/focuses are somewhere very different from mine as a writing professor. But I&#x27;m curious: Why do you define writing as if it has to be limited to students&#x27; interaction with AI, excluding their encounters with their own ideas on their own terms on all surfaces/venues -- paper, screen, chatbox, code terminal, and especially as a mediator of interaction with other humans?
+
+What I&#x27;m after is that the model should have as much of the student&#x27;s thinking as possible — the more context, the more likely the student can express themselves through the model. So the composing surface is the prompt box (which has the ability to add in documents, hand-written notes, etc.). The act of cognition that produces words (writing) becomes the prompt.
+This is also why I have to frame this as Generative AI Literacy specifically — the surfaces you name (paper, screen, other humans) matter, but my focus is on that particular cognitive act: words produced for and with the model.
+
+After all, education should prepare students to encounter the world in all its manifestations, not just machines, no? What is the educational rationale of merely prompting machines to produce &quot;your&quot; (?) thoughts? Is there a valid GenEd theory behind this? Or maybe a notion of disciplinary expertise I cannot infer?
+
+Less theory than practice. I think we should see if we can develop the ability to get the exotic artificial entity (the machine) to generate text that says what we want in a way that we want it to, and that carries the same authority as text that we’ve generated without the involvement of an LLM. (Thanks, Dana Gavin, for the focus on the authority of the author)
+
+
+
+In fact, why is the &quot;artifact [] the model&#x27;s final response?&quot; [emphasis mine] 
+
+This is my (not Claude&#x27;s) phrase: “The model gets the last word.” My initial encounters with ChatGPT in the old days frustrated me; I wanted an archive of my conversations, and to be able to resurface ideas generated in those conversations. I came to value the conversation transcript as an artifact to be preserved for intellectual provenance. By ensuring that the model gets the last word, it preserves the transcript as a representation of the process. (I write code that encloses the responses in disclosable elements, leaving the prompts visible, reverse sorted by date, and opening the first prompt always reveals the “last word.”). This is the administrative explanation.
+
+I expect and encourage students to frequently take their “artifact” as it’s being generated, and “hand edit” it in google docs. Just bring it back to the model, with the prompt, these are my changes. Keep them exactly as I made them. Regenerate. Or, review and comment?
+
+(I’ll update my “context” to reflect this thinking, and I’ll expect to see this idea propagated through the course in the next version. We should introduce strategies for students to avoid the friction introduced in these situation. Modeling prompts helps.)
+
+On the other hand: generating a complex multi-page document like a syllabus or research report, is a complex process that we will want models to get the last word, so that we can manage changes in production environments. 
+
+...
+
+If your learning objective is prompting skills, then why does the final product matter? If you&#x27;re grading that final product, as it seems, isn&#x27;t your assessment invalid? Why not ask students to submit the session log instead? I&#x27;m curious. The description of the &quot;writing&quot; in your first module confused all parts of the writing teacher in me :). 
+
+Agreed. The “artifact” only matters as the end product of a conversation or series of conversations; session logs (I call them transcripts) are always submitted. The curriculum I’ve developed emphasizes a workflow that involves students using a browser extension to export transcripts to their own portfolio; they also archive “artifacts” [last responses, images, etc], and explicitly link the artifact to the transcript. This is absolutely critical for assessment. (I have LLMs generate long-form assessment and critique against my criteria which I share with students, and provide class-level critique as well).
+
+That said, conversations with you have always been very fruitful, and I hope to learn more from this one as well.
+Shyam 
+
+PS: Unlike what may appear when Steven and I approach an issue from angles far apart, we&#x27;ve been having some deep Zoom conversations and challenging each other in very productive ways (and this email is just the tip of that iceberg). 
+
+Absolutely agree. Thanks, Shyam for the comments. If anyone is interested, I’ve generated a chunk of content with LLM on this topic. But – not on this message!
+
+
+On Mon, Mar 2, 2026 at 11:59 AM Steven Schneider &lt;steve@sunypoly.edu&gt; wrote:
+It took me an ohnosecond to realize that my email of a moment ago had a bad link. This is the good link:
+
+https://stevesunypoly.github.io/tilde-steve/artifacts/ai-literacy-artifacts.html
+
+Thanks, 
+
+//steve.
+
+Steven M. Schneider
+Professor, SUNY Polytechnic Institute
+Co-Director, Artificial Intelligence Exploration (AIX) Center
+SUNY AI for the Public Good Fellow, 2025-2026
+
+The contents of this message may, in part or in whole, reflect collaboration with large language models.
+
+Image
+Book time to meet with me
+
+From: SUNY AI Fellows 2025 &lt;SUNY-AIFELLOWS-2025@LS.SYSADM.SUNY.EDU&gt; on behalf of Steven Schneider &lt;steve@SUNYPOLY.EDU&gt;
+Sent: Monday, March 2, 2026 11:54 AM
+To: SUNY-AIFELLOWS-2025@LS.SYSADM.SUNY.EDU &lt;SUNY-AIFELLOWS-2025@LS.SYSADM.SUNY.EDU&gt;
+Subject: AI Literacy Conversations - Wednesdays starting March 25 (and LiveStream tonight)
+ 
+Hi folks,
+ 
+I&#x27;d like to invite you to three Wednesday morning conversations starting March 25, 9:30–10:30 AM, where we&#x27;ll work through some AI literacy curriculum I&#x27;ve been developing:
+ 
+(1) A definition of AI literacy grounded in reading, thinking, and writing
+(2) Two open credentials in development — the Learner&#x27;s Permit and the Commercial License
+(3) Cross-campus collaboration and FYE grant possibilities
+ 
+ 
+Current versions of the documents we&#x27;ll be discussing are here:
+ 
+https://stevesunypoly.github.io/tilde-sea/artifacts/ai-literacy-artifacts.html
+ 
+A note before you click: these are AI-generated and intended as starting points. They may look finished and polished — that&#x27;s partly the point, and partly the problem worth discussing.
+ 
+And if you&#x27;re free tonight — come to my Living with AI podcast episode at 7:30 PM.  AI Fellow Dana Gavin (Dutchess Community College) joins us to discuss her new book on generative AI and the future of humanities teaching.
+ 
+http://tiny.cc/living-with-ai
+ 
+Hope to see some of you soon.
+ 
+Thanks, 
+ 
+ 
+//steve.
+ 
+Steven M. Schneider
+Professor, SUNY Polytechnic Institute
+Co-Director, Artificial Intelligence Exploration (AIX) Center
+SUNY AI for the Public Good Fellow, 2025-2026
+ 
+The contents of this message may, in part or in whole, reflect collaboration with large language models.
+ 
+Image
+Book time to meet with me</div><p>It landed well. A few observations:</p>
+<p>The WikiEdu pivot is a genuine contribution — you added something, not just responded. The Wikipedia → Wikiversity arc is a concrete instantiation of the tension Shyam named, and it's yours, not a reframe of his point.</p>
+<p>The Dana Gavin credit shift from "authority of the text" to "authority of the author" is sharper. Better.</p>
+<p>"This is my (not Claude's) phrase" — good instinct to claim it. The list will notice that.</p>
+<p>The parenthetical about updating your context and propagating the idea — that's a bit inside-baseball for a listserv audience. Fine for Shyam directly, slightly odd for the CC'd Fellows. Not a problem, just a register note.</p>
+<p>The closing line held up. "I've generated a chunk of content with LLM on this topic" is more precise than the earlier draft's "done a chunk of thinking" — and more honest about what it actually is.</p>
+<p>Overall: you moved the conversation forward, gave Shyam something new to respond to, and held your positions without defending them defensively. That's the right outcome for a public thread.</p></div></details>
+<details><summary><span class="ptext">Yes on the parenthetical but I’m hoping to attract some of the folks on the list who have been silent and stay far away but actually have some contributions to make it a technical side so anyone who understands a model will get the word context I hope but nicely referenced end of course by adding this to the conversation it will flow into the context that</span><span class="ts">02:10 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>Yes on the parenthetical but I’m hoping to attract some of the folks on the list who have been silent and stay far away but actually have some contributions to make it a technical side so anyone who understands a model will get the word context I hope but nicely referenced end of course by adding this to the conversation it will flow into the context that</div><p>Right — "context" is doing double duty intentionally. Plain English for everyone, technical dog whistle for the people who know what context actually means in this setting. Smart. And the parenthetical signals that you're someone who works at that level, which is its own invitation.</p>
+<p>The lurkers who understand models will read "I'll update my context" and know exactly what you mean — and that you mean it literally.</p></div></details>
+<details><summary><span class="ptext">generate an html that is a version of the draft that i can be prepared to share with prospective gen ed faculty on the list (that will be the next step). make it richer, with disclosed elements that pull from the broader discussion of ai literacy that we&#x27;ve developed. assume they are entirely new to thinking or imagine that they could teach withai, or have done it, but have no context for thinking. this is entirely new to them. they probably went to my workshopin january about ai literacy, and saw soe demos, but...</span><span class="ts">03:49 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>generate an html that is a version of the draft that i can be prepared to share with prospective gen ed faculty on the list (that will be the next step). make it richer, with disclosed elements that pull from the broader discussion of ai literacy that we&#x27;ve developed. assume they are entirely new to thinking or imagine that they could teach withai, or have done it, but have no context for thinking. this is entirely new to them. they probably went to my workshopin january about ai literacy, and saw soe demos, but...</div><p>DM Serif Display / DM Sans, your standard palette, cream paper with ink type. Structure:</p>
+<ul>
+<li>Opens with the RTW definition and "consistent with peers" clause — the conceptual anchor</li>
+<li>The R/T/W grid makes the framework scannable before the deeper dives</li>
+<li>The mandate banner is prominent but not alarmist</li>
+<li>Nine disclosed elements, each titled so a faculty member can self-select what they need — the "does this mean the model writes their work?" one is there because that's the objection they'll walk in with</li>
+<li>Closes with next steps linking to Learner's Permit, AI-FYE, and the broader intellectual context</li>
+<li>Footer invites conversation rather than closing it down</li>
+</ul>
+<p>Things to revisit before sending: the Shyam exchange's handoff workflow is in the "moving between AI and your own writing" disclosure — you may want to sharpen that language once you've settled on your final response to him. Also check whether you want to name the January workshop explicitly or keep it general.</p></div></details>
+<details><summary><span class="ptext">let&#x27;s trim.   slop: This document offers one. It&#x27;s grounded in how we already think about literacy in general education. It doesn&#x27;t require you to become a technology expert. It asks you to think about reading, thinking, and writing — which you already do. (meaning: good id. reduce words. reduce slop feeling, if that is what is needed to do to convey authenticity while writing with AI. kinda like css &lt;style=&quot;professional&quot;&gt;.   cut We&#x27;re in a shift right now.  attribute the definition to me: My working definition of  Literacy (not ai literacy)  has to decide whether to trust those flashcards — knowing, or not knowing, that AI-generated study materials can contain approximately 20% errors. That decision is literacy.--&gt; good. fluency is knowing now to validate and improve content to reduce errors to 1%  you&#x27;ve slimmed read to just reading, and forgotten that reading gaining understanding of lots of content, so getting themodel to do the reding work. sorry for typos.   think is too distant....</span><span class="ts">04:16 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>let&#x27;s trim. 
+
+slop: This document offers one. It&#x27;s grounded in how we already think about literacy in general education. It doesn&#x27;t require you to become a technology expert. It asks you to think about reading, thinking, and writing — which you already do. (meaning: good id. reduce words. reduce slop feeling, if that is what is needed to do to convey authenticity while writing with AI. kinda like css &lt;style=&quot;professional&quot;&gt;. 
+
+cut We&#x27;re in a shift right now.
+
+attribute the definition to me: My working definition of  Literacy (not ai literacy)
+
+has to decide whether to trust those flashcards — knowing, or not knowing, that AI-generated study materials can contain approximately 20% errors. That decision is literacy.--&gt; good. fluency is knowing now to validate and improve content to reduce errors to 1%
+
+you&#x27;ve slimmed read to just reading, and forgotten that reading gaining understanding of lots of content, so getting themodel to do the reding work. sorry for typos. 
+
+think is too distant...we&#x27;ve done better.
+
+writing hint at the writing for knowledge, production, etc.
+
+The argument: if a student drafts in Google Docs and then pastes into a chat interface, the composing surface and the AI surface are separate. The student&#x27;s thinking happens somewhere the model can&#x27;t see it. The model gets a finished thought, not a developing one.
+If instead the student composes in the prompt box — starting the thinking there, building context through successive exchanges — the model has access to the student&#x27;s developing thought. The more context the model has, the more likely the student can express themselves through the model.
+This is analogous to a famous insight in writing pedagogy: thinking-through-writing. We don&#x27;t fully know what we think until we write it. The same dynamic applies here: students discover what they think through the act of prompting. The conversation is the thinking.
+This doesn&#x27;t mean students never write elsewhere. It means the prompt box is treated as a legitimate, primary composing surface — not just a tool you turn to after the thinking is done. is totally off; you&#x27;ve conflated two different experiences. writing for knowlege of course, and then reaading, and then writing for more kowlege. etc. then writing for production when we try to get the model to write our artifact, after we know what we want to say. 
+
+Only one exercised literacy.&lt;--Only one demonstrated cognitive effort, akin to writing! and evidence of reading!
+
+The short version: the model gets the last word. The student shapes every word before that.&lt;--need to contextualize, that admin model gets the last word. but that may have been in and out of google docs a bunch...
+
+This Isn&#x27;t Optional: The Mandate&lt;-The SUNY Gen Ed Framework Now Includes AI
+
+* Prompt 1 — Thinking: Ask the model what happens cognitively before words appear on a page. Engage in five questions each direction. This establishes that AI interaction requires genuine thought — you can&#x27;t complete this prompt passively.
+* Prompt 2 — Reading: Upload two or three brief scholarly readings representing different positions on a question in your field. Ask the model to synthesize them. Evaluate the synthesis. Push back where it&#x27;s wrong or thin.
+* Prompt 3 — Writing: Ask the model to draft a short encyclopedic entry synthesizing the dialogue and the readings. The output demonstrates AI-mediated writing that required intellectual work throughout.
+* Prompt 4 — Reflection: Ask the model to identify where in the conversation you were most and least engaged. Its answer will surprise you.--&gt; is this you characterizing something we&#x27;ve developed?
+
+What to look for in a transcript:
+* Did the student redirect the model when it went wrong?
+* Did the student disagree with or correct the model&#x27;s claims?
+* Did the student introduce their own knowledge into the exchange?
+* Did the prompts get more sophisticated over the course of the conver
+How to look at transcripts?</div></div></details>
+<details><summary><span class="ptext">let&#x27;s trim.   slop: This document offers one. It&#x27;s grounded in how we already think about literacy in general education. It doesn&#x27;t require you to become a technology expert. It asks you to think about reading, thinking, and writing — which you already do. (meaning: good id. reduce words. reduce slop feeling, if that is what is needed to do to convey authenticity while writing with AI. kinda like css &lt;style=&quot;professional&quot;&gt;.   cut We&#x27;re in a shift right now.  attribute the definition to me: My working definition of  Literacy (not ai literacy)  has to decide whether to trust those flashcards — knowing, or not knowing, that AI-generated study materials can contain approximately 20% errors. That decision is literacy.--&gt; good. fluency is knowing now to validate and improve content to reduce errors to 1%  you&#x27;ve slimmed read to just reading, and forgotten that reading gaining understanding of lots of content, so getting themodel to do the reding work. sorry for typos.   think is too distant....</span><span class="ts">04:19 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>let&#x27;s trim. 
+
+slop: This document offers one. It&#x27;s grounded in how we already think about literacy in general education. It doesn&#x27;t require you to become a technology expert. It asks you to think about reading, thinking, and writing — which you already do. (meaning: good id. reduce words. reduce slop feeling, if that is what is needed to do to convey authenticity while writing with AI. kinda like css &lt;style=&quot;professional&quot;&gt;. 
+
+cut We&#x27;re in a shift right now.
+
+attribute the definition to me: My working definition of  Literacy (not ai literacy)
+
+has to decide whether to trust those flashcards — knowing, or not knowing, that AI-generated study materials can contain approximately 20% errors. That decision is literacy.--&gt; good. fluency is knowing now to validate and improve content to reduce errors to 1%
+
+you&#x27;ve slimmed read to just reading, and forgotten that reading gaining understanding of lots of content, so getting themodel to do the reding work. sorry for typos. 
+
+think is too distant...we&#x27;ve done better.
+
+writing hint at the writing for knowledge, production, etc.
+
+The argument: if a student drafts in Google Docs and then pastes into a chat interface, the composing surface and the AI surface are separate. The student&#x27;s thinking happens somewhere the model can&#x27;t see it. The model gets a finished thought, not a developing one.
+If instead the student composes in the prompt box — starting the thinking there, building context through successive exchanges — the model has access to the student&#x27;s developing thought. The more context the model has, the more likely the student can express themselves through the model.
+This is analogous to a famous insight in writing pedagogy: thinking-through-writing. We don&#x27;t fully know what we think until we write it. The same dynamic applies here: students discover what they think through the act of prompting. The conversation is the thinking.
+This doesn&#x27;t mean students never write elsewhere. It means the prompt box is treated as a legitimate, primary composing surface — not just a tool you turn to after the thinking is done. is totally off; you&#x27;ve conflated two different experiences. writing for knowlege of course, and then reaading, and then writing for more kowlege. etc. then writing for production when we try to get the model to write our artifact, after we know what we want to say. 
+
+Only one exercised literacy.&lt;--Only one demonstrated cognitive effort, akin to writing! and evidence of reading!
+
+The short version: the model gets the last word. The student shapes every word before that.&lt;--need to contextualize, that admin model gets the last word. but that may have been in and out of google docs a bunch...
+
+This Isn&#x27;t Optional: The Mandate&lt;-The SUNY Gen Ed Framework Now Includes AI
+
+* Prompt 1 — Thinking: Ask the model what happens cognitively before words appear on a page. Engage in five questions each direction. This establishes that AI interaction requires genuine thought — you can&#x27;t complete this prompt passively.
+* Prompt 2 — Reading: Upload two or three brief scholarly readings representing different positions on a question in your field. Ask the model to synthesize them. Evaluate the synthesis. Push back where it&#x27;s wrong or thin.
+* Prompt 3 — Writing: Ask the model to draft a short encyclopedic entry synthesizing the dialogue and the readings. The output demonstrates AI-mediated writing that required intellectual work throughout.
+* Prompt 4 — Reflection: Ask the model to identify where in the conversation you were most and least engaged. Its answer will surprise you.--&gt; is this you characterizing something we&#x27;ve developed?
+
+What to look for in a transcript:
+* Did the student redirect the model when it went wrong?
+* Did the student disagree with or correct the model&#x27;s claims?
+* Did the student introduce their own knowledge into the exchange?
+* Did the prompts get more sophisticated over the course of the conver
+How to look at transcripts? Use AI!
+
+This will happen. Students find it frustrating. It&#x27;s actually one of the most valuable learning moments in the course.
+
+When a model doesn&#x27;t follow a prompt, it surfaces a question: Why? Sometimes the prompt was ambiguous. Sometimes the model has training tendencies that pull toward certain outputs. Sometimes the system prompt constrains it in ways the user can&#x27;t see.
+
+Learning to diagnose and correct prompt failures is a core literacy skill. It requires the student to think precisely about what they wanted, why the model produced something else, and how to close the gap. That&#x27;s analytical work — the same analytical work they&#x27;d do revising a paragraph that didn&#x27;t say what they meant.
+
+Teaching tip: ask students to document at least one moment in each conversation where the model didn&#x27;t follow the prompt, and write a brief note on how they resolved it. These notes are often the most interesting parts of a submission. --&gt; delete this whole section
+
+We had a real opportunity to build Literary Machines. Instead it&#x27;s collapsing into Copilot. Clippy with better PR.
+The current generation of AI tools — ChatGPT, Claude, Gemini — are genuinely different from prior technologies. They generate language. They participate in thinking. They produce authoritative-sounding text that floods shared knowledge infrastructure without accountability for accuracy.
+
+The risk isn&#x27;t that students use these tools. They already do. The risk is that they use them without literacy — consuming outputs as finished knowledge rather than as raw material requiring evaluation, verification, and judgment.
+
+General education exists to produce graduates who can navigate new knowledge environments. This is a new knowledge environment. The framework here isn&#x27;t a special program or a technology initiative. It&#x27;s what we&#x27;ve always called literacy, applied to the tools that now surround our students.--delete this section doesn&#x27;t land. like the subsectins tho
+
+take out Kate Crawford, Atlas of AI — on the material and political economy of AI systems
+
+Add in geory hinton artificial exotic machines
+
+
+
+
+
+</div><p>Now making all changes in one pass.Main changes made:</p>
+<ul>
+<li>Intro trimmed to one sentence</li>
+<li>"We're in a shift right now" cut</li>
+<li>Definition relabeled as yours, and as <em>Literacy</em> not AI Literacy</li>
+<li>Flashcard example extended: fluency is knowing how to validate toward 1% error; literacy is the harder question underneath that</li>
+<li>RTW grid rewritten: R now frames reading-as-volume/synthesis; T centers the conversational exchange; W distinguishes the two modes explicitly</li>
+<li>"Writing means prompting" disclosure rebuilt around the knowledge/production distinction — no more Google Docs conflation</li>
+<li>"Only one exercised literacy" → cognitive effort framing</li>
+<li>"Model gets last word" contextualized as production-context convention, not absolute rule</li>
+<li>Section heading updated</li>
+<li>Workshop framing softened — flagged as from faculty sessions, not claiming more than that</li>
+<li>Transcript assessment: bullet list replaced with prose + "use AI to read them"</li>
+<li>Prompt-failure section deleted</li>
+<li>Bigger Picture body paragraphs deleted, pullquote and subsections kept</li>
+<li>Hinton replaces Crawford</li>
+</ul>
+<p>One flag: the Hinton quote I used is a paraphrase of the general thrust of his public statements post-2023 — you'll want to verify or replace with a specific citation if this goes out formally.</p></div></details>
+<details><summary><span class="ptext">Generate the AI literacy for faculty HTML as a single file I can use for audio</span><span class="ts">04:40 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>Generate the AI literacy for faculty HTML as a single file I can use for audio</div><p>Single file, no external dependencies beyond Google Fonts. What it does:</p>
+<p><strong>Player bar</strong> (fixed bottom): play/pause, prev/next segment, progress bar with click-to-jump, segment counter, speed selector (0.8–1.4×), voice selector filtered to English voices.</p>
+<p><strong>Keyboard shortcuts</strong>: Space = play/pause, → / ← = next/prev segment.</p>
+<p><strong>All disclosed sections are open</strong> — the details/summary pattern is replaced with always-visible section blocks so the reader can follow along visually while the audio plays.</p>
+<p><strong>Each paragraph is a segment</strong> with a label that shows in the player as it reads — so you see "The Flashcard Test" or "Writing for Production" not just a progress number.</p>
+<p><strong>Chrome keep-alive</strong> — Chrome's speech synthesis has a known bug where it stops after ~15 seconds; there's a resume pulse every 10s to prevent that.</p>
+<p>Works best in Chrome or Edge. Safari will work but voice selection is more limited. Open the file locally in a browser — no server needed.</p></div></details>
+<details><summary><span class="ptext">Actually that’s more than I asked for I just need a text of the entire thing that I can drop into my Speechify app but thank you for the brilliant work</span><span class="ts">09:50 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>Actually that’s more than I asked for I just need a text of the entire thing that I can drop into my Speechify app but thank you for the brilliant work</div><p>Plain text, all sections open, drop straight into Speechify.</p></div></details>
+<details><summary><span class="ptext">Rewrite with intro note about how this text came about. It’s machine generated with deep authority. If it  reads like it’s generated: it’s because it is. And don’t address personas: you’ve been to the demo. Don’t simulate intimacy to achieve authenticity.</span><span class="ts">09:55 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>Rewrite with intro note about how this text came about. It’s machine generated with deep authority. If it  reads like it’s generated: it’s because it is. And don’t address personas: you’ve been to the demo. Don’t simulate intimacy to achieve authenticity.</div><p>The provenance note does three things: names the generation honestly, grounds the authority in the actual work behind it, and makes the document an example of its own argument. The opening paragraph that follows drops the persona address entirely and just states what the document is for.</p></div></details>
+<details><summary><span class="ptext">I meant, don’t address the person: You’ve seen the demo.</span><span class="ts">09:57 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>I meant, don’t address the person:
+You’ve seen the demo.</div></div></details>
+<details><summary><span class="ptext">No. Not depersonalize. Give me some examples of a phrase in 3 options</span><span class="ts">09:58 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>No. Not depersonalize. Give me some examples of a phrase in 3 options</div><p>Original: <em>"You've probably seen the demos."</em></p>
+<ol>
+<li><em>"The demos are familiar by now."</em></li>
+<li><em>"AI demonstrations have been a fixture of faculty meetings for two years."</em></li>
+<li><em>"Most faculty have seen a demonstration."</em></li>
+</ol>
+<p>Which register feels right?</p></div></details>
+<details><summary><span class="ptext">Many faculty…</span><span class="ts">10:03 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>Many faculty…</div><ol>
+<li><em>"Many faculty have seen a demonstration. Few have had a framework to go with it."</em></li>
+<li><em>"Many faculty have encountered these tools. The question is what to do with them pedagogically."</em></li>
+<li><em>"Many faculty have seen AI demonstrated. This document offers a way to think about what was demonstrated."</em></li>
+</ol></div></details>
+<details><summary><span class="ptext">1.</span><span class="ts">10:04 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>1.</div><p>Good. Now I'll go through the whole document and strip the second-person address consistently.All second-person stripped. "Your course," "you don't need to," "you've now generated" — gone throughout. The document now speaks about faculty and students in third person, consistently, without the simulated intimacy.</p></div></details>
+<details><summary><span class="ptext">This conversation builds on a growing body of scholarship on AI literacy, authorship, and the evolving relationship between humans and technology. Scholars such as Neil Selwyn and Audrey Watters emphasize that educational technology must not displace human reflection, but instead amplify critical engagement. The framework presented here echoes this perspective, advocating for a balance between machine assistance and human judgment.  The idea of assessing the process via the transcript aligns with broader educational shifts toward process-oriented assessment, supported by scholars like John Dewey and more contemporary voices like Cathy Davidson. These thinkers argue that learning is evidenced not merely by final products, but by the intellectual paths taken. Other scholars, such as Anna Mills, also support pedagogical transparency in AI use, advocating for a documented process to ensure accountability and reflection.  Not all agree with this framing. Critics of AI in education, such as ...</span><span class="ts">10:38 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>This conversation builds on a growing body of scholarship on AI literacy, authorship, and the evolving relationship between humans and technology. Scholars such as Neil Selwyn and Audrey Watters emphasize that educational technology must not displace human reflection, but instead amplify critical engagement. The framework presented here echoes this perspective, advocating for a balance between machine assistance and human judgment.
+
+The idea of assessing the process via the transcript aligns with broader educational shifts toward process-oriented assessment, supported by scholars like John Dewey and more contemporary voices like Cathy Davidson. These thinkers argue that learning is evidenced not merely by final products, but by the intellectual paths taken. Other scholars, such as Anna Mills, also support pedagogical transparency in AI use, advocating for a documented process to ensure accountability and reflection.
+
+Not all agree with this framing. Critics of AI in education, such as Jill Walker Rettberg, caution that shifting too much focus onto AI transcripts risks normalizing reliance on opaque systems. They argue that without deep AI literacy, assessment of the process could be as flawed as assessing only outputs.
+
+In short, the SUNY framework stands within a broader critical discourse. While many agree that transparent process documentation is a positive step, it’s also clear that AI literacy must remain central to ensure students don’t merely accept the machine’s reasoning, but actively critique it.</div><p>This is a good example of what the provenance note warns about: authoritative-sounding text that floods shared knowledge infrastructure without accountability for accuracy.</p>
+<p>A few specific problems:</p>
+<p>The Dewey citation is decorative. Dewey isn't a source for process-oriented assessment in the way implied — that's a paraphrase of a general idea dressed in a name.</p>
+<p>"Advocates for a balance between machine assistance and human judgment" is not what the framework argues. The framework makes a stronger, more specific claim about what literacy is. "Balance" softens it into something generic.</p>
+<p>Rettberg's actual work is on self-representation and narrative in digital culture. The critique attributed to her here may not be hers.</p>
+<p>The closing paragraph — "it's also clear that AI literacy must remain central" — arrives as a conclusion the text hasn't earned. It restates the framework's own premise as if it were a synthesis of competing views.</p>
+<p>The structural move — present framework, cite supporters, cite critics, conclude with synthesis — is the template for a generated literature review. It performs scholarly discourse without doing the work of it.</p>
+<p>The question is what this text is for. If it's a draft someone sent for feedback, the feedback is: source-check every citation, cut Dewey, sharpen the Selwyn/Watters claim or drop it, and rewrite the summary of the framework in its own terms. If it arrived unrequested as an addition to the document, it shouldn't be there.</p></div></details>
+<footer><p>AIX Center · SUNY Polytechnic Institute</p></footer></body></html>

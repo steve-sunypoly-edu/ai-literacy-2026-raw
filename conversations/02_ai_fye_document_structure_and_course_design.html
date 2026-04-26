@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-FYE document structure and course design</title>
+<style>
+:root { --bg: #fafaf8; --surface: #ffffff; --border: #c8c8c0; --text: #1a1a1a; --muted: #4a4a45; --accent: #1e4f78; --prompt-bg: #f0f0ec; --ts-color: #5a5a55; --mono: 'Courier New', monospace; --serif: Georgia, serif; }
+@media (prefers-color-scheme: dark) { :root { --bg: #111110; --surface: #1c1c1a; --border: #3a3a34; --text: #e8e8e0; --muted: #b0b0a8; --accent: #7bbde8; --prompt-bg: #222220; } }
+body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 800px; margin: 0 auto; padding: 2rem; line-height: 1.6; }
+header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+h1 { font-family: var(--serif); font-weight: normal; margin: 0 0 0.5rem 0; color: var(--accent); }
+.summary-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; }
+details { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 1rem; overflow: hidden; }
+summary { padding: 1rem; cursor: pointer; background: var(--prompt-bg); display: flex; justify-content: space-between; font-weight: 500; gap: 1rem; }
+summary::-webkit-details-marker { display: none; }
+.ptext { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ts { font-size: 0.85em; color: var(--ts-color); white-space: nowrap; }
+.exchange { padding: 1.5rem; border-top: 1px solid var(--border); }
+.full-prompt-block { background: var(--prompt-bg); padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem; font-style: italic; white-space: pre-wrap; border-left: 4px solid var(--accent); }
+pre { background: var(--bg); padding: 1rem; border-radius: 4px; overflow-x: auto; font-family: var(--mono); font-size: 0.9em; }
+code { font-family: var(--mono); font-size: 0.9em; }
+blockquote { border-left: 3px solid var(--accent); margin: 0; padding-left: 1rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<header><h1>AI-FYE document structure and course design</h1><p style="color: var(--muted);">AI Literacy Curriculum Project — Generated Record</p></header>
+<div class="summary-box"><p><strong>Conversation Overview</strong></p>
+<p>the author is working as a SUNY AI Fellow for the Public Good, developing an AI literacy curriculum framework in response to SUNY Board Resolution 2024-64, which mandates AI literacy integration into general education by Fall 2026. He has been building a comprehensive AI literacy collection that includes frameworks like the "Learner's Permit" (LP) and "Commercial Driver's License" (CDL), and is now developing an "AI-FYE" (AI in the First Year Experience) program. the author's approach to AI literacy centers on "reading, thinking, and writing using the tools, techniques, and technological systems consistent with one's peers" (RTW) - treating AI as the medium through which literate practice happens rather than as subject matter.</p>
+<p>The conversation focused on creating a faculty invitation document for the AI-FYE pilot program. the author outlined a specific architecture: 20 students in a pilot cohort taking AI 188 (a 1-credit "AI Salon" course) as a co-requisite with general education and major courses. The AI Salon would examine AI-assisted artifacts students produce across disciplines, creating cross-disciplinary comparison opportunities. the author emphasized that participating faculty keep their existing courses and assignments, only coordinating timing on key assignments. The program begins with a shared orientation day where all students and faculty complete the Learner's Permit together.</p>
+<p>the author demonstrated his collaborative approach to document development, noting that this document itself was "developed through sustained conversation with an AI system - generating design specs, working through multiple versions, validating and verifying across models" with the model getting "the last word" on outputs. He provided a concrete example of this iterative process: when an early reviewer suggested that 2-credit courses were too narrow for general education, "one prompt, one iteration" changed the entire program design. the author added a "What's Next" section explaining that participating faculty would join the project through a shared Claude Team Project to continue iterating and generating necessary pilot artifacts, with an additional track for developing grant proposals for Fall 2027 implementation. He also specified that student artifacts would be managed through Microsoft SharePoint with granular security controls, and emphasized that the program is "AI-forward by design" - faculty who join have already agreed to AI engagement as a selection condition.</p></div>
+<details><summary><span class="ptext">i have now used these dox, including the syntehsid https://notebooklm.google.com/notebook/df78824c-e288-4c89-8971-5fcd2702dbbb and may begin to feed these dox back as reflective pieces to help for next round. Meantie, I now need the AI-FYE document. do a mind dump, tell me what you know. LP will be first five hours of FY 188 and AI 188. CDL will be first 15 hours of AI 288. position FYS 188 as a 1 credit course. AI 188 as a 1-credit ,. all the gen ed classes are 3 credit. the Major-188 (like, BIZ 188 and EE 188) is 2 or 3 credit. all require co-req AI 188; all agree to license idea. ai 188 will be a tooling class with a sequence, providng progressively complex ai-llm exercises for the first 8 weeks. after that, everyone is on their own. ai 288 is 2nd half of semester; since no co req, won&#x27;t be explicitly tied to courses, but we will work with students to do agentic projects for these classes. ask questions about FYE b4 you gen</span><span class="ts">07:30 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>i have now used these dox, including the syntehsid https://notebooklm.google.com/notebook/df78824c-e288-4c89-8971-5fcd2702dbbb and may begin to feed these dox back as reflective pieces to help for next round. Meantie, I now need the AI-FYE document. do a mind dump, tell me what you know. LP will be first five hours of FY 188 and AI 188. CDL will be first 15 hours of AI 288. position FYS 188 as a 1 credit course. AI 188 as a 1-credit ,. all the gen ed classes are 3 credit. the Major-188 (like, BIZ 188 and EE 188) is 2 or 3 credit. all require co-req AI 188; all agree to license idea. ai 188 will be a tooling class with a sequence, providng progressively complex ai-llm exercises for the first 8 weeks. after that, everyone is on their own. ai 288 is 2nd half of semester; since no co req, won&#x27;t be explicitly tied to courses, but we will work with students to do agentic projects for these classes. ask questions about FYE b4 you gen</div><p>Good instinct to front-load the questions. Here's what I need to know before I generate:</p>
+<p><strong>Structure &amp; Sequencing</strong>
+- FYS 188 and AI 188 are co-reqs — do they run simultaneously week 1, or does FYS 188 precede AI 188 by a few weeks?
+- The LP covers "first 5 hours" — is that 5 contact hours, or 5 weeks of a 1-credit course?
+- AI 188 runs 8 weeks then releases students — does the course formally end at week 8, or continue with lighter structure?Two more open questions while you answer those:</p>
+<ol>
+<li>
+<p><strong>The LP "license" framing</strong> — in AI 188, are students literally completing the Learner's Permit assessment as a graded milestone, or is it more of a metaphor/framework for the first 5 hours?</p>
+</li>
+<li>
+<p><strong>Who teaches AI 188?</strong> One instructor across all sections, or distributed to department faculty? This affects whether the 8-week sequence needs to be fully self-contained/asynchronous or can assume live facilitation.</p>
+</li>
+</ol></div></details>
+<details><summary><span class="ptext">where did my prompt go? i answered all the questins and it disappeared. discard fys 188. lp is first 5 hours of a 15 weeks course (5 of 45). ai 188 now runs 16 weeks. is the AI salon, where we discuss ai tools and techniques and techno systems based on the artifacts tey are generating and hopefully, all students in the gen and major 188 courses do similar assignments at similar time so we can see cross discopinary conflict? 40 students, 2 sections for pilot. 1 instructor for ai 188 and ai 288. 20 persons per section. requires 80 seats in gen ed classes (students take 2).</span><span class="ts">07:35 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>where did my prompt go? i answered all the questins and it disappeared. discard fys 188. lp is first 5 hours of a 15 weeks course (5 of 45). ai 188 now runs 16 weeks. is the AI salon, where we discuss ai tools and techniques and techno systems based on the artifacts tey are generating and hopefully, all students in the gen and major 188 courses do similar assignments at similar time so we can see cross discopinary conflict? 40 students, 2 sections for pilot. 1 instructor for ai 188 and ai 288. 20 persons per section. requires 80 seats in gen ed classes (students take 2).</div><p>Got it. Let me do the mind dump now.</p>
+<hr />
+<h2>AI-FYE: Mind Dump</h2>
+<p><strong>The Core Architecture</strong></p>
+<p>Two courses, one instructor, one pilot cohort of 40. AI 188 is the through-line for the whole first year. AI 288 is a second-semester continuation. The glue is the <strong>AI Salon</strong> — not a class about AI tools, but a class <em>using</em> artifacts generated <em>in other classes</em> as primary text.</p>
+<p><strong>AI 188: The AI Salon (1 credit, 16 weeks, 2 sections × 20)</strong></p>
+<p>The premise: every student is simultaneously enrolled in gen ed courses and a major-intro course, all generating AI-assisted artifacts. AI 188 is where those artifacts surface, collide, and get examined. The cross-disciplinary tension is the curriculum. A biology student and a business student running the same prompt structure get different outputs — <em>that difference is the lesson.</em></p>
+<p>The LP (weeks 1–2, ~5 of 45 hours) is the entry gate. Students demonstrate basic functional literacy before they're permitted to generate artifacts that the salon will discuss. This maps cleanly to the LP framework: you don't drive on the highway until you've proven you can handle the vehicle.</p>
+<p>Weeks 3–16: salon format. Students bring artifacts. Instructor facilitates comparison. The "assignments" are actually happening in the co-req courses — AI 188 is the reflective layer on top.</p>
+<p><strong>The 80-seat coordination problem</strong></p>
+<p>40 students × 2 gen ed courses = 80 seats. For the cross-disciplinary comparison to work, those gen ed courses need to be running <em>similar assignment types</em> on <em>similar timelines</em>. This is a scheduling and faculty coordination challenge, not a curriculum design challenge. The question is: who holds the coordination authority? Probably you as AI Fellow.</p>
+<p><strong>AI 288: CDL track (2nd semester)</strong></p>
+<p>CDL covers the first 15 hours — roughly the first 4–5 weeks. After that, agentic project work. No co-req means students self-organize around their own coursework. The instructor's job shifts from facilitator to project advisor. This is where the hypertext branching becomes explicit: students are navigating multi-step AI workflows, not single prompts.</p>
+<p><strong>The Hypertext Frame (this is where it gets interesting)</strong></p>
+<p>The LP → CDL progression is a two-stage branching narrative. Stage 1 (LP): you are a passenger learning to read the road. Stage 2 (CDL): you are operating a vehicle that can haul cargo for others. The "choose your own adventure" structure applies to the <em>prompting sequences</em> themselves — students learn to build branching conditional workflows, not just linear prompt-response pairs.</p>
+<p>The AI Salon is the campfire where travelers compare routes. Same destination (the assignment), different paths taken, different what-happened-along-the-way.</p>
+<p><strong>What I don't know yet:</strong></p>
+<ul>
+<li>Who coordinates the gen ed faculty to align assignment timing? Is there an actual coordination mechanism or is this aspirational?</li>
+<li>Is the 45-hour figure for AI 188 based on contact hours only, or including out-of-class work? (1 credit = ~15 contact hours typically — are you running this as a lab course?)</li>
+<li>What does "agentic project" mean at the AI 288 level for a first-year student? Are we talking multi-tool workflows, or something simpler like a sustained research thread?</li>
+<li>The Major-188 courses — who's teaching those and how locked in is the "similar assignment at similar time" coordination?</li>
+</ul>
+<hr />
+<p>What output do you need first: course description language, the salon session structure, or the LP→CDL progression map?</p></div></details>
+<details><summary><span class="ptext">The LP (weeks 1–2, ~5 of 45 hours) is the entry gate. Students demonstrate basic functional literacy before they&#x27;re permitted to generate artifacts that the salon will discuss. This maps cleanly to the LP framework: you don&#x27;t drive on the highway until you&#x27;ve proven you can handle the vehicle. --&gt; AI FYE all students and profs shared orientation day! everyone gets a prize...  40 students × 2 gen ed courses = 80 seats. For the cross-disciplinary comparison to work, those gen ed courses need to be running similar assignment types on similar timelines. This is a scheduling and faculty coordination challenge, not a curriculum design challenge. The question is: who holds the coordination authority? Probably you as AI Fellow.--&gt; I think i need 2 faculty to each teach 2 sections of their course in the semester. or 4 faculty to each teach 1 section (that is the ticket!). or model this on 20 students...2 faculty, 1 section each. plus 1 major. i can make that happen.   um: The Hypertext Frame (t...</span><span class="ts">07:40 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>The LP (weeks 1–2, ~5 of 45 hours) is the entry gate. Students demonstrate basic functional literacy before they&#x27;re permitted to generate artifacts that the salon will discuss. This maps cleanly to the LP framework: you don&#x27;t drive on the highway until you&#x27;ve proven you can handle the vehicle.
+--&gt; AI FYE all students and profs shared orientation day! everyone gets a prize...
+
+40 students × 2 gen ed courses = 80 seats. For the cross-disciplinary comparison to work, those gen ed courses need to be running similar assignment types on similar timelines. This is a scheduling and faculty coordination challenge, not a curriculum design challenge. The question is: who holds the coordination authority? Probably you as AI Fellow.--&gt; I think i need 2 faculty to each teach 2 sections of their course in the semester. or 4 faculty to each teach 1 section (that is the ticket!). or model this on 20 students...2 faculty, 1 section each. plus 1 major. i can make that happen. 
+
+um: The Hypertext Frame (this is where it gets interesting)
+The LP → CDL progression is a two-stage branching narrative. Stage 1 (LP): you are a passenger learning to read the road. Stage 2 (CDL): you are operating a vehicle that can haul cargo for others. The &quot;choose your own adventure&quot; structure applies to the prompting sequences themselves — students learn to build branching conditional workflows, not just linear prompt-response pairs.--&gt;OK, but let&#x27;s keep that to ourselves and not reflect that language in the document, please. 
+
+dont worry about credit hours ...dont worry about ai 288 details. in fact: take out ai 288 altogether for not. 
+
+the major 188 -- this it the invitation to gen ed and major faculty to join...first one in the pool...</div><p>Good. Here's the revised model:</p>
+<hr />
+<h2>AI-FYE: Updated Architecture</h2>
+<p><strong>The Pilot (20 students)</strong></p>
+<p>3 faculty + 1 AI 188 instructor. Two gen ed faculty, one section each. One major faculty. Everyone's students are the same 20 people, moving through the semester in parallel, generating artifacts in each course that feed the Salon.</p>
+<p><strong>Orientation Day as Entry Point</strong></p>
+<p>All 20 students <em>and</em> all faculty gather before the semester proper. The LP isn't homework — it happens <em>here</em>, together. Everyone gets the prize: provisional license to proceed. Faculty are also doing it, which is the point. Sets the tone that this is a shared exploration, not a top-down curriculum.</p>
+<p><strong>AI 188: The Salon (16 weeks)</strong></p>
+<p>LP completed at orientation. Weeks 1–16 are salon sessions — students bring artifacts from their gen ed and major courses, instructor facilitates cross-disciplinary comparison. The curriculum emerges from whatever the three faculty assigned that week. Cross-disciplinary friction (bio student vs. business student, same prompt, different output) is the content.</p>
+<p><strong>Major-188 as Invitation</strong></p>
+<p>The major course isn't a requirement — it's the recruitment mechanism. First faculty willing to jump in gets to shape what the major track looks like. First one in the pool defines the temperature for everyone else.</p>
+<hr />
+<p><strong>What do you need built first?</strong>
+Orientation Day structure, the faculty pitch/invitation doc, or the AI 188 Salon session template?</p></div></details>
+<details><summary><span class="ptext">no, this document is an invitation. to the gen ed faculty and the major faculty. generate an overall view for everyone to understand the details of this project. i will soon be a document in my ai literacy collection, in which we detail the LP. once we have this right, we wlll slice in ai 288 again. but ignore for now.</span><span class="ts">07:42 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>no, this document is an invitation. to the gen ed faculty and the major faculty. generate an overall view for everyone to understand the details of this project. i will soon be a document in my ai literacy collection, in which we detail the LP. once we have this right, we wlll slice in ai 288 again. but ignore for now.</div><p>Good. I have what I need. Let me build this to match your existing collection's style.Matches your collection's visual style — same fonts, same accordion structure, same color logic. Five sections: overview, course architecture, LP orientation, how the Salon runs week-to-week, what faculty actually do, pilot scope, and the join CTA.</p>
+<p>A few things I left intentionally vague for you to fill in: the contact info on the final CTA, the actual course numbering convention, and the semester date (I put Fall 2026 — adjust if the pilot runs Spring 2026). The link references to the LP and CDL documents assume they're in the same folder; update the <code>href</code> values if they live elsewhere.</p>
+<p>What do you want to adjust first?</p></div></details>
+<details><summary><span class="ptext">stop worry about style. i am putting everyting in a web site with css. so generate all as css. i will give you standar style soon.   that&#x27; chatgpt.</span><span class="ts">08:07 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>stop worry about style. i am putting everyting in a web site with css. so generate all as css. i will give you standar style soon. 
+
+that&#x27; chatgpt.</div><p>Got it on both counts.</p>
+<p><strong>On the CSS:</strong> going forward I'll generate clean HTML that references an external stylesheet — no inline styles, no embedded <code>&lt;style&gt;</code> blocks. Just semantic HTML with class names. When you share the standard CSS I'll use it from the start.</p>
+<p><strong>On the ChatGPT review:</strong> solid critique overall. The points worth acting on:</p>
+<ul>
+<li>"artifact" needs a one-line definition</li>
+<li>"students are already using AI in every course" — soften to "many students"</li>
+<li>"The Salon works because..." — change to "is designed as"</li>
+<li>IRB/FERPA governance gap is real and faculty <em>will</em> ask</li>
+<li>The LP-as-stage-in-progression point is fair — should signal the larger pathway</li>
+<li>The AI policy conflict question (one faculty bans AI, another requires it) needs a line</li>
+</ul>
+<p>Points worth ignoring for this document:
+- The theoretical rigor critique — this is a recruitment doc, not a scholarship doc, you're right to keep theory out
+- The "too soft" question — intentionally soft is correct for audience</p>
+<p>Do you want me to hold the revision until you share the CSS, or do you want a plain-HTML revision now that we can restyle later?</p></div></details>
+<details><summary><span class="ptext">all premised on ai for all: The AI policy conflict question (one faculty bans AI, another requires it) needs a line   we will use Sharepoint directories which provide granular security required.  plain html</span><span class="ts">08:09 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>all premised on ai for all: The AI policy conflict question (one faculty bans AI, another requires it) needs a line
+
+
+we will use Sharepoint directories which provide granular security required.
+
+plain html</div><p>Two clean insertions:</p>
+<p><strong>On AI policy conflict</strong> — the program premise handles it. Faculty who join AI-FYE have agreed to an AI-engaged course. That's the selection condition. No one is recruited into a context where they're also banning AI. One line in the faculty roles section covers it.</p>
+<p><strong>On governance</strong> — SharePoint with granular security is the answer. One line, no elaboration needed for a recruitment doc.</p>
+<p>Give me a moment.Two targeted edits:</p>
+<p><strong>"How the Salon Works"</strong> — added the AI-forward premise line. Faculty who join have already agreed to AI engagement; that's the selection condition, not something imposed on them. Closes the policy conflict question cleanly.</p>
+<p><strong>"Pilot Scope"</strong> — added the SharePoint governance line before the scaling paragraph: artifacts in SharePoint, granular access controls, anonymized by default in Salon sessions.</p>
+<p>Nothing else touched. Ready for the CSS when you have it.</p></div></details>
+<details><summary><span class="ptext">you won&#x27;t need it. soon, i&#x27;ll tell you to ut the markdown on a github repo...that we&#x27;re building in antoerh claude...</span><span class="ts">09:09 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>you won&#x27;t need it. soon, i&#x27;ll tell you to ut the markdown on a github repo...that we&#x27;re building in antoerh claude...</div><p>Got it. So the deliverable format shifts: markdown files, not styled HTML, dropped into a repo. When you're ready, point me at the repo structure and I'll generate clean markdown that fits it.</p>
+<p>In the meantime — do you want me to convert the AI-FYE document to markdown now so it's ready to drop in, or hold until the repo structure is clear?</p></div></details>
+<details><summary><span class="ptext">no, not yet. that wont happen today. sorry, got ahead of myself. my invite needs to not exactly be an invite, but an overview and pitch. you are good overall. i want itato lead with a paragraph on my ai literacy framework , rtw , ai literacy is reading thinkgin...peers .... and where this comes from, how it starts in RTW. and how this document is a reflection of my practice of reading, thinkging and writing with ai. this documet is, at the endof the day, enacts model gets the last word. so that&#x27;s the preamble that goes in what this is!</span><span class="ts">09:12 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>no, not yet. that wont happen today. sorry, got ahead of myself. my invite needs to not exactly be an invite, but an overview and pitch. you are good overall. i want itato lead with a paragraph on my ai literacy framework , rtw , ai literacy is reading thinkgin...peers .... and where this comes from, how it starts in RTW. and how this document is a reflection of my practice of reading, thinkging and writing with ai. this documet is, at the endof the day, enacts model gets the last word. so that&#x27;s the preamble that goes in what this is!</div><p>Clear. One targeted edit to the opening of "What This Is." The preamble does three things: states the RTW definition, traces where it comes from, then turns the lens on the document itself — this was built through reading, thinking, and writing with AI, and the model got the last word on the artifact you're reading right now.Done. "What This Is" now opens with three paragraphs: the RTW definition, the self-referential statement that this document enacts the model, and then the program description with the softened "many students" language. The rest is untouched.</p></div></details>
+<details><summary><span class="ptext">(including full design specs, etc. that we [you and i] generated, but you [claude] got the last word. and this includes many versions, and validations / verifications across models.</span><span class="ts">09:13 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>(including full design specs, etc. that we [you and i] generated, but you [claude] got the last word. and this includes many versions, and validations / verifications across models.</div><p>One sentence, but it now carries the full weight: design specs, multiple versions, cross-model validation, human in the loop throughout, model gets the last word. The process is the credential.</p></div></details>
+<details><summary><span class="ptext">add: what&#x27;s next? Participating faculty will join the prject by joining claude, continuig to iteracte in this document, and generating necessary artifacts for pilot. And, also mention Interested faculty can join a team to generate a grant proposal to fund this for AI-FYE in Fall 2027.   iteracte -- emphasize hwo we do this: one reflection generates the entire program with 2 credit ai -188 and 2- credit gen ed. an early reviewer suggested that was too narrow for gen ed; we changed it in a prompt and iterated it through the program.</span><span class="ts">09:18 PM</span></summary>
+        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>add: what&#x27;s next? Participating faculty will join the prject by joining claude, continuig to iteracte in this document, and generating necessary artifacts for pilot. And, also mention Interested faculty can join a team to generate a grant proposal to fund this for AI-FYE in Fall 2027. 
+
+iteracte -- emphasize hwo we do this: one reflection generates the entire program with 2 credit ai -188 and 2- credit gen ed. an early reviewer suggested that was too narrow for gen ed; we changed it in a prompt and iterated it through the program.</div><p>New "What's Next" section added with three moves:</p>
+<ol>
+<li><strong>How to join</strong> — Claude Team Project, same iterative process that built this document</li>
+<li><strong>The 2-credit example</strong> — names it explicitly: reviewer flagged it, one prompt, one iteration, change propagated through the whole program. That's RTW at scale, not editing</li>
+<li><strong>Grant track</strong> — separate call-out box for the Fall 2027 funding team</li>
+</ol>
+<p>"If You're Interested" stays as the closing CTA after it.</p></div></details>
+<footer><p>AIX Center · SUNY Polytechnic Institute</p></footer></body></html>
