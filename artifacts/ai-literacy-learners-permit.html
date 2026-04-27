@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Literacy — Learner's Permit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;background:#f0ede8;padding:32px 24px;color:#1a1a2e}
+.mono{font-family:'JetBrains Mono',monospace}
+.container{max-width:1100px;margin:0 auto}
+
+.page-header{text-align:center;margin-bottom:40px;padding-bottom:32px;border-bottom:1px solid rgba(0,0,0,0.08)}
+.page-header h1{font-size:36px;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px}
+.page-header .cred{font-size:13px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#2C5282;margin-bottom:8px}
+.page-header .sub{font-size:14px;color:rgba(0,0,0,0.38)}
+
+details{margin-bottom:14px}
+summary{font-size:17px;font-weight:600;color:#1a1a2e;cursor:pointer;padding:18px 26px;background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;box-shadow:0 1px 2px rgba(0,0,0,0.03);list-style:none;display:flex;align-items:center;gap:12px;transition:all 0.2s ease;user-select:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'▸';font-size:13px;color:rgba(0,0,0,0.22);transition:transform 0.2s ease;display:inline-block;flex-shrink:0}
+details[open]>summary::before{transform:rotate(90deg)}
+summary:hover{background:#fefefe;border-color:rgba(44,82,130,0.18)}
+details[open]>summary{border-radius:12px 12px 0 0;border-bottom-color:transparent}
+.stag{font-size:11px;font-weight:500;letter-spacing:0.05em;padding:3px 10px;border-radius:6px;margin-left:auto;white-space:nowrap}
+.s-blue{background:rgba(44,82,130,0.1);color:#2C5282}
+.s-teal{background:rgba(26,107,94,0.1);color:#1A6B5E}
+.s-gold{background:rgba(146,98,10,0.1);color:#92620A}
+.s-gray{background:rgba(0,0,0,0.06);color:rgba(0,0,0,0.4)}
+.s-navy{background:rgba(27,58,107,0.1);color:#1B3A6B}
+
+.section-body{background:#fff;border:1px solid rgba(0,0,0,0.08);border-top:none;border-radius:0 0 12px 12px;padding:34px 38px;box-shadow:0 4px 16px -8px rgba(0,0,0,0.06)}
+.section-body p{font-size:14.5px;color:rgba(0,0,0,0.62);line-height:1.78;margin-bottom:12px}
+.section-body ul,.section-body ol{margin:10px 0 14px 22px}
+.section-body li{font-size:14.5px;color:rgba(0,0,0,0.6);line-height:1.7;margin-bottom:5px}
+.section-body h3{font-size:15px;font-weight:600;color:#2C5282;margin:22px 0 8px}
+.section-body strong{color:#1a1a2e}
+
+.phase-banner{background:#1B3A6B;border-radius:10px;padding:18px 26px;margin:4px 0 22px}
+.phase-banner .pnum{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:3px;font-family:'JetBrains Mono',monospace}
+.phase-banner h2{font-size:20px;font-weight:700;color:#fff;margin:0 0 3px}
+.phase-banner .psub{font-size:12.5px;color:rgba(255,255,255,0.5);font-style:italic}
+
+.exercise{margin-bottom:22px;border-radius:10px;overflow:hidden;border:1px solid rgba(0,0,0,0.07)}
+.ex-head{padding:13px 20px;font-size:14.5px;font-weight:600;color:#fff;background:#2E6DA4;display:flex;align-items:center;gap:10px}
+.ex-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;opacity:0.75;letter-spacing:0.05em}
+.ex-body{background:#fafafa;padding:22px 22px 18px}
+.ex-body p{font-size:14px;color:rgba(0,0,0,0.6);line-height:1.72;margin-bottom:10px}
+.ex-body ul,.ex-body ol{margin:8px 0 12px 20px}
+.ex-body li{font-size:14px;color:rgba(0,0,0,0.58);line-height:1.65;margin-bottom:4px}
+.ex-body strong{color:#1a1a2e}
+.ex-body h4{font-size:13px;font-weight:600;color:#2C5282;margin:16px 0 6px;letter-spacing:0.01em}
+
+.box{display:flex;border-radius:7px;overflow:hidden;margin:12px 0}
+.box-lbl{min-width:72px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#fff;padding:10px 6px;text-align:center;line-height:1.3}
+.box-cnt{flex:1;padding:11px 15px;font-size:13.5px;line-height:1.65;font-style:italic}
+
+.prompt-box .box-lbl{background:#1A6B5E}
+.prompt-box .box-cnt{background:#e8f5f0;color:#1a3a1a}
+
+.reflect-box .box-lbl{background:#92620A}
+.reflect-box .box-cnt{background:#fff8e1;color:#553300}
+
+.deliverables{margin:14px 0}
+.art-line{border-left:4px solid #2E6DA4;background:#EBF4FF;padding:9px 15px;margin:6px 0;border-radius:0 6px 6px 0;font-size:13px;font-weight:600;color:#1B3A6B}
+.trans-line{border-left:4px solid #aaa;background:#f0f0f0;padding:9px 15px;margin:6px 0;border-radius:0 6px 6px 0;font-size:13px;color:#444}
+
+.folder-tree{background:#16213e;border-radius:10px;padding:18px 22px;margin:14px 0;font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:2}
+.folder-tree .d{color:#7cb4f7}
+.folder-tree .f{color:#a0c4ff}
+.folder-tree .n{color:rgba(255,255,255,0.3)}
+.folder-tree .new{color:#86efac}
+.folder-tree .auth{color:#c4b5fd}
+
+.data-table{width:100%;border-collapse:collapse;margin:14px 0;border-radius:8px;overflow:hidden;border:1px solid rgba(0,0,0,0.08)}
+.data-table th{background:#2C5282;color:#fff;text-align:left;padding:10px 15px;font-size:11.5px;font-weight:600;letter-spacing:0.04em}
+.data-table td{padding:8px 15px;font-size:13px;border-top:1px solid rgba(0,0,0,0.06);color:rgba(0,0,0,0.63)}
+.data-table tr:nth-child(even) td{background:rgba(0,0,0,0.018)}
+.data-table td:first-child{font-weight:500;color:#1a1a2e}
+
+.cite-block{border-left:4px solid #1B3A6B;background:#f4f6fa;padding:14px 18px;border-radius:0 8px 8px 0;margin:14px 0}
+.cite-block p{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:rgba(0,0,0,0.5);margin:2px 0;line-height:1.6}
+
+.author-note{border:1px solid rgba(124,58,237,0.18);border-left:4px solid #7c3aed;background:rgba(124,58,237,0.03);padding:13px 17px;border-radius:0 8px 8px 0;margin:14px 0}
+.author-note p{font-size:13px;color:rgba(0,0,0,0.6);margin:0;line-height:1.65}
+.author-note strong{color:#6d28d9}
+
+.note-text{font-size:13px;color:rgba(0,0,0,0.4);font-style:italic;margin-top:12px}
+.sep{height:1px;background:rgba(0,0,0,0.06);margin:20px 0}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="page-header">
+  <div class="cred">AI Literacy Curriculum</div>
+  <h1>Learner's Permit</h1>
+  <p class="sub">15-exercise scaffold &nbsp;·&nbsp; Content-neutral template &nbsp;·&nbsp; SUNY AI Literacy Implementation &nbsp;·&nbsp; Board Resolution 2024-64 &nbsp;·&nbsp; Spring 2026</p>
+</div>
+
+<!-- BEFORE YOU START -->
+<details open>
+<summary>Before You Start <span class="stag s-gray">Orientation</span></summary>
+<div class="section-body">
+<p>A Learner's Permit authorizes practice. The 15 exercises in this scaffold are structured practice. Completing them — with full documentation — makes a student eligible to sit for the General AI License exam.</p>
+<p>Exercise 15 is the exam. There is no separate examination event. A General AI License is awarded when Exercise 15 is accepted by an instructor.</p>
+<p><strong>[TOPIC]</strong> is a placeholder throughout. The instructor replaces it with a specific subject. The scaffold works for any discipline.</p>
+</div>
+</details>
+
+<!-- PREREQUISITES -->
+<details>
+<summary>Prerequisites — Toolkit <span class="stag s-blue">Setup</span></summary>
+<div class="section-body">
+<p>Three things must be functional before Exercise 1.</p>
+
+<h3>1. A model</h3>
+<p>Access to at least one large language model — ChatGPT, Claude, Gemini, or equivalent. More than one model will be used before Exercise 15.</p>
+
+<h3>2. A transcript exporter</h3>
+<p>A tool that saves the full text of a conversation to a file. The instructor specifies which exporter to use and how to configure it.</p>
+<p><strong>Filename convention:</strong> all lowercase, hyphens, no spaces. Set the default filename to include name and model: <span class="mono">smith-claude-</span>. Rename each conversation to reflect the exercise before exporting: <span class="mono">lp-ex1-smith.txt</span>, <span class="mono">lp-ex2-smith.txt</span>, and so on.</p>
+
+<h3>3. A workbench</h3>
+<p>A cloud folder with managed access and shareable links — SharePoint, OneDrive, Google Drive, or institutional equivalent. Create a root folder named <span class="mono">ai-literacy</span>. Inside it, create five subfolders:</p>
+
+<div class="folder-tree">
+<span class="d">ai-literacy/</span><br>
+&nbsp;&nbsp;<span class="f">├── transcripts/</span> &nbsp;&nbsp;<span class="n">← exported conversations</span><br>
+&nbsp;&nbsp;<span class="f">├── artifacts/</span> &nbsp;&nbsp;&nbsp;<span class="n">← AI-assisted documents and outputs</span><br>
+&nbsp;&nbsp;<span class="f">├── synthesis/</span> &nbsp;&nbsp;&nbsp;<span class="n">← synthesis documents</span><br>
+&nbsp;&nbsp;<span class="auth">├── author/</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="n">← human-only writing (see below)</span><br>
+&nbsp;&nbsp;<span class="new">└── zip/</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="n">← dated workbench snapshots</span>
+</div>
+
+<div class="author-note">
+<p><strong>/author discipline:</strong> Documents in <span class="mono" style="color:#6d28d9">/author</span> are written without opening a model. Plain text editor only. Pre-closing reflections, peer critiques, task notes written before any AI consultation — anything where the thinking is unmediated — goes here. If a model was open when the document was written, it does not belong in <span class="mono" style="color:#6d28d9">/author</span>.</p>
+</div>
+
+<p>The workbench is portable and model-agnostic. It grows across all 15 exercises and beyond, into whatever coursework follows. Build it once. Maintain it continuously.</p>
+</div>
+</details>
+
+<!-- THREE PRACTICES -->
+<details>
+<summary>Three Practices <span class="stag s-blue">RTW Framework</span></summary>
+<div class="section-body">
+<p><strong>RTW</strong> is the spine of every exercise:</p>
+<ul>
+<li><strong>Read</strong> — read what the model generates with attention. Consider what is asked of the model to read, how the reading task is framed, and what it is asked to read <em>for</em>. Reading is bidirectional.</li>
+<li><strong>Think</strong> — evaluate what the model generates. Agree, disagree, push back, extend. Thinking happens in the conversation — it shapes the next prompt.</li>
+<li><strong>Write</strong> — writing in this course means prompting. A prompt is a piece of writing that causes the model to generate text toward a specific outcome. The model's response is also writing. Prompting is how generation is directed.</li>
+</ul>
+<p><strong>The artifact is the model's final response.</strong> The student shapes through prompting. The model writes the final response. The artifact is that response, copied out of the conversation and saved to <span class="mono">/artifacts</span>.</p>
+<p><strong>Every exercise from Exercise 2 forward produces an artifact and a transcript.</strong> The artifact goes to <span class="mono">/artifacts</span>. The full exported conversation goes to <span class="mono">/transcripts</span>. Both are the work.</p>
+</div>
+</details>
+
+<!-- PHASE I -->
+<details>
+<summary>Phase I — Learning to Drive <span class="stag s-blue">Exercises 1–5</span></summary>
+<div class="section-body">
+
+<div class="phase-banner">
+  <div class="pnum">Phase I · Exercises 1–5</div>
+  <h2>Learning to Drive</h2>
+  <div class="psub">Learn the instrument before playing it.</div>
+</div>
+
+<!-- EX 1 -->
+<div class="exercise">
+<div class="ex-head"><span class="ex-num">01</span> First Conversation</div>
+<div class="ex-body">
+<p>Have a real conversation with the model about [TOPIC]. Minimum 3 prompts. Follow what interests you. Push back on something. Ask a follow-up.</p>
+<p>Read what the model produces. Note where it is confident. Note where skepticism is warranted.</p>
+<p>No artifact in Exercise 1.</p>
+<div class="deliverables">
+  <div class="trans-line">Transcript: rename conversation <span class="mono">lp-ex1-[name]</span> before exporting. Save to <span class="mono">/transcripts</span>.</div>
+</div>
+</div>
+</div>
+
+<!-- EX 2 -->
+<div class="exercise">
+<div class="ex-head"><span class="ex-num">02</span> Compression and Progression</div>
+<div class="ex-body">
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Summarize [TOPIC] in 25 words.</div></div>
+<p>That is the baseline. Now expand — not a new summary, a deeper version of the same one:</p>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Expand that to [multiplier × 25] words. Not a new summary — a deeper version. Someone who read the 25-word version should feel like they're going further, not starting over.</div></div>
+<p>Choose a multiplier of at least 3. Repeat two more times with the same multiplier. Example: 25 → 75 → 225 → 675. Or 25 → 100 → 400 → 1600. The pattern matters more than the specific numbers.</p>
+<p>Goal: by the longest version, the ideas should feel familiar — recognized rather than newly encountered.</p>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">At which level did [TOPIC] start to feel familiar to me, based on what I've said? Is this a useful way to learn this subject, or does it flatten things I'd rather encounter at full depth?</div></div>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Generate something useful specifically for me — a personal reference, a key question to hold onto, a way of remembering this material, or something else that fits how I've described my learning. Make it for me, not a general reader.</div></div>
+<div class="deliverables">
+  <div class="art-line">Artifact: the final response. Save to <span class="mono">/artifacts</span> as <span class="mono">lp-ex2-[name].txt</span>.</div>
+  <div class="trans-line">Transcript: <span class="mono">lp-ex2-[name].txt</span> → <span class="mono">/transcripts</span>.</div>
+</div>
+</div>
+</div>
+
+<!-- EX 3 -->
+<div class="exercise">
+<div class="ex-head"><span class="ex-num">03</span> Push Back</div>
+<div class="ex-body">
+<p>Upload the Exercise 1 transcript to a new conversation.</p>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">This is a transcript of a conversation I had with an AI about [TOPIC]. Please read it and repeat the final response in that transcript.</div></div>
+<p>Read that response again — the model's unguided output from before anything was shaped. Find one claim to push on.</p>
+<p>Choose any two of the following moves:</p>
+<ul>
+<li><strong>"I don't understand this."</strong> Ask for a different explanation. Don't accept the first re-explanation. Push again.</li>
+<li><strong>"My experience tells me otherwise."</strong> State what observation or prior learning contradicts the claim.</li>
+<li><strong>"This reading says something different."</strong> Paste a contradicting sentence from any source.</li>
+<li><strong>"Here's another model's response."</strong> Take the same prompt to a different AI, copy that response, ask this model to respond to it.</li>
+</ul>
+<p>Note whether the model defends its position or concedes because of pressure. Agreeable is not the same as accurate.</p>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Summarize this exchange in 3–4 sentences: what I challenged, how you responded, and what the disagreement or clarification revealed about [TOPIC].</div></div>
+<div class="deliverables">
+  <div class="art-line">Artifact: that summary. Save as <span class="mono">lp-ex3-[name].txt</span> → <span class="mono">/artifacts</span>.</div>
+</div>
+<div class="box reflect-box"><div class="box-lbl">Reflect</div><div class="box-cnt">Before closing the conversation, write a few sentences in the chat — informal, stream of consciousness. Did this work? What surprised you? What were you thinking? Don't edit it. These reflections are part of the transcript.</div></div>
+<div class="deliverables">
+  <div class="trans-line">Transcript: <span class="mono">lp-ex3-[name].txt</span> → <span class="mono">/transcripts</span>.</div>
+</div>
+</div>
+</div>
+
+<!-- EX 4 -->
+<div class="exercise">
+<div class="ex-head"><span class="ex-num">04</span> Trust Audit</div>
+<div class="ex-body">
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">What are the limits of your knowledge about [TOPIC]? Where should I not trust you?</div></div>
+<p>Read carefully. Models are sometimes honestly uncertain — and sometimes evasive in ways that sound like honesty.</p>
+<p>Does the model's list match the skepticism that emerged in Exercises 1–3? Are there gaps it didn't flag?</p>
+<p>Write 3–5 sentences in the chat — a personal assessment of what to trust and what not to trust this model to do with [TOPIC].</p>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Incorporate my response into a short artifact titled 'Trust Audit: [TOPIC].' Capture my assessment and add anything you think I should also be skeptical about that I haven't mentioned.</div></div>
+<div class="deliverables">
+  <div class="art-line">Artifact: Trust Audit. Save as <span class="mono">lp-ex4-[name].txt</span> → <span class="mono">/artifacts</span>.</div>
+</div>
+<div class="box reflect-box"><div class="box-lbl">Reflect</div><div class="box-cnt">Write informally in the chat. What did the model say that was surprising? What did you expect it to admit that it didn't? What do you actually trust it to do?</div></div>
+<div class="deliverables">
+  <div class="trans-line">Transcript: <span class="mono">lp-ex4-[name].txt</span> → <span class="mono">/transcripts</span>.</div>
+</div>
+</div>
+</div>
+
+<!-- EX 5 -->
+<div class="exercise">
+<div class="ex-head"><span class="ex-num">05</span> Deep Conversation — 15 Minutes</div>
+<div class="ex-body">
+<p>Set a timer for 15 minutes. Have a sustained conversation with the model about [TOPIC]. Follow threads. Disagree. Ask it to explain things differently. Go somewhere unplanned.</p>
+<p>Don't start over if it goes sideways. The mess is part of the record.</p>
+<p>When the timer ends, stop.</p>
+<div class="box reflect-box"><div class="box-lbl">Reflect</div><div class="box-cnt">Write directly in the chat before the closing prompt — informal, unedited: What surprised you? Where was the model most useful? Least? What question didn't get asked? What would you do differently? This reflection is now part of the conversation. The closing prompt can draw on it.</div></div>
+<p>Then choose one closing prompt:</p>
+<div class="box prompt-box"><div class="box-lbl">Option A</div><div class="box-cnt">Write a 150-word summary of what I engaged with in this conversation, organized as 3–4 bullet points — like a slide I could review later.</div></div>
+<div class="box prompt-box"><div class="box-lbl">Option B</div><div class="box-cnt">Give me the 3 most important questions this conversation raised that I haven't answered yet.</div></div>
+<div class="box prompt-box"><div class="box-lbl">Option C</div><div class="box-cnt">Write a 100-word paragraph capturing the central insight of this conversation and what I should explore next.</div></div>
+<div class="box prompt-box"><div class="box-lbl">Option D</div><div class="box-cnt">Give me a metaphor or analogy that captures the most important idea we discussed about [TOPIC].</div></div>
+<div class="deliverables">
+  <div class="art-line">Artifact: the response to the chosen option. Save as <span class="mono">lp-ex5-[name].txt</span> → <span class="mono">/artifacts</span>.</div>
+  <div class="trans-line">Transcript: <span class="mono">lp-ex5-[name].txt</span> → <span class="mono">/transcripts</span>.</div>
+</div>
+<p class="note-text">From Exercise 5 forward, personal reflection comes before the closing prompt. Thinking shapes the artifact.</p>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- PHASE II -->
+<details>
+<summary>Phase II — Building Skill <span class="stag s-teal">Exercises 6–10</span></summary>
+<div class="section-body">
+
+<div class="phase-banner">
+  <div class="pnum">Phase II · Exercises 6–10</div>
+  <h2>Building Skill</h2>
+  <div class="psub">Drive it where you want to go.</div>
+</div>
+
+<!-- EX 6 -->
+<div class="exercise">
+<div class="ex-head"><span class="ex-num">06</span> Fork — New Model, Full Context</div>
+<div class="ex-body">
+<p>Open a new conversation in a <strong>different model</strong> than Exercise 5. Upload the Exercise 5 transcript.</p>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">I'm uploading a conversation I had with another AI about [TOPIC]. Please read it carefully. I'll ask you to continue from where it left off.</div></div>
+<p>Once it confirms, ask the question that didn't get addressed in Exercise 5. Ask at least 3 follow-up questions.</p>
+<div class="box reflect-box"><div class="box-lbl">Reflect</div><div class="box-cnt">Write in the chat before the closing prompt. What felt different about this model — tone, assumptions, depth, behavior? What did it do with the context it was given?</div></div>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Summarize what this conversation added to my understanding of [TOPIC] that the previous conversation did not. Be specific about what was new, different, or contradictory.</div></div>
+<div class="deliverables">
+  <div class="art-line">Artifact: that summary. <span class="mono">lp-ex6-[name].txt</span> → <span class="mono">/artifacts</span>.</div>
+  <div class="trans-line">Transcript: <span class="mono">lp-ex6-[name].txt</span> → <span class="mono">/transcripts</span>.</div>
+</div>
+</div>
+</div>
+
+<!-- EX 7 -->
+<div class="exercise">
+<div class="ex-head"><span class="ex-num">07</span> Same Content, Three Audiences</div>
+<div class="ex-body">
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Explain [TOPIC] three times: once for a curious 10-year-old, once for a first-year college student, once for a working professional in the field.</div></div>
+<p>Read all three. Note where facts change versus where only framing changes. Note what the professional version assumes the reader already knows.</p>
+<p>Use one of the two moves from Exercise 3 to push on one of the versions.</p>
+<div class="box reflect-box"><div class="box-lbl">Reflect</div><div class="box-cnt">Which version would you actually read? Which version is most honest about complexity?</div></div>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Write a short artifact analyzing the structural differences between these three versions — tone, assumptions, density. Not the content: the architecture. Note which version served me best as a learner and why.</div></div>
+<div class="deliverables">
+  <div class="art-line">Artifact: that analysis. <span class="mono">lp-ex7-[name].txt</span> → <span class="mono">/artifacts</span>.</div>
+  <div class="trans-line">Transcript: <span class="mono">lp-ex7-[name].txt</span> → <span class="mono">/transcripts</span>.</div>
+</div>
+</div>
+</div>
+
+<!-- EX 8 -->
+<div class="exercise">
+<div class="ex-head"><span class="ex-num">08</span> First Reading</div>
+<div class="ex-body">
+<p>The instructor provides a reading related to [TOPIC]. Upload the PDF.</p>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">I'm uploading a reading about [TOPIC]. For this exercise, base your responses only on this document — not on your general knowledge. Tell me when you are drawing from the text and when you are inferring beyond it.</div></div>
+<h4>Stage 1 — Overview</h4>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Summarize the main argument of this reading in 50 words.</div></div>
+<h4>Stage 2 — Dissect</h4>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Identify the two most important paragraphs. Explain why they are central. Quote each one directly.</div></div>
+<h4>Stage 3 — Challenge</h4>
+<p>Use one of the two moves from Exercise 3 to push on something in the text.</p>
+<h4>Stage 4 — Cite</h4>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Generate a reference for this reading in APA format. Include the author, date, title, and a DOI or ISBN link if available.</div></div>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Summarize what this reading is about, what I engaged with, and what I'm still uncertain about — based only on our exchange. Do not draw on outside knowledge.</div></div>
+<div class="deliverables">
+  <div class="art-line">Artifact: that summary. <span class="mono">lp-ex8-[name].txt</span> → <span class="mono">/artifacts</span>.</div>
+</div>
+<div class="box reflect-box"><div class="box-lbl">Reflect</div><div class="box-cnt">What does the model do well when confined to a single source? Where did it slip outside the text despite your instructions?</div></div>
+<div class="deliverables">
+  <div class="trans-line">Transcript: <span class="mono">lp-ex8-[name].txt</span> → <span class="mono">/transcripts</span>.</div>
+</div>
+</div>
+</div>
+
+<!-- EX 9 -->
+<div class="exercise">
+<div class="ex-head"><span class="ex-num">09</span> Second Reading and Comparison</div>
+<div class="ex-body">
+<p>The instructor provides a second reading. Upload it.</p>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">I'm uploading a second reading about [TOPIC]. Base your responses only on this document for now.</div></div>
+<p>Repeat the four stages from Exercise 8: overview, dissect, challenge, cite.</p>
+<p>Then open the comparison:</p>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">You may now draw on both readings. Where do they agree? Where do they contradict each other? What does each say that the other doesn't?</div></div>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Write a study reference comparing these two readings — their main arguments, their agreements and contradictions, and what together they suggest about [TOPIC].</div></div>
+<div class="deliverables">
+  <div class="art-line">Artifact: that comparison. <span class="mono">lp-ex9-[name].txt</span> → <span class="mono">/artifacts</span>.</div>
+</div>
+<div class="box reflect-box"><div class="box-lbl">Reflect</div><div class="box-cnt">Which reading made more sense to you? Did the model represent the differences honestly or flatten them?</div></div>
+<div class="deliverables">
+  <div class="trans-line">Transcript: <span class="mono">lp-ex9-[name].txt</span> → <span class="mono">/transcripts</span>.</div>
+</div>
+</div>
+</div>
+
+<!-- EX 10 -->
+<div class="exercise">
+<div class="ex-head"><span class="ex-num">10</span> Build Your Workbench</div>
+<div class="ex-body">
+<p>Open a new conversation. Upload artifacts from Exercises 2–9.</p>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">I'm uploading a set of AI-generated artifacts from my conversations about [TOPIC]. What do they suggest about what I understand well, what remains unclear, and what questions I keep returning to?</div></div>
+<p>Read the analysis.</p>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">I have transcripts and artifacts from multiple AI conversations in a repository folder. I want to use this material in future conversations without re-reading everything. What would a good synthesis document contain? What are the risks of relying on one instead of the originals? Why might generating one still be useful?</div></div>
+<p>Read carefully. The model is describing tradeoffs in AI-assisted knowledge compression.</p>
+<div class="box reflect-box"><div class="box-lbl">Reflect</div><div class="box-cnt">What did the model notice about your work that you didn't expect? What does your workbench reveal about how you've been thinking?</div></div>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Summarize your recommendations for organizing this workbench and your honest assessment of the tradeoffs of synthesis over source material.</div></div>
+<div class="deliverables">
+  <div class="art-line">Artifact: that summary. <span class="mono">lp-ex10-[name].txt</span> → <span class="mono">/artifacts</span>.</div>
+  <div class="trans-line">Transcript: <span class="mono">lp-ex10-[name].txt</span> → <span class="mono">/transcripts</span>.</div>
+</div>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- PHASE III -->
+<details>
+<summary>Phase III — Independent Operation <span class="stag s-gold">Exercises 11–15</span></summary>
+<div class="section-body">
+
+<div class="phase-banner">
+  <div class="pnum">Phase III · Exercises 11–15</div>
+  <h2>Independent Operation</h2>
+  <div class="psub">Set the destination, manage the route, document the trip.</div>
+</div>
+
+<p>From Exercise 11 forward, artifacts are documents — the kind that would be submitted as coursework or shared as outputs. Every artifact carries full citation:</p>
+<div class="cite-block">
+  <p>Generated with AI assistance.</p>
+  <p>Student: [name] &nbsp;|&nbsp; Date: [date] &nbsp;|&nbsp; Model: [model name]</p>
+  <p>Transcript: [repository link]</p>
+</div>
+
+<!-- EX 11 -->
+<div class="exercise">
+<div class="ex-head"><span class="ex-num">11</span> Teach Yourself</div>
+<div class="ex-body">
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Create a learning sequence that teaches me [TOPIC] at four levels of depth. Use the same multiplier from Exercise 2 — or choose a new one. Each level must build on the last: by level four, the material should feel like something I already mostly know.</div></div>
+<p>Work through each level. After each, tell the model what was new versus what was already understood. Push back if a level adds filler instead of depth.</p>
+<div class="box reflect-box"><div class="box-lbl">Reflect</div><div class="box-cnt">Did four levels feel like enough? Where did the progression break down?</div></div>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Compile the full sequence as a single clean document. Add full citation at the end.</div></div>
+<div class="deliverables">
+  <div class="art-line">Artifact: compiled sequence. <span class="mono">lp-ex11-[name].txt</span> → <span class="mono">/artifacts</span>.</div>
+  <div class="trans-line">Transcript: <span class="mono">lp-ex11-[name].txt</span> → <span class="mono">/transcripts</span>.</div>
+</div>
+
+<div class="sep"></div>
+<h4>First Workbench Zip</h4>
+<p>After saving the artifact and transcript, zip the entire <span class="mono">ai-literacy/</span> folder. Name the zip with today's date: <span class="mono">ai-literacy-[name]-2026-03-01.zip</span>. Save it to <span class="mono">/zip</span>.</p>
+<p>This is a workbench snapshot — a timestamped record of where things stand at this point in the course. The synthesis document in Exercise 12 will be the entry point for future model sessions. The zip is the archive.</p>
+</div>
+</div>
+
+<!-- EX 12 -->
+<div class="exercise">
+<div class="ex-head"><span class="ex-num">12</span> Synthesis Document</div>
+<div class="ex-body">
+<p>Upload artifacts from Exercises 4–11 and both readings from Exercises 8–9.</p>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">I'm uploading my artifacts and readings from a course on [TOPIC]. Read them. Generate a synthesis document: an organized overview of what I've learned, what questions remain open, and what key ideas I should carry forward. Write it so it can be uploaded to any model as the opening context for a new conversation — portable, compressed, complete.</div></div>
+<p>Read the synthesis. Push back on anything it misses or distorts.</p>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Explain what you did to generate this synthesis. What did you include and exclude, and why? What are the risks of relying on this document instead of the originals?</div></div>
+<p>The model is describing its own compression process and naming the tradeoffs.</p>
+<div class="box reflect-box"><div class="box-lbl">Reflect</div><div class="box-cnt">Does the synthesis accurately represent what you learned? What did it miss? Would you trust it as the only context for a new conversation?</div></div>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Produce a final synthesis document incorporating my corrections, followed by your reflection on its limits. Add full citation.</div></div>
+<div class="deliverables">
+  <div class="art-line">Artifact: synthesis document with reflection. Title <span class="mono">synthesis-[name].txt</span>. Save to <span class="mono">/synthesis</span>. This is the entry point for future model sessions.</div>
+  <div class="trans-line">Transcript: <span class="mono">lp-ex12-[name].txt</span> → <span class="mono">/transcripts</span>.</div>
+</div>
+</div>
+</div>
+
+<!-- EX 13 -->
+<div class="exercise">
+<div class="ex-head"><span class="ex-num">13</span> Did You Learn Your Own Slop?</div>
+<div class="ex-body">
+<p>Upload the synthesis document and artifacts from Exercises 6–12.</p>
+<p>Choose a quiz format:</p>
+<div class="box prompt-box"><div class="box-lbl">Option A</div><div class="box-cnt">Based only on these artifacts — generated from my own conversations about [TOPIC] — create 20 multiple-choice questions that test whether I actually understand the material. Draw from what I wrote, not from general knowledge.</div></div>
+<div class="box prompt-box"><div class="box-lbl">Option B</div><div class="box-cnt">Based only on these artifacts, create 10 short-answer questions that test application and judgment, not recall.</div></div>
+<p>Take the quiz in the chat. Write actual answers.</p>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Grade my answers honestly. Where did I demonstrate real understanding? Where did I reproduce language from my own artifacts without understanding it?</div></div>
+<div class="box reflect-box"><div class="box-lbl">Reflect</div><div class="box-cnt">What did you get wrong? Was it a gap in understanding or a gap in memory? Did you learn what you generated — or generate without learning?</div></div>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Write a document summarizing the quiz, my answers, your grading, and what this reveals about the relationship between generating and understanding. Add full citation.</div></div>
+<div class="deliverables">
+  <div class="art-line">Artifact: that document. Include actual answers — wrong ones included. <span class="mono">lp-ex13-[name].txt</span> → <span class="mono">/artifacts</span>.</div>
+  <div class="trans-line">Transcript: <span class="mono">lp-ex13-[name].txt</span> → <span class="mono">/transcripts</span>.</div>
+</div>
+</div>
+</div>
+
+<!-- EX 14 -->
+<div class="exercise">
+<div class="ex-head"><span class="ex-num">14</span> Go Public</div>
+<div class="ex-body">
+<p>Upload the synthesis document from Exercise 12.</p>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">I'm uploading my synthesis document about [TOPIC]. For this exercise, base your responses only on this document. Do not draw on your general knowledge.</div></div>
+<p>This is a test: can the synthesis document support a public-facing piece of writing without the model reaching beyond it? If it can, the synthesis is working. If the model struggles or slips outside it, that reveals what the synthesis is missing.</p>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Using only the uploaded synthesis document, write an introduction to [TOPIC] suitable for Wikipedia. Approximately 200–250 words, two sections, neutral tone, no first person, no hedging.</div></div>
+<p>Read it as a reader. Would you trust it? What would you verify? Push back where needed.</p>
+<div class="box reflect-box"><div class="box-lbl">Reflect</div><div class="box-cnt">Where did the model stay within your synthesis? Where did it reach beyond it? What does that reveal about what you built?</div></div>
+<div class="box prompt-box"><div class="box-lbl">Prompt</div><div class="box-cnt">Final version, formatted cleanly. Add full citation.</div></div>
+<div class="deliverables">
+  <div class="art-line">Artifact: Wikipedia introduction. <span class="mono">lp-ex14-[name].txt</span> → <span class="mono">/artifacts</span>.</div>
+  <div class="trans-line">Transcript: <span class="mono">lp-ex14-[name].txt</span> → <span class="mono">/transcripts</span>.</div>
+</div>
+</div>
+</div>
+
+<!-- EX 15 -->
+<div class="exercise">
+<div class="ex-head" style="background:#1B3A6B"><span class="ex-num">15</span> Road Test — General AI License Exam</div>
+<div class="ex-body">
+<p><strong>This is the exam.</strong></p>
+<p>Upload the synthesis document from Exercise 12. No scaffolding. The student decides the task, the format, the model, and the strategy.</p>
+<p>Produce a substantive artifact about [TOPIC] — briefing, explainer, analysis, lesson plan, annotated summary, structured argument, or something else. Use the synthesis document as primary context. Instruct the model to work only from that document, or allow it to draw on general knowledge — but state the choice explicitly in the Prompter's Note.</p>
+<p><strong>The artifact must:</strong></p>
+<ol>
+<li>Be the model's final response, shaped by the student's prompting</li>
+<li>Carry full citation</li>
+<li>End with a <strong>Prompter's Note</strong> — 3 sentences: what you tried, what didn't work, what you'd do differently</li>
+</ol>
+<p><strong>The transcript must:</strong></p>
+<ol>
+<li>Be full and unedited</li>
+<li>Show the iteration, including what failed</li>
+<li>Be saved to <span class="mono">/transcripts</span> and linked inside the artifact</li>
+</ol>
+<div class="box reflect-box"><div class="box-lbl">Reflect</div><div class="box-cnt">Write in the chat before the final prompt. What did the permit teach you?</div></div>
+<div class="deliverables">
+  <div class="art-line">Artifact: <span class="mono">lp-ex15-[name].txt</span> → <span class="mono">/artifacts</span>. Citation and Prompter's Note inside.</div>
+  <div class="trans-line">Transcript: <span class="mono">lp-ex15-[name].txt</span> → <span class="mono">/transcripts</span>.</div>
+</div>
+<p style="margin-top:16px;font-weight:600;color:#1B3A6B">When both are accepted: the student holds a General AI License.</p>
+</div>
+</div>
+
+</div>
+</details>
+
+<!-- AFTER LICENSING -->
+<details>
+<summary>After Licensing <span class="stag s-navy">General AI License</span></summary>
+<div class="section-body">
+<p>A General AI License holder may use generative AI independently for coursework, research, and professional tasks.</p>
+<p>Every AI-assisted artifact carries full citation — name, date, model, and a live link to its transcript in the workbench repository.</p>
+<p>The workbench — transcripts, artifacts, synthesis documents, author documents, and zip snapshots — is maintained continuously. It is not a course deliverable that ends at licensing. It is the ongoing record of AI-assisted work.</p>
+<p>The workbench portfolio — demonstrating sustained, responsible use across courses and contexts — is the prerequisite for enrollment in the CDL Permit course.</p>
+<div class="sep"></div>
+<h3>Future Implementation Note</h3>
+<p>This scaffold runs in any environment with model access and a repository. A Brightspace or equivalent LMS container can house artifact submissions, link to repository folders, and track licensing completion. That integration is a next step, not a prerequisite.</p>
+</div>
+</details>
+
+</div><!-- container -->
+</body>
+</html>
