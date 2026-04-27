@@ -11,8 +11,8 @@ h1, h2, h3 { font-family: 'Georgia', serif; color: var(--accent); }
 .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
 .note-card { background: var(--note-bg); border: 2px solid var(--note-border); }
 .badge { display: inline-block; padding: 2px 8px; font-size: 0.75rem; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-weight: bold; margin-left: 10px; }
-.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1rem; border-radius: 8px; position: relative; margin: 1rem 0; overflow-x: auto; }
-.transcript-item { border-bottom: 1px solid var(--border); padding: 1rem 0; }
+.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1rem; border-radius: 8px; position: relative; margin: 1rem 0; overflow-x: auto; white-space: pre-wrap; }
+.transcript-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
 .nav-footer { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); }
 .btn { text-decoration: none; padding: 8px 16px; border-radius: 6px; background: var(--accent); color: white; font-weight: 600; font-size: 0.9rem; }
 .btn-outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
@@ -22,4 +22,158 @@ th { background: var(--prompt-bg); }
 </style></head><body><header><a href='../index.html'>← Back to Hub</a><h1>The teacher, the student and the LLM</h1></header><div class='card'><p><strong>Conversation Overview</strong></p>
 <p>This conversation centered on developing a workshop and conference proposal around AI literacy, with the person working as a SUNY AI Fellow for the Public Good. The person is designing curriculum and programming around what they call the RTW (Reading, Thinking, Writing) framework — a transhistorical definition of literacy applied to AI: literacy is reading, thinking, and writing using the tools, techniques, and technological systems consistent with one's peers. Key operational curriculum artifacts include the Learner's Permit (15-exercise foundational scaffold) and Commercial Driver's License (15-exercise agentic AI curriculum). The person is working under SUNY Board Resolution 2024-64, which mandates AI literacy integration across 64 campuses serving 1.4 million students by Fall 2026.</p>
 <p>The conversation moved through several connected threads: brainstorming workshop titles (referencing the film <em>The Cook, the Thief, His Wife &amp; Her Lover</em> as inspiration), exploring what humans distinctively contribute to AI-mediated learning (the framing shifted from "reserving" human capacities to "practicing" them — with AI as whetstone, not replacement), and discovering the algorave/live coding scene (TOPLAP, TidalCycles, Strudel) as a potential workshop opener featuring a live performer. The person expressed interest in recruiting a live coder through the TOPLAP Discord and noted the parallel between live coding's transparent process aesthetic and their own pedagogical approach of making AI conversations visible.</p>
-<p>The conversation concluded with drafting a complete AAC&amp;U Conference on AI proposal (deadline April 10, 2026) for a solo Theory to Practice session at the intermediate level titled "AI Literacy as RTW: A Definitional Framework for the Whole Institution." All four required sections were drafted within character limits. The person also identified a parallel proposal opportunity — a SUNY AI Fellows panel — as a second submission. Key colleagues mentioned include [Colleague] and [Colleague]. The person communicates in a compressed, associative style and prefers Claude to make decisive recommendations rather than present open-ended options.</p></div><footer class='nav-footer'><a href="05_ai_document_edits_and_review.html" class="btn btn-outline">← Previous</a><a href="07_seeking_feedback.html" class="btn btn-outline">Next →</a></footer></body></html>
+<p>The conversation concluded with drafting a complete AAC&amp;U Conference on AI proposal (deadline April 10, 2026) for a solo Theory to Practice session at the intermediate level titled "AI Literacy as RTW: A Definitional Framework for the Whole Institution." All four required sections were drafted within character limits. The person also identified a parallel proposal opportunity — a SUNY AI Fellows panel — as a second submission. Key colleagues mentioned include [Colleague] and [Colleague]. The person communicates in a compressed, associative style and prefers Claude to make decisive recommendations rather than present open-ended options.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 1</strong><br>the teacher, the student and the LLM. the cook tailor... title for a workshop.</div><div class='card'><p>Some directions to play with:</p>
+<p><strong>The triangle framing:</strong>
+- <em>The Teacher, the Student, and the Machine</em>
+- <em>Three in the Room</em> (with a subtitle like "Teaching and Learning with AI")
+- <em>Who's Teaching Whom?</em></p>
+<p><strong>The craft/trade angle (your cook/tailor instinct):</strong>
+- <em>The Cook, the Student, and the Algorithm</em>
+- <em>Learning by Hand, Thinking by Machine</em>
+- <em>The Apprentice and the Oracle</em></p>
+<p><strong>RTW-adjacent / your framework:</strong>
+- <em>Read, Think, Write — With Company</em>
+- <em>The Third Voice in the Room</em>
+- <em>Thinking Out Loud with AI</em></p>
+<p><strong>Punchy/provocative:</strong>
+- <em>The Tutor That Never Sleeps</em>
+- <em>Neither Teacher Nor Student</em>
+- <em>What the Machine Can't Learn</em></p>
+<p>The cook/tailor instinct is interesting — it points toward craft, tacit knowledge, things you can't just prompt your way to. That tension could be the whole workshop theme. What's the audience — faculty? students? mixed?</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 2</strong><br>whats the movie</div><div class='card'><p>The Cook, the Thief, His Wife &amp; Her Lover — Peter Greenaway, 1989.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 3</strong><br>essential bits that humans bring to the conversation? the creativity session.</div><div class='card'><p>The things the LLM can't fake:</p>
+<p><strong>Stakes</strong> — you actually care how it turns out</p>
+<p><strong>Embarrassment</strong> — you know when something sounds wrong for <em>you</em></p>
+<p><strong>History</strong> — the specific experiences that make your examples yours</p>
+<p><strong>Taste</strong> — knowing good from good enough</p>
+<p><strong>Silence</strong> — knowing when to stop</p>
+<p><strong>The body</strong> — hunger, fatigue, the moment the room shifts</p>
+<p><strong>Surprise at yourself</strong> — discovering what you think by saying it</p>
+<p>The cook's hands know things the recipe doesn't. That's the thread.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 4</strong><br>critical thinking, and asking the right question.
+
+those are things that are not covered by ai?</div><div class='card'><p>They're the contested ones.</p>
+<p>AI can generate questions, evaluate arguments, spot logical gaps. So the honest answer is: it depends what you mean.</p>
+<p>What AI doesn't have is <strong>the reason to ask</strong>. The question that comes from genuine confusion, or moral discomfort, or professional failure, or years of watching something not work. The question with skin in it.</p>
+<p>Critical thinking as a <em>skill</em> — identifying fallacies, weighing evidence — AI handles pretty well. Critical thinking as a <em>stance</em> — refusing to accept something because it doesn't square with what you've lived — that's different.</p>
+<p>Same with questions. AI asks good questions when prompted. But it doesn't <em>need</em> to know. You do.</p>
+<p>So maybe the distinction isn't capability, it's <strong>motivation and consequence</strong>. The student who asks the right question has something riding on the answer.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 5</strong><br>this is what we have to &quot;resever&quot; for human?</div><div class='card'><p>Not reserve — <strong>recognize</strong>.</p>
+<p>The danger of "reserving" things for humans is that it becomes a defensive crouch. A list of protected activities. That's already losing.</p>
+<p>Better question: what do humans bring that <em>improves</em> when AI is in the room? What gets sharpened by the contrast?</p>
+<p>Your critical thinking gets better when you have to push back on a fluent, confident, wrong answer. Your question gets better when you've seen what a merely-adequate question produces.</p>
+<p>The LLM as <strong>whetstone</strong>, not replacement.</p>
+<p>So not "what do we reserve" but "what do we practice" — and practice harder, because the bar just moved.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 6</strong><br>are there live performers that &quot;vibe code&quot; for a living....</div><div class='card'><p>Yes — and it has a name: <strong>live coding</strong>.</p>
+<p>The scene is called <strong>algorave</strong>. performers write code in real time, projected on screen, generating music and visuals while the audience watches the code and hears the result simultaneously. Transparency is the aesthetic.</p>
+<p>Key figures: <strong>Alex McLean</strong>, <strong>Thor Magnusson</strong>. Tools like <strong>TidalCycles</strong>, <strong>SuperCollider</strong>.</p>
+<p>It's the opposite of the black box. The mistakes are visible. The thinking is the performance.</p>
+<p>Which connects directly to your workshop — the <em>process</em> as the content, not just the output. That's what you're designing into the LP and CDL. Students see the conversation, not just the result.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 7</strong><br>links. costs?</div><div class='card'><p>All free. Here's what you need:</p>
+<p><strong>The scene:</strong>
+- <a href="https://algorave.com">algorave.com</a> — the community hub
+- <a href="https://toplap.org">TOPLAP</a> — the live coding org, discord community, forum</p>
+<p><strong>The tools (all free/open source):</strong>
+- <a href="https://tidalcycles.org">TidalCycles</a> — most popular, patterns in Haskell
+- <a href="https://strudel.cc">Strudel</a> — web-based TidalCycles, <strong>no install, runs in browser</strong> ← start here
+- SuperCollider — synthesis engine underneath most of this</p>
+<p><strong>For your workshop context</strong> — the killer quote from Alex McLean:</p>
+<p>"In software engineering we have a problem which is a process and by applying code we engage into problem solving process. Live coders are much more interested in causing problems rather than solving them."</p>
+<p>And the founding ethos: "open process, open minds" — the software must be free and open source, and performers are strongly encouraged to share their process live, projecting code on screen for all to see.</p>
+<p>Strudel in a browser tab is a five-minute demo for a workshop. No cost, no install.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 8</strong><br>we want someone to come and perform live coding.</div><div class='card'><p>Good instinct. A live algorave performance as workshop opener — shows the concept, not just talks about it.</p>
+<p><strong>How to find someone:</strong></p>
+<ul>
+<li>TOPLAP Discord <code>#algorave</code> channel — post exactly what you want, that community is welcoming</li>
+<li><a href="https://toplap.org">toplap.org</a> — has a performer directory</li>
+<li>Search YouTube "algorave live" — find someone whose aesthetic fits, contact them directly</li>
+</ul>
+<p><strong>What to ask for:</strong></p>
+<p>A 20-30 min performance with screen projected, then Q&amp;A. They're used to this — workshops are standard in the scene.</p>
+<p><strong>Cost:</strong></p>
+<p>Highly variable. The scene skews anti-commercial. Many performers will do it for travel + honorarium. If you're SUNY you have visiting artist mechanisms. Could also be fully remote — performer streams, you project. That drops cost to near zero.</p>
+<p><strong>Angle for your workshop:</strong></p>
+<p>The parallel is exact. Live coder + audience watching the process = student + class watching the AI conversation unfold. Process as content. Transparency as pedagogy.</p>
+<p>It would make a strong opening for the April Saratoga conference too.</p>
+<p>Want me to draft an outreach message for the TOPLAP Discord?</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 9</strong><br>AAC&amp;U conference. is this https://www.aacu.org/conferences/conference-on-ai/call-for-proposals prestigious?</div><div class='card'><p>Yes — AAC&amp;U is the real deal. Short answer: <strong>high prestige, broad reach, worth submitting.</strong></p>
+<p>AAC&amp;U (American Association of Colleges and Universities) is the national liberal arts and general education organization. This isn't a niche conference — it convenes faculty, staff, presidents, provosts, academic leaders, librarians, IT specialists, and institutional decision-makers to share evidence-based practices and develop integrated approaches to responsible AI adoption.</p>
+<p>The CFP page 403'd for me, but the conference is clearly active and growing. Their Institute on AI drew 176 institutions nationwide — this is a big tent.</p>
+<p><strong>Why it fits your work specifically:</strong>
+- SUNY's system-scale mandate is exactly the kind of institutional strategy story they want
+- Your RTW framing is distinctive — most proposals will be about policy and academic integrity
+- The LP/CDL as operational curriculum is concrete and demonstrable, not just philosophical</p>
+<p><strong>One caution:</strong> AAC&amp;U tends toward the centrist/cautious end of the spectrum. Your "AI genuinely generates" position and the descriptive-not-prescriptive literacy framing may push against the grain of some attendees. That's not a reason not to go — it's a reason to frame carefully.</p>
+<p>What's the deadline? I can help draft a proposal.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 10</strong><br></div><div class='card'><p>Deadline is <strong>April 10, 2026</strong>. That's five weeks out — very doable.</p>
+<p><strong>Best fit for your work:</strong></p>
+<p><strong>Theory to Practice</strong> — your RTW definition + LP/CDL as operational curriculum is exactly this format. You have the theory <em>and</em> the working artifact.</p>
+<p><strong>Innovation Sessions</strong> — the AI-FYE cohort model, system-scale SUNY implementation. Novel enough to qualify.</p>
+<p><strong>Best track: Teaching, Learning, Assessment, and Curricular Reform</strong> — your work sits squarely here. The SUNY mandate angle also gives it institutional weight beyond a single classroom story.</p>
+<p><strong>Your competitive advantages:</strong>
+- System-scale (64 campuses, 1.4M students) — most proposals will be single-institution
+- Operational curriculum already running, not just proposed
+- The RTW definition is genuinely distinctive from the DOL/skills-gap framing most attendees will bring</p>
+<p><strong>One question before drafting:</strong> do you want to go solo, or bring a co-presenter? [Colleague], [Colleague], or one of the AI Fellows would strengthen a panel format and broaden the institutional representation — which they explicitly value.</p>
+<p>Want to draft the proposal now? April 10 is close enough that starting today makes sense.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 11</strong><br>Two options: pursue both: propose a suny ai fellow panel with 3 others focus on the program, the oppty, the outcome. Or: ai-rtw.</div><div class='card'><p>Both are worth submitting. They're different enough to not cannibalize each other.</p>
+<p><strong>Option 1: SUNY AI Fellows Panel</strong>
+- Track: Institutional Operations and Transformation <em>or</em> Teaching/Learning
+- Format: Panel Presentation
+- Strength: system-scale story, multiple institutions, replicable model
+- Audience: provosts, academic affairs, people with mandates to fulfill
+- Risk: panel coordination overhead, four schedules to align</p>
+<p><strong>Option 2: AI-RTW</strong>
+- Track: Teaching, Learning, Assessment, and Curricular Reform
+- Format: Theory to Practice
+- Strength: the definition itself is the contribution — genuinely new framing in a field full of skills checklists
+- Audience: faculty, curriculum designers, writing program people
+- Risk: more conceptually ambitious, requires tighter argument</p>
+<p><strong>My read:</strong> Option 2 is the higher-ceiling proposal. The RTW definition is what makes your work distinctive nationally — the Fellows panel tells a SUNY story, RTW tells a field-wide story.</p>
+<p>Do both. Option 1 is easier to write and gets SUNY visibility. Option 2 is where the intellectual contribution lives.</p>
+<p>Who are the three Fellows you'd want for Option 1? [Colleague] is an obvious anchor.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 12</strong><br>Draft rtw see the requirements. I may need to fetch for you. I suppose I could rite a curl
+Statement to bring the site in as context….</div><div class='card'><p>I have the full CFP requirements from the document you shared. I have everything I need.</p>
+<p>Let me draft. A few quick decisions first:The widget isn't rendering — I'll just ask directly:</p>
+<ol>
+<li><strong>Format:</strong> Theory to Practice or Innovation Session?</li>
+<li><strong>Level:</strong> Intermediate or Advanced?</li>
+<li><strong>Co-presenter:</strong> Solo, or bring [Colleague]?</li>
+</ol></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 13</strong><br>Q: Session format?
+A: Theory to Practice
+
+Q: Level?
+A: Intermediate
+
+Q: Solo or co-presenter?
+A: Solo</div><div class='card'><p>Good. I have everything I need. Here's the full draft, sized to the character limits:</p>
+<hr />
+<p><strong>SESSION TITLE</strong>
+AI Literacy as RTW: A Definitional Framework for the Whole Institution</p>
+<p><strong>TRACK</strong>
+Teaching, Learning, Assessment, and Curricular Reform</p>
+<p><strong>SESSION TYPE</strong>
+Theory to Practice</p>
+<p><strong>LEVEL</strong>
+Intermediate</p>
+<hr />
+<p><strong>PROGRAM DESCRIPTION</strong> <em>(max 1500 characters, ~250 words)</em></p>
+<p>Most institutional responses to AI focus on what students should <em>do</em> with AI, or what faculty should <em>prohibit</em>. Both approaches share an assumption: that AI literacy is a skills checklist, separable from the core work of teaching and learning.</p>
+<p>This session proposes a different starting point. Literacy — across every technological period — is reading, thinking, and writing using the tools, techniques, and technological systems consistent with one's peers. That definition, applied to the current moment, <em>is</em> AI literacy. It doesn't require new institutional architecture. It requires recognizing what the existing framework already contains.</p>
+<p>This session introduces the RTW (Reading, Thinking, Writing) framework, developed through SUNY's system-wide AI literacy initiative and grounded in the SUNY Board Resolution 2024-64 mandate to integrate AI literacy into general education across 64 campuses. Participants will examine how the RTW definition generates discipline-specific implementations without modification, why "consistent with one's peers" does more definitional work than it appears to, and how this reframing shifts faculty development from compliance to recognition.</p>
+<p>Crucially, participants won't just hear about RTW — they'll practice it. The session uses a structured four-prompt dialogue sequence that enacts the framework: participants read, think, and write <em>with</em> AI in real time, producing artifacts that demonstrate what the definition looks like in practice.</p>
+<hr />
+<p><strong>LEARNING OBJECTIVES / KEY TAKEAWAYS</strong></p>
+<ol>
+<li>Articulate a transhistorical, descriptive definition of literacy that encompasses AI without reducing it to tool proficiency</li>
+<li>Identify how existing general education Communication and Information Literacy requirements already contain the AI literacy definition</li>
+<li>Apply the RTW framework to at least one disciplinary context from their own institution</li>
+<li>Distinguish between AI literacy as skills compliance versus AI literacy as cognitive practice</li>
+</ol>
+<hr />
+<p><strong>BACKGROUND AND SUPPORTING EVIDENCE</strong> <em>(max 1625 characters, ~270 words)</em></p>
+<p>The RTW framework emerges from two years of design and implementation work as a SUNY AI Fellow for the Public Good, working across a 64-campus system serving 1.4 million students under a Board-mandated Fall 2026 implementation deadline.</p>
+<p>The framework's theoretical grounding draws on literacy studies (Street, Gee, New London Group), AI-Mediated Communication research (Hancock; Naaman &amp; Levy 2020), and actor-network theory. Its practical grounding comes from operational curriculum: the Learner's Permit (15-exercise foundational scaffold) and Commercial Driver's License (15-exercise agentic AI curriculum), both piloted with students and faculty.</p>
+<p>The key insight — that SUNY's existing Communication requirement and Information Literacy competency together already constitute the RTW definition — reframes implementation for any institution with analogous general education structures. Faculty aren't being asked to learn something new. They're being asked to recognize that their existing literacy practices now include AI as part of the technological environment students operate within.</p>
+<p>This distinguishes RTW from dominant frameworks like the DOL AI Literacy Framework, which define AI literacy as a competency list to be taught <em>about</em> AI. RTW defines AI literacy as something that happens <em>through</em> AI interaction — cognitively, compositionally, in real time. The distinction has direct consequences for curriculum design, assessment, and faculty development.</p>
+<p>Supporting work includes a publicly available OER curriculum, an active podcast series (Living with AI, SUNY AIX Center), and presentations across the SUNY system.</p>
+<hr />
+<p><strong>PLAN FOR PARTICIPANT INTERACTION</strong> <em>(max 650 characters)</em></p>
+<p>Participants complete a compressed version of the four-prompt RTW dialogue sequence using their own devices and a generative AI system of their choice. Each prompt targets one RTW dimension: a reflexive thinking exchange, a reading synthesis task, and a brief co-composed artifact. Small group debrief follows each prompt. Session closes with structured reflection: what did you produce, what cognitive work did <em>you</em> do, and what does that tell you about your students?</p>
+<hr />
+<p><strong>KEYWORDS</strong>
+AI literacy, general education, curriculum design, faculty development, writing pedagogy</p>
+<p><strong>TARGET AUDIENCE</strong>
+Faculty, writing program administrators, curriculum designers, academic affairs administrators, faculty developers</p>
+<hr />
+<p>That's the full proposal. A few notes: the program description is tight at ~1480 characters. Background is ~1580. Interaction plan is ~640. All within limits.</p>
+<p>Want me to adjust anything — tone, emphasis, the title — before you submit?</p></div><footer class='nav-footer'><a href="05_ai_document_edits_and_review.html" class="btn btn-outline">← Previous</a><a href="07_seeking_feedback.html" class="btn btn-outline">Next →</a></footer></body></html>
