@@ -1,38 +1,31 @@
-<!DOCTYPE html><html><head><style>
+<!DOCTYPE html><html lang="en"><head><style>
 :root {
-  --bg: #f8f9fa; --surface: #ffffff; --border: #ced4da; --text: #212529; --text-muted: #495057;
+  --bg: #f8f9fa; --surface: #ffffff; --border: #ced4da; --text: #1a1a1a; --text-muted: #4a4a45;
   --accent: #0f52ba; --accent-bg: #e7f1ff; --prompt-bg: #f1f3f5; --note-bg: #fffceb; --note-border: #f1e4a1;
 }
 @media (prefers-color-scheme: dark) {
   :root { --bg: #121212; --surface: #1e1e1e; --border: #333; --text: #f1f3f5; --text-muted: #adb5bd; --accent: #66b2ff; --accent-bg: #2d3748; --prompt-bg: #2b2b2b; --note-bg: #2a281e; --note-border: #4a4533; }
 }
-body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 900px; margin: 0 auto; padding: 6rem 1.5rem 2rem; line-height: 1.6; }
-h1, h2, h3 { font-family: 'Georgia', serif; color: var(--accent); }
-.sticky-nav { position: fixed; top: 0; left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 0.75rem 0; }
-.nav-container { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; }
-.nav-group { display: flex; gap: 15px; align-items: center; }
-.nav-link { text-decoration: none; font-weight: 600; color: var(--accent); font-size: 0.9rem; }
-.nav-link:hover { text-decoration: underline; }
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
+* { box-sizing: border-box; }
+body { 
+  font-family: -apple-system, system-ui, sans-serif; background: var(--bg); color: var(--text); 
+  max-width: 900px; margin: 0 auto; padding: 6rem 1.5rem 2rem; line-height: 1.6; 
+}
+.sticky-nav { 
+  position: fixed; top: 0; left: 0; right: 0; background: var(--surface); 
+  border-bottom: 2px solid var(--accent); z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+  height: 4rem; display: flex; align-items: center;
+}
+.nav-container { width: 100%; max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; }
+.nav-group { display: flex; gap: 20px; align-items: center; }
+.nav-link { text-decoration: none; font-weight: 700; color: var(--accent); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05rem; }
+.nav-link:hover { color: var(--text); }
+h1, h2 { font-family: 'Georgia', serif; color: var(--accent); }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow-wrap: break-word; }
 .note-card { background: var(--note-bg); border: 2px solid var(--note-border); }
-.badge { padding: 2px 8px; font-size: 0.75rem; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-weight: bold; }
-.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1rem; border-radius: 8px; margin: 1rem 0; white-space: pre-wrap; }
-.transcript-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
-</style></head><body>
-        <nav class="sticky-nav">
-          <div class="nav-container">
-            <div class="nav-group">
-              <a href="../index.html" class="nav-link">🏠 Hub</a>
-              <a href="../artifacts/ai-literacy-learners-permit.html" class="nav-link">📜 LP</a>
-              <a href="../artifacts/ai-literacy-commercial-license.html" class="nav-link">🚀 AL</a>
-            </div>
-            <div class="nav-group">
-              <a href="08_ai_adoption_in_academic_integrity_and_learning_outcomes.html" class="nav-link">⬅️ Prev</a>
-              <span style="font-size:0.8rem; font-weight:bold;">9 / 12</span>
-              <a href="10_project_memory_update.html" class="nav-link">Next ➡️</a>
-            </div>
-          </div>
-        </nav><h1>AI literacy progression framework</h1><div class='card'><p><strong>Conversation Overview</strong></p>
+.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1.5rem; border-radius: 8px; white-space: pre-wrap; border: 1px solid #444; }
+.transcript-item { border-bottom: 1px solid var(--border); padding: 1.5rem 0; }
+</style></head><body><nav class="sticky-nav"><div class="nav-container"><div class="nav-group"><a href="../index.html" class="nav-link">🏠 Hub</a> <a href="../artifacts/ai-literacy-learners-permit.html" class="nav-link">📜 LP</a> <a href="../artifacts/ai-literacy-commercial-license.html" class="nav-link">🚀 AL</a></div><div class="nav-group"><a href="08_ai_adoption_in_academic_integrity_and_learning_outcomes.html" class="nav-link">⬅️</a> <span style="font-weight:900;">9/12</span> <a href="10_project_memory_update.html" class="nav-link">➡️</a></div></div></nav><h1>9. AI literacy progression framework</h1><div class='card'><p><strong>Conversation Overview</strong></p>
 <p>This was a brief orientation conversation in which the person checked whether Claude had access to two specific pieces of content within the project: their AI literacy progression framework and a document referred to as the "CDL." The AI literacy progression was described as a five-stage sequence — narrow, generative, agentic, simulative, robotic — representing a structured framework the person has developed. The CDL appears to be a curriculum scaffold (approximately 15 exercises, roughly 15 hours of content) focused on agentic AI operation, associated with a <code>/agent</code> subdirectory structure, and positioned as a follow-on to a "Learner's Permit" (LP) document.</p>
 <p>Claude searched the project knowledge base and confirmed that the LP (v6, full 15-exercise scaffold) is present in the project files, but the CDL document has not been uploaded. Conceptual references to the CDL exist in synthesis notes within the project, but the actual scaffold is absent. The five-stage AI literacy progression was also not found in the project files. Claude asked whether the CDL is drafted elsewhere and needs to be added, or is still in development. The conversation ended without resolution on either item.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 1</strong><br>so, do you know my narrow, generative, agentic, simulative, robitic ai literacy progression.</div><div class='card'><p>That specific five-stage progression — narrow, generative, agentic, simulative, robotic — isn't in the project files. It may have come up in a conversation not yet archived here, or you're introducing it now.</p>
 <p>Tell me what you have in mind and I'll engage with it directly.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 2</strong><br>do you have the cdl</div><div class='card'><p>The project files have the LP (v6, full 15-exercise scaffold) but no CDL document. What's here in the synthesis notes describes the CDL conceptually — 15 exercises, ~15 hours, agentic operation, <code>/agent</code> subdirectory structure — but the actual CDL scaffold hasn't been uploaded to this project.</p>

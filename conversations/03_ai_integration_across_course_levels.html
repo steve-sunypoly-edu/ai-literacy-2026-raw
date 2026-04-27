@@ -1,38 +1,31 @@
-<!DOCTYPE html><html><head><style>
+<!DOCTYPE html><html lang="en"><head><style>
 :root {
-  --bg: #f8f9fa; --surface: #ffffff; --border: #ced4da; --text: #212529; --text-muted: #495057;
+  --bg: #f8f9fa; --surface: #ffffff; --border: #ced4da; --text: #1a1a1a; --text-muted: #4a4a45;
   --accent: #0f52ba; --accent-bg: #e7f1ff; --prompt-bg: #f1f3f5; --note-bg: #fffceb; --note-border: #f1e4a1;
 }
 @media (prefers-color-scheme: dark) {
   :root { --bg: #121212; --surface: #1e1e1e; --border: #333; --text: #f1f3f5; --text-muted: #adb5bd; --accent: #66b2ff; --accent-bg: #2d3748; --prompt-bg: #2b2b2b; --note-bg: #2a281e; --note-border: #4a4533; }
 }
-body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 900px; margin: 0 auto; padding: 6rem 1.5rem 2rem; line-height: 1.6; }
-h1, h2, h3 { font-family: 'Georgia', serif; color: var(--accent); }
-.sticky-nav { position: fixed; top: 0; left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 0.75rem 0; }
-.nav-container { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; }
-.nav-group { display: flex; gap: 15px; align-items: center; }
-.nav-link { text-decoration: none; font-weight: 600; color: var(--accent); font-size: 0.9rem; }
-.nav-link:hover { text-decoration: underline; }
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
+* { box-sizing: border-box; }
+body { 
+  font-family: -apple-system, system-ui, sans-serif; background: var(--bg); color: var(--text); 
+  max-width: 900px; margin: 0 auto; padding: 6rem 1.5rem 2rem; line-height: 1.6; 
+}
+.sticky-nav { 
+  position: fixed; top: 0; left: 0; right: 0; background: var(--surface); 
+  border-bottom: 2px solid var(--accent); z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+  height: 4rem; display: flex; align-items: center;
+}
+.nav-container { width: 100%; max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; }
+.nav-group { display: flex; gap: 20px; align-items: center; }
+.nav-link { text-decoration: none; font-weight: 700; color: var(--accent); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05rem; }
+.nav-link:hover { color: var(--text); }
+h1, h2 { font-family: 'Georgia', serif; color: var(--accent); }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow-wrap: break-word; }
 .note-card { background: var(--note-bg); border: 2px solid var(--note-border); }
-.badge { padding: 2px 8px; font-size: 0.75rem; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-weight: bold; }
-.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1rem; border-radius: 8px; margin: 1rem 0; white-space: pre-wrap; }
-.transcript-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
-</style></head><body>
-        <nav class="sticky-nav">
-          <div class="nav-container">
-            <div class="nav-group">
-              <a href="../index.html" class="nav-link">🏠 Hub</a>
-              <a href="../artifacts/ai-literacy-learners-permit.html" class="nav-link">📜 LP</a>
-              <a href="../artifacts/ai-literacy-commercial-license.html" class="nav-link">🚀 AL</a>
-            </div>
-            <div class="nav-group">
-              <a href="02_ai-fye_document_structure_and_course_design.html" class="nav-link">⬅️ Prev</a>
-              <span style="font-size:0.8rem; font-weight:bold;">3 / 12</span>
-              <a href="04_ai_literacy_curriculum_project_invitation.html" class="nav-link">Next ➡️</a>
-            </div>
-          </div>
-        </nav><h1>AI integration across course levels</h1><div class='card'><p><strong>Conversation Overview</strong></p>
+.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1.5rem; border-radius: 8px; white-space: pre-wrap; border: 1px solid #444; }
+.transcript-item { border-bottom: 1px solid var(--border); padding: 1.5rem 0; }
+</style></head><body><nav class="sticky-nav"><div class="nav-container"><div class="nav-group"><a href="../index.html" class="nav-link">🏠 Hub</a> <a href="../artifacts/ai-literacy-learners-permit.html" class="nav-link">📜 LP</a> <a href="../artifacts/ai-literacy-commercial-license.html" class="nav-link">🚀 AL</a></div><div class="nav-group"><a href="02_ai-fye_document_structure_and_course_design.html" class="nav-link">⬅️</a> <span style="font-weight:900;">3/12</span> <a href="04_ai_literacy_curriculum_project_invitation.html" class="nav-link">➡️</a></div></div></nav><h1>3. AI integration across course levels</h1><div class='card'><p><strong>Conversation Overview</strong></p>
 <p>The user shared planning notes for AI integration across academic course levels, featuring a curriculum hierarchy and a word-count reference framework. The left side outlined an AI course sequence including AI FYE (First Year Experience), FYS with GenAI License, AI 288 with Agentic License, Gen Ed, Major, and STS 188 components. The right side showed an "RTW" (Ready To Write) scale mapping pages to word counts using a standard 400 words per page ratio for academic writing, with entries for 1 page (400 words), 3 pages (1,200 words), 10 pages (with 4,000 crossed out), and 30 pages (12,000 words).</p>
 <p>Claude initially misinterpreted some abbreviations, but the user clarified that RTW stands for "Ready To Write" and confirmed the agentic licensing concept relates to different levels of AI tool access for students across course contexts. The user indicated they need to write a comprehensive document, likely around 30 pages or 12,000 words based on the scale provided. Claude offered to help structure the document but requested clarification on the specific scope, audience, and purpose, suggesting possibilities like an AIX Center annual report, curriculum integration framework, or SUNY Gen Ed AI literacy proposal. The conversation demonstrates the user's work in educational AI integration and curriculum planning at an institutional level.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 1</strong><br>Think about a task list. Discuss</div><div class='card'><p>This looks like planning notes for AI integration across course levels, with a word-count/scope framework on the right. Here's my read:</p>
 <p><strong>Left side — course/context hierarchy:</strong>
