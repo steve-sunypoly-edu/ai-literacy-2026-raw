@@ -5,48 +5,80 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The teacher, the student and the LLM</title>
 <style>
-:root { --bg: #fafaf8; --surface: #ffffff; --border: #c8c8c0; --text: #111111; --muted: #4a4a45; --accent: #1e4f78; --prompt-bg: #f4f4f0; --ts-color: #5a5a55; --mono: 'Courier New', monospace; --serif: Georgia, serif; }
-body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 800px; margin: 0 auto; padding: 1rem 2rem; line-height: 1.3; }
-header { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline; }
-h1 { font-family: var(--serif); font-weight: normal; margin: 0 0 0.25rem 0; color: var(--accent); font-size: 1.8rem; }
-.nav-link { color: var(--accent); text-decoration: none; font-weight: 500; font-size: 0.9em; }
-.nav-link:hover { text-decoration: underline; }
-.summary-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin-bottom: 2rem; font-size: 0.95em; }
-.exchange-block { margin-bottom: 1.5rem; }
-.prompt-box { background: var(--prompt-bg); padding: 1rem; border-radius: 8px 8px 0 0; border: 1px solid var(--border); border-bottom: none; white-space: pre-wrap; }
-.prompt-header { display: flex; justify-content: space-between; font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; font-family: var(--serif); }
-.prompt-text { font-family: var(--mono); font-size: 0.95em; color: #000000; line-height: 1.15; }
-.response-details { background: var(--surface); border: 1px solid var(--border); border-radius: 0 0 8px 8px; overflow: hidden; }
-.response-details summary { padding: 0.75rem 1rem; cursor: pointer; background: #eef3f7; color: var(--accent); font-weight: 600; list-style: none; display: flex; align-items: center; justify-content: center; transition: background 0.2s; font-size: 0.9em; }
-.response-details summary:hover { background: #e4eff7; }
-.response-details summary::-webkit-details-marker { display: none; }
-.response-box { padding: 1rem; border-top: 1px solid var(--border); font-size: 0.95em; }
-pre { background: var(--bg); padding: 1rem; border-radius: 4px; overflow-x: auto; font-family: var(--mono); font-size: 0.9em; }
-code { font-family: var(--mono); font-size: 0.9em; }
-blockquote { border-left: 3px solid var(--accent); margin: 0; padding-left: 1rem; color: var(--muted); }
+:root {
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --border: #ced4da;
+  --text: #212529;
+  --text-muted: #495057;
+  --accent: #0f52ba;
+  --accent-hover: #0a3d8c;
+  --accent-bg: #e7f1ff;
+  --prompt-bg: #f1f3f5;
+  --focus-ring: #005fcc;
+  --shadow: rgba(0, 0, 0, 0.05);
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --serif: 'Georgia', serif;
+  --mono: 'SFMono-Regular', Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121212; --surface: #1e1e1e; --border: #333;
+    --text: #f1f3f5; --text-muted: #adb5bd; --accent: #66b2ff;
+    --accent-hover: #99ccff; --accent-bg: #2d3748;
+    --prompt-bg: #2b2b2b; --focus-ring: #99ccff;
+    --shadow: rgba(0, 0, 0, 0.3);
+  }
+}
+
+body {
+  font-family: var(--sans); background: var(--bg); color: var(--text);
+  max-width: 850px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.6; font-size: 1.05rem;
+}
+
+h1, h2, h3 { font-family: var(--serif); color: var(--accent); margin-top: 0; }
+h1 { font-size: 2.2rem; }
+
+a { color: var(--accent); text-underline-offset: 3px; font-weight: 500; }
+a:hover { color: var(--accent-hover); }
+
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 2rem; margin-bottom: 2rem;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+header { border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: baseline; }
+.prompt-box { background: var(--prompt-bg); padding: 1.5rem; border-radius: 12px 12px 0 0; border: 1px solid var(--border); border-bottom: none; }
+.prompt-header { display: flex; justify-content: space-between; font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; }
+.prompt-text { font-family: var(--mono); font-size: 0.95em; white-space: pre-wrap; }
+.response-details { background: var(--surface); border: 1px solid var(--border); border-radius: 0 0 12px 12px; margin-bottom: 2rem; }
+.response-details summary { padding: 1rem; cursor: pointer; text-align: center; color: var(--accent); font-weight: 600; list-style: none; }
+.response-box { padding: 1.5rem; border-top: 1px solid var(--border); }
 </style>
 </head>
 <body>
 <header>
-  <div>
-    <h1>The teacher, the student and the LLM</h1>
-    <p style="color: var(--muted); margin: 0;">AI Literacy Curriculum Project — Generated Record</p>
-  </div>
-  <a href="../index.html" class="nav-link">← Back to Hub</a>
+  <div><h1>The teacher, the student and the LLM</h1><p>AI Literacy Curriculum Project — Record</p></div>
+  <a href="../index.html">← Back</a>
 </header>
-<div class="summary-box"><p><strong>Conversation Overview</strong></p>
+<main>
+<section class="card"><p><strong>Conversation Overview</strong></p>
 <p>This conversation centered on developing a workshop and conference proposal around AI literacy, with the person working as a SUNY AI Fellow for the Public Good. The person is designing curriculum and programming around what they call the RTW (Reading, Thinking, Writing) framework — a transhistorical definition of literacy applied to AI: literacy is reading, thinking, and writing using the tools, techniques, and technological systems consistent with one's peers. Key operational curriculum artifacts include the Learner's Permit (15-exercise foundational scaffold) and Commercial Driver's License (15-exercise agentic AI curriculum). The person is working under SUNY Board Resolution 2024-64, which mandates AI literacy integration across 64 campuses serving 1.4 million students by Fall 2026.</p>
 <p>The conversation moved through several connected threads: brainstorming workshop titles (referencing the film <em>The Cook, the Thief, His Wife &amp; Her Lover</em> as inspiration), exploring what humans distinctively contribute to AI-mediated learning (the framing shifted from "reserving" human capacities to "practicing" them — with AI as whetstone, not replacement), and discovering the algorave/live coding scene (TOPLAP, TidalCycles, Strudel) as a potential workshop opener featuring a live performer. The person expressed interest in recruiting a live coder through the TOPLAP Discord and noted the parallel between live coding's transparent process aesthetic and their own pedagogical approach of making AI conversations visible.</p>
-<p>The conversation concluded with drafting a complete AAC&amp;U Conference on AI proposal (deadline April 10, 2026) for a solo Theory to Practice session at the intermediate level titled "AI Literacy as RTW: A Definitional Framework for the Whole Institution." All four required sections were drafted within character limits. The person also identified a parallel proposal opportunity — a SUNY AI Fellows panel — as a second submission. Key colleagues mentioned include [Colleague] and [Colleague]. The person communicates in a compressed, associative style and prefers Claude to make decisive recommendations rather than present open-ended options.</p></div>
+<p>The conversation concluded with drafting a complete AAC&amp;U Conference on AI proposal (deadline April 10, 2026) for a solo Theory to Practice session at the intermediate level titled "AI Literacy as RTW: A Definitional Framework for the Whole Institution." All four required sections were drafted within character limits. The person also identified a parallel proposal opportunity — a SUNY AI Fellows panel — as a second submission. Key colleagues mentioned include [Colleague] and [Colleague]. The person communicates in a compressed, associative style and prefers Claude to make decisive recommendations rather than present open-ended options.</p></section>
 
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 1</span><span class="ts">04:50 PM EST</span></div>
-            <div class="prompt-text">the teacher, the student and the LLM. the cook tailor... title for a workshop.</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>Some directions to play with:</p>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 1</span><span>04:50 PM EST</span></div>
+    <div class="prompt-text">the teacher, the student and the LLM. the cook tailor... title for a workshop.</div>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>Some directions to play with:</p>
 <p><strong>The triangle framing:</strong>
 - <em>The Teacher, the Student, and the Machine</em>
 - <em>Three in the Room</em> (with a subtitle like "Teaching and Learning with AI")
@@ -64,28 +96,26 @@ blockquote { border-left: 3px solid var(--accent); margin: 0; padding-left: 1rem
 - <em>Neither Teacher Nor Student</em>
 - <em>What the Machine Can't Learn</em></p>
 <p>The cook/tailor instinct is interesting — it points toward craft, tacit knowledge, things you can't just prompt your way to. That tension could be the whole workshop theme. What's the audience — faculty? students? mixed?</p></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 2</span><span class="ts">04:50 PM EST</span></div>
-            <div class="prompt-text">whats the movie</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>The Cook, the Thief, His Wife &amp; Her Lover — Peter Greenaway, 1989.</p></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 3</span><span class="ts">05:06 PM EST</span></div>
-            <div class="prompt-text">essential bits that humans bring to the conversation? the creativity session.</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>The things the LLM can't fake:</p>
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 2</span><span>04:50 PM EST</span></div>
+    <div class="prompt-text">whats the movie</div>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>The Cook, the Thief, His Wife &amp; Her Lover — Peter Greenaway, 1989.</p></div>
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 3</span><span>05:06 PM EST</span></div>
+    <div class="prompt-text">essential bits that humans bring to the conversation? the creativity session.</div>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>The things the LLM can't fake:</p>
 <p><strong>Stakes</strong> — you actually care how it turns out</p>
 <p><strong>Embarrassment</strong> — you know when something sounds wrong for <em>you</em></p>
 <p><strong>History</strong> — the specific experiences that make your examples yours</p>
@@ -94,92 +124,87 @@ blockquote { border-left: 3px solid var(--accent); margin: 0; padding-left: 1rem
 <p><strong>The body</strong> — hunger, fatigue, the moment the room shifts</p>
 <p><strong>Surprise at yourself</strong> — discovering what you think by saying it</p>
 <p>The cook's hands know things the recipe doesn't. That's the thread.</p></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 4</span><span class="ts">05:07 PM EST</span></div>
-            <div class="prompt-text">critical thinking, and asking the right question.
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 4</span><span>05:07 PM EST</span></div>
+    <div class="prompt-text">critical thinking, and asking the right question.
 
 those are things that are not covered by ai?</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>They're the contested ones.</p>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>They're the contested ones.</p>
 <p>AI can generate questions, evaluate arguments, spot logical gaps. So the honest answer is: it depends what you mean.</p>
 <p>What AI doesn't have is <strong>the reason to ask</strong>. The question that comes from genuine confusion, or moral discomfort, or professional failure, or years of watching something not work. The question with skin in it.</p>
 <p>Critical thinking as a <em>skill</em> — identifying fallacies, weighing evidence — AI handles pretty well. Critical thinking as a <em>stance</em> — refusing to accept something because it doesn't square with what you've lived — that's different.</p>
 <p>Same with questions. AI asks good questions when prompted. But it doesn't <em>need</em> to know. You do.</p>
 <p>So maybe the distinction isn't capability, it's <strong>motivation and consequence</strong>. The student who asks the right question has something riding on the answer.</p></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 5</span><span class="ts">05:08 PM EST</span></div>
-            <div class="prompt-text">this is what we have to &quot;resever&quot; for human?</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>Not reserve — <strong>recognize</strong>.</p>
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 5</span><span>05:08 PM EST</span></div>
+    <div class="prompt-text">this is what we have to &quot;resever&quot; for human?</div>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>Not reserve — <strong>recognize</strong>.</p>
 <p>The danger of "reserving" things for humans is that it becomes a defensive crouch. A list of protected activities. That's already losing.</p>
 <p>Better question: what do humans bring that <em>improves</em> when AI is in the room? What gets sharpened by the contrast?</p>
 <p>Your critical thinking gets better when you have to push back on a fluent, confident, wrong answer. Your question gets better when you've seen what a merely-adequate question produces.</p>
 <p>The LLM as <strong>whetstone</strong>, not replacement.</p>
 <p>So not "what do we reserve" but "what do we practice" — and practice harder, because the bar just moved.</p></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 6</span><span class="ts">05:11 PM EST</span></div>
-            <div class="prompt-text">are there live performers that &quot;vibe code&quot; for a living....</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>Yes — and it has a name: <strong>live coding</strong>.</p>
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 6</span><span>05:11 PM EST</span></div>
+    <div class="prompt-text">are there live performers that &quot;vibe code&quot; for a living....</div>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>Yes — and it has a name: <strong>live coding</strong>.</p>
 <p>The scene is called <strong>algorave</strong>. performers write code in real time, projected on screen, generating music and visuals while the audience watches the code and hears the result simultaneously. Transparency is the aesthetic.</p>
 <p>Key figures: <strong>Alex McLean</strong>, <strong>Thor Magnusson</strong>. Tools like <strong>TidalCycles</strong>, <strong>SuperCollider</strong>.</p>
 <p>It's the opposite of the black box. The mistakes are visible. The thinking is the performance.</p>
 <p>Which connects directly to your workshop — the <em>process</em> as the content, not just the output. That's what you're designing into the LP and CDL. Students see the conversation, not just the result.</p></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 7</span><span class="ts">05:11 PM EST</span></div>
-            <div class="prompt-text">links. costs?</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>All free. Here's what you need:</p>
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 7</span><span>05:11 PM EST</span></div>
+    <div class="prompt-text">links. costs?</div>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>All free. Here's what you need:</p>
 <p><strong>The scene:</strong>
-- <a target="_blank" href="https://algorave.com">algorave.com</a> — the community hub
-- <a target="_blank" href="https://toplap.org">TOPLAP</a> — the live coding org, discord community, forum</p>
+- <a target="_blank" rel="noopener" href="https://algorave.com">algorave.com</a> — the community hub
+- <a target="_blank" rel="noopener" href="https://toplap.org">TOPLAP</a> — the live coding org, discord community, forum</p>
 <p><strong>The tools (all free/open source):</strong>
-- <a target="_blank" href="https://tidalcycles.org">TidalCycles</a> — most popular, patterns in Haskell
-- <a target="_blank" href="https://strudel.cc">Strudel</a> — web-based TidalCycles, <strong>no install, runs in browser</strong> ← start here
+- <a target="_blank" rel="noopener" href="https://tidalcycles.org">TidalCycles</a> — most popular, patterns in Haskell
+- <a target="_blank" rel="noopener" href="https://strudel.cc">Strudel</a> — web-based TidalCycles, <strong>no install, runs in browser</strong> ← start here
 - SuperCollider — synthesis engine underneath most of this</p>
 <p><strong>For your workshop context</strong> — the killer quote from Alex McLean:</p>
 <p>"In software engineering we have a problem which is a process and by applying code we engage into problem solving process. Live coders are much more interested in causing problems rather than solving them."</p>
 <p>And the founding ethos: "open process, open minds" — the software must be free and open source, and performers are strongly encouraged to share their process live, projecting code on screen for all to see.</p>
 <p>Strudel in a browser tab is a five-minute demo for a workshop. No cost, no install.</p></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 8</span><span class="ts">05:12 PM EST</span></div>
-            <div class="prompt-text">we want someone to come and perform live coding.</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>Good instinct. A live algorave performance as workshop opener — shows the concept, not just talks about it.</p>
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 8</span><span>05:12 PM EST</span></div>
+    <div class="prompt-text">we want someone to come and perform live coding.</div>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>Good instinct. A live algorave performance as workshop opener — shows the concept, not just talks about it.</p>
 <p><strong>How to find someone:</strong></p>
 <ul>
 <li>TOPLAP Discord <code>#algorave</code> channel — post exactly what you want, that community is welcoming</li>
-<li><a target="_blank" href="https://toplap.org">toplap.org</a> — has a performer directory</li>
+<li><a target="_blank" rel="noopener" href="https://toplap.org">toplap.org</a> — has a performer directory</li>
 <li>Search YouTube "algorave live" — find someone whose aesthetic fits, contact them directly</li>
 </ul>
 <p><strong>What to ask for:</strong></p>
@@ -190,17 +215,16 @@ those are things that are not covered by ai?</div>
 <p>The parallel is exact. Live coder + audience watching the process = student + class watching the AI conversation unfold. Process as content. Transparency as pedagogy.</p>
 <p>It would make a strong opening for the April Saratoga conference too.</p>
 <p>Want me to draft an outreach message for the TOPLAP Discord?</p></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 9</span><span class="ts">05:17 PM EST</span></div>
-            <div class="prompt-text">AAC&amp;U conference. is this https://www.aacu.org/conferences/conference-on-ai/call-for-proposals prestigious?</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>Yes — AAC&amp;U is the real deal. Short answer: <strong>high prestige, broad reach, worth submitting.</strong></p>
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 9</span><span>05:17 PM EST</span></div>
+    <div class="prompt-text">AAC&amp;U conference. is this https://www.aacu.org/conferences/conference-on-ai/call-for-proposals prestigious?</div>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>Yes — AAC&amp;U is the real deal. Short answer: <strong>high prestige, broad reach, worth submitting.</strong></p>
 <p>AAC&amp;U (American Association of Colleges and Universities) is the national liberal arts and general education organization. This isn't a niche conference — it convenes faculty, staff, presidents, provosts, academic leaders, librarians, IT specialists, and institutional decision-makers to share evidence-based practices and develop integrated approaches to responsible AI adoption.</p>
 <p>The CFP page 403'd for me, but the conference is clearly active and growing. Their Institute on AI drew 176 institutions nationwide — this is a big tent.</p>
 <p><strong>Why it fits your work specifically:</strong>
@@ -209,17 +233,16 @@ those are things that are not covered by ai?</div>
 - The LP/CDL as operational curriculum is concrete and demonstrable, not just philosophical</p>
 <p><strong>One caution:</strong> AAC&amp;U tends toward the centrist/cautious end of the spectrum. Your "AI genuinely generates" position and the descriptive-not-prescriptive literacy framing may push against the grain of some attendees. That's not a reason not to go — it's a reason to frame carefully.</p>
 <p>What's the deadline? I can help draft a proposal.</p></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 10</span><span class="ts">05:19 PM EST</span></div>
-            <div class="prompt-text">[Attachment or Voice Input]</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>Deadline is <strong>April 10, 2026</strong>. That's five weeks out — very doable.</p>
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 10</span><span>05:19 PM EST</span></div>
+    <div class="prompt-text">[Attachment]</div>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>Deadline is <strong>April 10, 2026</strong>. That's five weeks out — very doable.</p>
 <p><strong>Best fit for your work:</strong></p>
 <p><strong>Theory to Practice</strong> — your RTW definition + LP/CDL as operational curriculum is exactly this format. You have the theory <em>and</em> the working artifact.</p>
 <p><strong>Innovation Sessions</strong> — the AI-FYE cohort model, system-scale SUNY implementation. Novel enough to qualify.</p>
@@ -230,17 +253,16 @@ those are things that are not covered by ai?</div>
 - The RTW definition is genuinely distinctive from the DOL/skills-gap framing most attendees will bring</p>
 <p><strong>One question before drafting:</strong> do you want to go solo, or bring a co-presenter? [Colleague], [Colleague], or one of the AI Fellows would strengthen a panel format and broaden the institutional representation — which they explicitly value.</p>
 <p>Want to draft the proposal now? April 10 is close enough that starting today makes sense.</p></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 11</span><span class="ts">09:13 AM EST</span></div>
-            <div class="prompt-text">Two options: pursue both: propose a suny ai fellow panel with 3 others focus on the program, the oppty, the outcome. Or: ai-rtw.</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>Both are worth submitting. They're different enough to not cannibalize each other.</p>
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 11</span><span>09:13 AM EST</span></div>
+    <div class="prompt-text">Two options: pursue both: propose a suny ai fellow panel with 3 others focus on the program, the oppty, the outcome. Or: ai-rtw.</div>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>Both are worth submitting. They're different enough to not cannibalize each other.</p>
 <p><strong>Option 1: SUNY AI Fellows Panel</strong>
 - Track: Institutional Operations and Transformation <em>or</em> Teaching/Learning
 - Format: Panel Presentation
@@ -256,31 +278,29 @@ those are things that are not covered by ai?</div>
 <p><strong>My read:</strong> Option 2 is the higher-ceiling proposal. The RTW definition is what makes your work distinctive nationally — the Fellows panel tells a SUNY story, RTW tells a field-wide story.</p>
 <p>Do both. Option 1 is easier to write and gets SUNY visibility. Option 2 is where the intellectual contribution lives.</p>
 <p>Who are the three Fellows you'd want for Option 1? [Colleague] is an obvious anchor.</p></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 12</span><span class="ts">09:15 AM EST</span></div>
-            <div class="prompt-text">Draft rtw see the requirements. I may need to fetch for you. I suppose I could rite a curl
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 12</span><span>09:15 AM EST</span></div>
+    <div class="prompt-text">Draft rtw see the requirements. I may need to fetch for you. I suppose I could rite a curl
 Statement to bring the site in as context….</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>I have the full CFP requirements from the document you shared. I have everything I need.</p>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>I have the full CFP requirements from the document you shared. I have everything I need.</p>
 <p>Let me draft. A few quick decisions first:The widget isn't rendering — I'll just ask directly:</p>
 <ol>
 <li><strong>Format:</strong> Theory to Practice or Innovation Session?</li>
 <li><strong>Level:</strong> Intermediate or Advanced?</li>
 <li><strong>Co-presenter:</strong> Solo, or bring [Colleague]?</li>
 </ol></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 13</span><span class="ts">09:15 AM EST</span></div>
-            <div class="prompt-text">Q: Session format?
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 13</span><span>09:15 AM EST</span></div>
+    <div class="prompt-text">Q: Session format?
 A: Theory to Practice
 
 Q: Level?
@@ -288,10 +308,10 @@ A: Intermediate
 
 Q: Solo or co-presenter?
 A: Solo</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>Good. I have everything I need. Here's the full draft, sized to the character limits:</p>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>Good. I have everything I need. Here's the full draft, sized to the character limits:</p>
 <hr />
 <p><strong>SESSION TITLE</strong>
 AI Literacy as RTW: A Definitional Framework for the Whole Institution</p>
@@ -333,6 +353,5 @@ Faculty, writing program administrators, curriculum designers, academic affairs 
 <hr />
 <p>That's the full proposal. A few notes: the program description is tight at ~1480 characters. Background is ~1580. Interaction plan is ~640. All within limits.</p>
 <p>Want me to adjust anything — tone, emphasis, the title — before you submit?</p></div>
-          </details>
-        </div>
-<footer><p>AIX Center · SUNY Polytechnic Institute</p></footer></body></html>
+  </details>
+</article></main></body></html>

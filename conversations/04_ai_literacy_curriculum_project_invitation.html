@@ -5,74 +5,104 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI literacy curriculum project invitation</title>
 <style>
-:root { --bg: #fafaf8; --surface: #ffffff; --border: #c8c8c0; --text: #111111; --muted: #4a4a45; --accent: #1e4f78; --prompt-bg: #f4f4f0; --ts-color: #5a5a55; --mono: 'Courier New', monospace; --serif: Georgia, serif; }
-body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 800px; margin: 0 auto; padding: 1rem 2rem; line-height: 1.3; }
-header { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline; }
-h1 { font-family: var(--serif); font-weight: normal; margin: 0 0 0.25rem 0; color: var(--accent); font-size: 1.8rem; }
-.nav-link { color: var(--accent); text-decoration: none; font-weight: 500; font-size: 0.9em; }
-.nav-link:hover { text-decoration: underline; }
-.summary-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin-bottom: 2rem; font-size: 0.95em; }
-.exchange-block { margin-bottom: 1.5rem; }
-.prompt-box { background: var(--prompt-bg); padding: 1rem; border-radius: 8px 8px 0 0; border: 1px solid var(--border); border-bottom: none; white-space: pre-wrap; }
-.prompt-header { display: flex; justify-content: space-between; font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; font-family: var(--serif); }
-.prompt-text { font-family: var(--mono); font-size: 0.95em; color: #000000; line-height: 1.15; }
-.response-details { background: var(--surface); border: 1px solid var(--border); border-radius: 0 0 8px 8px; overflow: hidden; }
-.response-details summary { padding: 0.75rem 1rem; cursor: pointer; background: #eef3f7; color: var(--accent); font-weight: 600; list-style: none; display: flex; align-items: center; justify-content: center; transition: background 0.2s; font-size: 0.9em; }
-.response-details summary:hover { background: #e4eff7; }
-.response-details summary::-webkit-details-marker { display: none; }
-.response-box { padding: 1rem; border-top: 1px solid var(--border); font-size: 0.95em; }
-pre { background: var(--bg); padding: 1rem; border-radius: 4px; overflow-x: auto; font-family: var(--mono); font-size: 0.9em; }
-code { font-family: var(--mono); font-size: 0.9em; }
-blockquote { border-left: 3px solid var(--accent); margin: 0; padding-left: 1rem; color: var(--muted); }
+:root {
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --border: #ced4da;
+  --text: #212529;
+  --text-muted: #495057;
+  --accent: #0f52ba;
+  --accent-hover: #0a3d8c;
+  --accent-bg: #e7f1ff;
+  --prompt-bg: #f1f3f5;
+  --focus-ring: #005fcc;
+  --shadow: rgba(0, 0, 0, 0.05);
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --serif: 'Georgia', serif;
+  --mono: 'SFMono-Regular', Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121212; --surface: #1e1e1e; --border: #333;
+    --text: #f1f3f5; --text-muted: #adb5bd; --accent: #66b2ff;
+    --accent-hover: #99ccff; --accent-bg: #2d3748;
+    --prompt-bg: #2b2b2b; --focus-ring: #99ccff;
+    --shadow: rgba(0, 0, 0, 0.3);
+  }
+}
+
+body {
+  font-family: var(--sans); background: var(--bg); color: var(--text);
+  max-width: 850px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.6; font-size: 1.05rem;
+}
+
+h1, h2, h3 { font-family: var(--serif); color: var(--accent); margin-top: 0; }
+h1 { font-size: 2.2rem; }
+
+a { color: var(--accent); text-underline-offset: 3px; font-weight: 500; }
+a:hover { color: var(--accent-hover); }
+
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 2rem; margin-bottom: 2rem;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+header { border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: baseline; }
+.prompt-box { background: var(--prompt-bg); padding: 1.5rem; border-radius: 12px 12px 0 0; border: 1px solid var(--border); border-bottom: none; }
+.prompt-header { display: flex; justify-content: space-between; font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; }
+.prompt-text { font-family: var(--mono); font-size: 0.95em; white-space: pre-wrap; }
+.response-details { background: var(--surface); border: 1px solid var(--border); border-radius: 0 0 12px 12px; margin-bottom: 2rem; }
+.response-details summary { padding: 1rem; cursor: pointer; text-align: center; color: var(--accent); font-weight: 600; list-style: none; }
+.response-box { padding: 1.5rem; border-top: 1px solid var(--border); }
 </style>
 </head>
 <body>
 <header>
-  <div>
-    <h1>AI literacy curriculum project invitation</h1>
-    <p style="color: var(--muted); margin: 0;">AI Literacy Curriculum Project — Generated Record</p>
-  </div>
-  <a href="../index.html" class="nav-link">← Back to Hub</a>
+  <div><h1>AI literacy curriculum project invitation</h1><p>AI Literacy Curriculum Project — Record</p></div>
+  <a href="../index.html">← Back</a>
 </header>
-<div class="summary-box"><p><strong>Conversation Overview</strong></p>
+<main>
+<section class="card"><p><strong>Conversation Overview</strong></p>
 <p>[The author], Professor of Information Design &amp; Technology and Co-Director of the AI Exploration Center at SUNY Polytechnic Institute, worked on creating materials to share his AI literacy curriculum development with colleagues. As a SUNY AI Fellow for the Public Good (2025-2026), [The author] needed to present three specific documents from his ongoing project to deans and collaborators for review.</p>
 <p>The conversation focused on crafting an email invitation to view three FYE-related artifacts: AI-FYE Faculty Invitation, AI Literacy Learner's Permit, and AI Literacy Commercial License. [The author] provided specific corrections to Claude's initial descriptions, clarifying that the Learner's Permit is a 5-hour certificate program for generative AI use, while the Commercial License is a 15-hour program for agentic AI use. The AI-FYE was described as an integrated first-year curriculum combining AI-specific courses, general education requirements, and discipline-based AI introduction.</p>
 <p>Rather than sending an email, [The author] pivoted to creating an HTML landing page that could serve as its own artifact. Claude generated a clean, academic-styled webpage matching [The author]'s existing site aesthetic, featuring the three documents with 30-word descriptions and embedded links. The page includes proper attribution to the AIX OER project and [The author]'s fellowship role.</p>
 <p>The conversation also touched on [The author]'s ongoing conflict with a colleague named Daryl, who is hostile to AI and has previously forced rewrites of AI-generated documents. [The author] was crafting a diplomatic response to Daryl about AI literacy course implementation, with the strategic understanding that the real audience would be the dean via CC. Claude helped refine the tone to be respectful and professional while maintaining [The author]'s substantive points about curriculum implementation and Gen Ed requirements.</p>
 <p><strong>Tool Knowledge</strong></p>
-<p>Web fetching from [The author]'s GitHub Pages site at stevesunypoly.github.io/tilde-[The author]/artifacts/ successfully retrieved the artifact directory listing. The site uses a clean academic design with minimal navigation and typography-focused layout. When creating matching HTML artifacts, using DM Serif Display for headings and DM Sans for body text maintains consistency with [The author]'s existing aesthetic. The conversation search tool effectively located previous discussions about the AI literacy framework documents, particularly the Learner's Permit structure and RTW (Read-Think-Write) methodology. Project knowledge search provided additional context about the 15-exercise scaffold and certificate program structure, though the Commercial License content was less documented in previous conversations.</p></div>
+<p>Web fetching from [The author]'s GitHub Pages site at stevesunypoly.github.io/tilde-[The author]/artifacts/ successfully retrieved the artifact directory listing. The site uses a clean academic design with minimal navigation and typography-focused layout. When creating matching HTML artifacts, using DM Serif Display for headings and DM Sans for body text maintains consistency with [The author]'s existing aesthetic. The conversation search tool effectively located previous discussions about the AI literacy framework documents, particularly the Learner's Permit structure and RTW (Read-Think-Write) methodology. Project knowledge search provided additional context about the 15-exercise scaffold and certificate program structure, though the Commercial License content was less documented in previous conversations.</p></section>
 
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 1</span><span class="ts">08:37 PM EST</span></div>
-            <div class="prompt-text">https://stevesunypoly.github.io/tilde-[The author]/artifacts/ get those filenames. invite via email with embedded links folks to view the three documents related to FYE, that were built in this project (not the Herkimer document). this is for the dean, and non poly colleagues, and my collaborators, inviting them to view my current work on AI Literay Curriculum.</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>Got them. The three non-Herkimer artifacts are:</p>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 1</span><span>08:37 PM EST</span></div>
+    <div class="prompt-text">https://stevesunypoly.github.io/tilde-[The author]/artifacts/ get those filenames. invite via email with embedded links folks to view the three documents related to FYE, that were built in this project (not the Herkimer document). this is for the dean, and non poly colleagues, and my collaborators, inviting them to view my current work on AI Literay Curriculum.</div>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>Got them. The three non-Herkimer artifacts are:</p>
 <ol>
 <li><code>ai-fye-faculty-invitation.html</code></li>
 <li><code>ai-literacy-commercial-license.html</code></li>
 <li><code>ai-literacy-learners-permit.html</code>The email keeps it simple — three links with a one-line description each, framed as an invitation rather than a report. The "living documents / OER project" line gives the dean and outside colleagues enough context without over-explaining. Want to adjust the tone or add anything (e.g., a specific ask, a meeting invite prompt)?</li>
 </ol></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 2</span><span class="ts">08:38 PM EST</span></div>
-            <div class="prompt-text">have about 30 words for each. review those documents from other conversations or i can add them to the project if needed.</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>Let me search past conversations for those documents.Good context. Let me pull the actual pages too.Good — I have solid context on all three from past conversations and project knowledge. The Commercial License content is the least documented; I'll describe it accurately from what's evident. Here's the revised email:Each description is right around 30 words. One caveat: my description of the <strong>Commercial License</strong> is inferred — I have solid documentation of the Learner's Permit and FYE, but the Commercial License content isn't in your project files or past transcripts I found. If that document has a specific framing or audience that differs from what I wrote, it's worth a quick edit before sending.</p></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 3</span><span class="ts">08:41 PM EST</span></div>
-            <div class="prompt-text">**2. AI Literacy — Learner&#x27;s Permit**
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 2</span><span>08:38 PM EST</span></div>
+    <div class="prompt-text">have about 30 words for each. review those documents from other conversations or i can add them to the project if needed.</div>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>Let me search past conversations for those documents.Good context. Let me pull the actual pages too.Good — I have solid context on all three from past conversations and project knowledge. The Commercial License content is the least documented; I'll describe it accurately from what's evident. Here's the revised email:Each description is right around 30 words. One caveat: my description of the <strong>Commercial License</strong> is inferred — I have solid documentation of the Learner's Permit and FYE, but the Commercial License content isn't in your project files or past transcripts I found. If that document has a specific framing or audience that differs from what I wrote, it's worth a quick edit before sending.</p></div>
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 3</span><span>08:41 PM EST</span></div>
+    <div class="prompt-text">**2. AI Literacy — Learner&#x27;s Permit**
 A content-neutral, 15-exercise scaffold built on the Read-Think-Write framework. Students build a portable AI Workbench — transcripts and artifacts — progressing toward licensed use of AI-generated work in any discipline.
 https://stevesunypoly.github.io/tilde-[The author]/artifacts/ai-literacy-learners-permit.html
 **3. AI Literacy — Commercial License**
@@ -81,10 +111,10 @@ https://stevesunypoly.github.io/tilde-[The author]/artifacts/ai-literacy-commerc
 
 
 the LP is a 5-hour set of exercises (not a scaffold) designed to tive students  permission to use LLM  in any class that permits generative AI and require the dertificate. . Tthe CL is a 15-hour set of exercises, designed to give students  permission to use agentic AI in any class that permits agentic AI and requires the certificate.</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>Good corrections. Here are the two revised descriptions — swap these in:</p>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>Good corrections. Here are the two revised descriptions — swap these in:</p>
 <p><strong>2. AI Literacy — Learner's Permit</strong>
 A 5-hour certificate program giving students permission to use generative AI in any course that permits and requires it. Grounded in the Read-Think-Write framework, built around conversation transcripts and artifacts.
 https://stevesunypoly.github.io/tilde-[The author]/artifacts/ai-literacy-learners-permit.html</p>
@@ -92,84 +122,77 @@ https://stevesunypoly.github.io/tilde-[The author]/artifacts/ai-literacy-learner
 A 15-hour certificate program giving students permission to use agentic AI in any course that permits and requires it. The advanced counterpart to the Learner's Permit, for students ready to work with AI systems that act, not just generate.
 https://stevesunypoly.github.io/tilde-[The author]/artifacts/ai-literacy-commercial-license.html</p>
 <p>Both are ~30 words. The "permits and requires it" phrasing carries the key institutional logic — courses opt in and set the credential requirement. Let me know if you want that softened for a dean audience.</p></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 4</span><span class="ts">08:42 PM EST</span></div>
-            <div class="prompt-text">AI FYE is...an integrated curriculum designed for first yearst sutdents that incorporates AI-specific courses, gen ed courses, and an in-major intro to ai....</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>Got it. Revised:</p>
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 4</span><span>08:42 PM EST</span></div>
+    <div class="prompt-text">AI FYE is...an integrated curriculum designed for first yearst sutdents that incorporates AI-specific courses, gen ed courses, and an in-major intro to ai....</div>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>Got it. Revised:</p>
 <p><strong>1. AI-FYE — Faculty Invitation</strong>
 An integrated first-year curriculum combining AI-specific courses, general education requirements, and a discipline-based introduction to AI — designed so students learn AI literacy through their major from day one.
 https://stevesunypoly.github.io/tilde-[The author]/artifacts/ai-fye-faculty-invitation.html</p>
 <p>Want me to reissue the full email with all three corrected descriptions?</p></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 5</span><span class="ts">08:43 PM EST</span></div>
-            <div class="prompt-text">actually, generate this as an html file that i will post as its own artifact! but with links...</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>The artifacts page has a clean academic character. I'll match that tone — editorial, typographically strong, not flashy.Editorial feel — DM Serif Display for headings, clean numbered list, subtle fade-in. Matches the tone of your existing artifacts page without copying it. Post it as <code>ai-literacy-current-work.html</code> or whatever fits your naming convention. The email descriptions are already embedded, so you could also just link to this page instead of the three separate links.</p></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 6</span><span class="ts">09:10 PM EST</span></div>
-            <div class="prompt-text">//regenerate to be polite and respectful to daryl.</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>Key moves: acknowledged Daryl's points before pushing back, softened the disagreement on implementation ("risk formally acknowledging... without substantively addressing"), kept the two direct questions but framed them less as a challenge, and ended by genuinely embracing his campus discussion idea. Want any tone adjustments?</p></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 7</span><span class="ts">09:11 PM EST</span></div>
-            <div class="prompt-text">ssuming the AI 188 courses met the relevant criteria  assuming all the 188 courses (AI 188, Gen Ed 188...)</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>Easy fix — one line changes:</p>
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 5</span><span>08:43 PM EST</span></div>
+    <div class="prompt-text">actually, generate this as an html file that i will post as its own artifact! but with links...</div>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>The artifacts page has a clean academic character. I'll match that tone — editorial, typographically strong, not flashy.Editorial feel — DM Serif Display for headings, clean numbered list, subtle fade-in. Matches the tone of your existing artifacts page without copying it. Post it as <code>ai-literacy-current-work.html</code> or whatever fits your naming convention. The email descriptions are already embedded, so you could also just link to this page instead of the three separate links.</p></div>
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 6</span><span>09:10 PM EST</span></div>
+    <div class="prompt-text">//regenerate to be polite and respectful to daryl.</div>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>Key moves: acknowledged Daryl's points before pushing back, softened the disagreement on implementation ("risk formally acknowledging... without substantively addressing"), kept the two direct questions but framed them less as a challenge, and ended by genuinely embracing his campus discussion idea. Want any tone adjustments?</p></div>
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 7</span><span>09:11 PM EST</span></div>
+    <div class="prompt-text">ssuming the AI 188 courses met the relevant criteria  assuming all the 188 courses (AI 188, Gen Ed 188...)</div>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>Easy fix — one line changes:</p>
 <p><strong>From:</strong> "assuming the AI 188 courses met the relevant criteria"
 <strong>To:</strong> "assuming the AI 188 courses met the relevant criteria — AI 188, the paired Gen Ed 188 courses, and the in-major 188 introductions"</p>
 <p>Want me to reissue the full email with that change, or just confirm that's the right language?</p></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 8</span><span class="ts">09:11 PM EST</span></div>
-            <div class="prompt-text">yes</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>Done. Ready to send.</p></div>
-          </details>
-        </div>
-
-        <div class="exchange-block">
-          <div class="prompt-box">
-            <div class="prompt-header"><span>Prompt 9</span><span class="ts">09:12 PM EST</span></div>
-            <div class="prompt-text">should i include a reference that claude wrote this letter, and is way more polite than i am? (this is the daryl, whom if you search context, forced a personnel committee to rewrite a letter that was generated by HR. daryl is extraordinary hostile to ai, and to me personally. so i don&#x27;t mind tweaking him. he will not respond positively. the point is to cc the dean.</div>
-          </div>
-          <details class="response-details">
-            <summary>↳ View Claude's Response</summary>
-            <div class="response-box"><p>No — and you don't need to. You already have this in your signature:</p>
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 8</span><span>09:11 PM EST</span></div>
+    <div class="prompt-text">yes</div>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>Done. Ready to send.</p></div>
+  </details>
+</article>
+<article>
+  <div class="prompt-box">
+    <div class="prompt-header"><span>Prompt 9</span><span>09:12 PM EST</span></div>
+    <div class="prompt-text">should i include a reference that claude wrote this letter, and is way more polite than i am? (this is the daryl, whom if you search context, forced a personnel committee to rewrite a letter that was generated by HR. daryl is extraordinary hostile to ai, and to me personally. so i don&#x27;t mind tweaking him. he will not respond positively. the point is to cc the dean.</div>
+  </div>
+  <details class="response-details">
+    <summary>↳ View Response</summary>
+    <div class="response-box"><p>No — and you don't need to. You already have this in your signature:</p>
 <blockquote>
 <p><em>"The contents of this message may, in part or in whole, reflect collaboration with large language models."</em></p>
 </blockquote>
 <p>That line does the work. Daryl will read it, know exactly what it means, and have no procedural ground to object. It's the right kind of tweak — visible, defensible, and pointed without being unprofessional. The dean sees a measured, collegial email with a transparent AI disclosure. That's the better look.</p>
 <p>Adding "Claude wrote this and is more polite than I am" would hand Daryl something to deflect with and shift the dean's attention off the substance.</p></div>
-          </details>
-        </div>
-<footer><p>AIX Center · SUNY Polytechnic Institute</p></footer></body></html>
+  </details>
+</article></main></body></html>

@@ -1,84 +1,276 @@
-python3 -c '
-import json, zipfile, os, glob, html
-from datetime import datetime
-import markdown
+# Version: 2026-04-26-2052
+import json
+import zipfile
+import os
+import glob
+import html
+import re
+from datetime import datetime, timezone, timedelta
 
-ordered = ["AI literacy development through iterative refinement", "AI-FYE document structure and course design", "AI integration across course levels", "AI literacy curriculum project invitation", "AI document edits and review", "The teacher, the student and the LLM", "Seeking feedback", "AI adoption in academic integrity and learning outcomes", "AI literacy progression framework", "Project memory update", "Project context report generation", "Processing podcast links with curriculum tagging"]
+try:
+    from zoneinfo import ZoneInfo
+    est_tz = ZoneInfo("America/New_York")
+except ImportError:
+    est_tz = timezone(timedelta(hours=-4)) 
 
-convs = {}
-for zp in glob.glob("*.zip"):
+try:
+    import markdown
+except ImportError:
+    print("Error: Please install markdown first by running: pip3 install markdown")
+    exit()
+
+# ==========================================
+# REDACTION CONFIGURATION
+# ==========================================
+colleagues_to_redact = [
+    "Dana Gavin", "Dana",
+    "Michelle Malinovjky", "Michelle Malinovsky", "Michelle",
+    "Diane Schictman", "Diane Schichtman", "Diane",
+    "Shyam Sharma", "Shyam"
+]
+
+students_to_redact = [
+    "Firstname Lastname", 
+    "JustFirstname"
+]
+
+author_names = ["Steve Schneider", "Steve"]
+
+def clean_email_artifacts(text):
+    if not text: return text
+    text = re.sub(r'(?si)From:\s+.*?Subject:\s+[^\n]*\n?', '[Email Header Redacted]\n', text)
+    sig_pattern = r'(?si)Steven M\. Schneider\s*Professor, SUNY Polytechnic Institute.*?Book time to meet with me'
+    text = re.sub(sig_pattern, '', text)
+    return text
+
+def redact_text(text):
+    if not text: return text
+    text = clean_email_artifacts(text)
+    for name in sorted(colleagues_to_redact, key=len, reverse=True):
+        text = re.sub(r'(?i)\b' + re.escape(name) + r'\b', '[Colleague]', text)
+    for name in sorted(students_to_redact, key=len, reverse=True):
+        if name != "Firstname Lastname" and name != "JustFirstname": 
+            text = re.sub(r'(?i)\b' + re.escape(name) + r'\b', '[Student]', text)
+    for name in sorted(author_names, key=len, reverse=True):
+        text = re.sub(r'(?i)\b' + re.escape(name) + r'\b', '[The author]', text)
+    return text
+
+# ==========================================
+# 1. FILE GENERATION (TRANSCRIPTS)
+# ==========================================
+ordered_files = [
+    "AI literacy development through iterative refinement",
+    "AI-FYE document structure and course design",
+    "AI integration across course levels",
+    "AI literacy curriculum project invitation",
+    "AI document edits and review",
+    "The teacher, the student and the LLM",
+    "Seeking feedback",
+    "AI adoption in academic integrity and learning outcomes",
+    "AI literacy progression framework",
+    "Project memory update",
+    "Project context report generation",
+    "Processing podcast links with curriculum tagging"
+]
+
+zip_files = glob.glob("*.zip")
+conversations = {}
+
+for zp in zip_files:
     try:
-        with zipfile.ZipFile(zp, "r") as z:
-            for fn in z.namelist():
-                if fn.endswith(".json") and "export_summary" not in fn:
-                    with z.open(fn) as f:
-                        try:
-                            d = json.load(f)
-                            if d.get("name"): convs[d["name"]] = d
-                        except: pass
+        with zipfile.ZipFile(zp, 'r') as z:
+            for filename in z.namelist():
+                if not filename.endswith('.json') or 'export_summary' in filename:
+                    continue
+                with z.open(filename) as f:
+                    try:
+                        data = json.load(f)
+                        if data.get("name"): conversations[data["name"]] = data
+                    except: pass
     except: pass
 
-os.makedirs("conversations", exist_ok=True)
-gen_files = []
+conversations_dir = "conversations"
+os.makedirs(conversations_dir, exist_ok=True)
+generated_files = []
 
-for i, b in enumerate(ordered, 1):
-    d = next((v for k, v in convs.items() if b in k), None)
-    if not d: continue
-    
-    t = d.get("name", "Conversation")
-    s_md = d.get("summary", "").replace("Steve Schneider", "The author").replace("steve schneider", "the author").replace("Steve", "the author").replace("steve", "the author")
-    s_html = markdown.markdown(s_md)
-    
-    msgs = d.get("chat_messages", d.get("messages", []))
-    if not msgs and isinstance(d, list): msgs = d
-    
-    exchanges, cur = [], None
-    for m in msgs:
-        txt = "".join(blk.get("text", "") for blk in m.get("content", []) if blk.get("type") == "text")
-        try: ts = datetime.strptime(m.get("created_at", ""), "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%I:%M %p")
-        except: ts = ""
-        if m.get("sender") == "human": cur = {"text": txt, "time": ts}
-        elif m.get("sender") == "assistant" and cur:
-            exchanges.append({"human": cur, "assistant": {"text": txt, "time": ts}})
-            cur = None
+for i, base_name in enumerate(ordered_files, 1):
+    data = next((v for k, v in conversations.items() if base_name in k), None)
+    if not data: continue
 
-    out = f"<!DOCTYPE html><html><head><meta charset=\\"UTF-8\\"><title>{html.escape(t)}</title><style>:root{{--bg:#fafaf8;--surface:#ffffff;--border:#c8c8c0;--text:#1a1a1a;--muted:#4a4a45;--accent:#1e4f78;--prompt-bg:#f0f0ec;--ts-color:#5a5a55;--mono:monospace;--serif:Georgia,serif;}}body{{font-family:sans-serif;background:var(--bg);color:var(--text);max-width:800px;margin:0 auto;padding:2rem;line-height:1.6;}}header{{border-bottom:1px solid var(--border);padding-bottom:1rem;margin-bottom:2rem;}}h1{{font-family:var(--serif);font-weight:normal;color:var(--accent);margin:0;}}.summary-box{{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin-bottom:2rem;}}details{{background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:1rem;}}summary{{padding:1rem;cursor:pointer;background:var(--prompt-bg);display:flex;justify-content:space-between;font-weight:500;gap:1rem;}}summary::-webkit-details-marker{{display:none;}}.ptext{{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}}.ts{{color:var(--ts-color);white-space:nowrap;}}.exchange{{padding:1.5rem;border-top:1px solid var(--border);}}.full-prompt-block{{background:var(--prompt-bg);padding:1rem;border-radius:4px;margin-bottom:1.5rem;font-style:italic;white-space:pre-wrap;border-left:4px solid var(--accent);}}pre{{background:var(--bg);padding:1rem;border-radius:4px;overflow-x:auto;}}blockquote{{border-left:3px solid var(--accent);padding-left:1rem;color:var(--muted);margin:0;}}</style></head><body><header><h1>{html.escape(t)}</h1><p style=\\"color:var(--muted);\\">AI Literacy Curriculum Project — Generated Record</p></header><div class=\\"summary-box\\">{s_html}</div>"
-    
-    for ex in exchanges:
-        hx = ex["human"]["text"]
-        cx = hx.replace("\\n", " ").strip()
-        sp = cx[:1000] + ("..." if len(cx) > 1000 else "") or "[Attachment or Voice Input]"
-        fh = f"<div class=\\"full-prompt-block\\"><strong>Full Prompt:</strong><br>{html.escape(hx)}</div>"
-        ah = markdown.markdown(ex["assistant"]["text"], extensions=["fenced_code", "tables"])
-        out += f"<details><summary><span class=\\"ptext\\">{html.escape(sp)}</span><span class=\\"ts\\">{ex["human"]["time"]}</span></summary><div class=\\"exchange\\">{fh}{ah}</div></details>"
-        
-    out += "<footer><p>AIX Center · SUNY Polytechnic Institute</p></footer></body></html>"
-    
-    nn = f"{i:02d}_{b.replace(" ", "_").replace(",", "").replace("-", "_").lower()}.html"
-    with open(os.path.join("conversations", nn), "w") as f: f.write(out)
-    gen_files.append((b, nn))
+    title = data.get("name", "Conversation")
+    summary_md = redact_text(data.get("summary", "No summary available."))
+    summary_html = markdown.markdown(summary_md)
 
-idx = "<!DOCTYPE html><html><head><meta charset=\\"UTF-8\\"><title>Index</title><style>body{font-family:sans-serif;max-width:800px;margin:0 auto;padding:2rem;line-height:1.6;color:#1a1a1a;background:#fafaf8;}h1{font-family:Georgia,serif;color:#1e4f78;border-bottom:1px solid #c8c8c0;padding-bottom:1rem;}.index-list{background:#ffffff;border:1px solid #c8c8c0;border-radius:8px;padding:2rem;}li{margin-bottom:1rem;}a{color:#1e4f78;text-decoration:none;font-weight:500;}a:hover{text-decoration:underline;}</style></head><body><h1>AI Literacy Project — Conversation Archive</h1><div class=\\"index-list\\"><ol>"
-for b, nn in gen_files: idx += f"<li><a href=\\"{nn}\\">{b}</a></li>"
-with open(os.path.join("conversations", "00_index.html"), "w") as f: f.write(idx + "</ol></div></body></html>")
+    messages = data.get("chat_messages", data.get("messages", []))
+    if not messages and isinstance(data, list): messages = data
 
-rm = """# AI Literacy Curriculum Archive
+    exchanges = []
+    current_human = None
 
-This repository contains the foundational generation transcripts and conceptual development records for the AI Literacy Curriculum at SUNY Polytechnic Institute.
+    for msg in messages:
+        text = "".join(b.get("text", "") for b in msg.get("content", []) if b.get("type") == "text")
+        time_str = ""
+        try:
+            raw_time = msg.get("created_at", "")
+            utc_dt = datetime.strptime(raw_time, "%Y-%m-%dT%H:%M:%S.%fZ").replace(tzinfo=timezone.utc)
+            est_dt = utc_dt.astimezone(est_tz)
+            time_str = est_dt.strftime("%I:%M %p EST")
+        except: pass
 
-## Contents
-The `conversations/` directory contains 12 chronologically ordered, verbatim HTML exports of the Claude.ai sessions used to design the curricula. 
+        if msg.get("sender") == "human":
+            current_human = {"text": text, "time": time_str}
+        elif msg.get("sender") == "assistant" and current_human:
+            exchanges.append({"human": current_human, "assistant": {"text": text, "time": time_str}})
+            current_human = None
 
-These sessions produced:
-1. **The Learner's Permit (LP):** A 15-exercise foundational scaffold for AI literacy.
-2. **The Agentic License (Commercial Driver's License):** A 15-exercise scaffold for agentic AI operation.
-
-To explore the archive, open `conversations/00_index.html` in any web browser.
-
-## Project Context
-These materials were developed by the author as part of the SUNY AI Fellows for the Public Good initiative, aligning with SUNY Board Resolution 2024-64 regarding AI literacy integration.
+    html_template = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{html.escape(title)}</title>
+<style>
+:root {{ --bg: #fafaf8; --surface: #ffffff; --border: #c8c8c0; --text: #111111; --muted: #4a4a45; --accent: #1e4f78; --prompt-bg: #f4f4f0; --ts-color: #5a5a55; --mono: 'Courier New', monospace; --serif: Georgia, serif; }}
+body {{ font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 800px; margin: 0 auto; padding: 1rem 2rem; line-height: 1.3; }}
+header {{ margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline; }}
+h1 {{ font-family: var(--serif); font-weight: normal; margin: 0 0 0.25rem 0; color: var(--accent); font-size: 1.8rem; }}
+.nav-link {{ color: var(--accent); text-decoration: none; font-weight: 500; font-size: 0.9em; }}
+.nav-link:hover {{ text-decoration: underline; }}
+.summary-box {{ background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin-bottom: 2rem; font-size: 0.95em; }}
+.exchange-block {{ margin-bottom: 1.5rem; }}
+.prompt-box {{ background: var(--prompt-bg); padding: 1rem; border-radius: 8px 8px 0 0; border: 1px solid var(--border); border-bottom: none; white-space: pre-wrap; }}
+.prompt-header {{ display: flex; justify-content: space-between; font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; font-family: var(--serif); }}
+.prompt-text {{ font-family: var(--mono); font-size: 0.95em; color: #000000; line-height: 1.15; }}
+.response-details {{ background: var(--surface); border: 1px solid var(--border); border-radius: 0 0 8px 8px; overflow: hidden; }}
+.response-details summary {{ padding: 0.75rem 1rem; cursor: pointer; background: #eef3f7; color: var(--accent); font-weight: 600; list-style: none; display: flex; align-items: center; justify-content: center; transition: background 0.2s; font-size: 0.9em; }}
+.response-details summary:hover {{ background: #e4eff7; }}
+.response-details summary::-webkit-details-marker {{ display: none; }}
+.response-box {{ padding: 1rem; border-top: 1px solid var(--border); font-size: 0.95em; }}
+pre {{ background: var(--bg); padding: 1rem; border-radius: 4px; overflow-x: auto; font-family: var(--mono); font-size: 0.9em; }}
+code {{ font-family: var(--mono); font-size: 0.9em; }}
+blockquote {{ border-left: 3px solid var(--accent); margin: 0; padding-left: 1rem; color: var(--muted); }}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>{html.escape(title)}</h1>
+    <p style="color: var(--muted); margin: 0;">AI Literacy Curriculum Project — Generated Record</p>
+  </div>
+  <a href="../index.html" class="nav-link">← Back to Hub</a>
+</header>
+<div class="summary-box">{summary_html}</div>
 """
-with open("README.md", "w") as f: f.write(rm)
-with open(".gitignore", "w") as f: f.write("*.zip\\n*.json\\n")
-print("Repository built locally!")
-'
+
+    for prompt_num, ex in enumerate(exchanges, 1):
+        raw_prompt = ex["human"]["text"]
+        if not raw_prompt.strip(): raw_prompt = "[Attachment or Voice Input]"
+        redacted_prompt = html.escape(redact_text(raw_prompt))
+        
+        redacted_response_md = redact_text(ex["assistant"]["text"])
+        assistant_html = markdown.markdown(redacted_response_md, extensions=['fenced_code', 'tables'])
+        assistant_html = assistant_html.replace('<a href=', '<a target="_blank" href=')
+        
+        html_template += f"""
+        <div class="exchange-block">
+          <div class="prompt-box">
+            <div class="prompt-header"><span>Prompt {prompt_num}</span><span class="ts">{ex["human"]["time"]}</span></div>
+            <div class="prompt-text">{redacted_prompt}</div>
+          </div>
+          <details class="response-details">
+            <summary>↳ View Claude's Response</summary>
+            <div class="response-box">{assistant_html}</div>
+          </details>
+        </div>\n"""
+
+    html_template += "<footer><p>AIX Center · SUNY Polytechnic Institute</p></footer></body></html>"
+
+    new_name = f"{i:02d}_{base_name.replace(' ', '_').replace(',', '').replace('-', '_').lower()}.html"
+    with open(os.path.join(conversations_dir, new_name), 'w', encoding='utf-8') as f: f.write(html_template)
+    generated_files.append((base_name, new_name))
+
+# ==========================================
+# 2. FRONT PAGE (index.html)
+# ==========================================
+index_html = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Literacy Curriculum Archive</title>
+<style>
+  :root { --bg: #fafaf8; --surface: #ffffff; --border: #c8c8c0; --text: #1a1a1a; --muted: #4a4a45; --accent: #1e4f78; --accent-hover: #153a5b; --serif: Georgia, serif; }
+  body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 800px; margin: 0 auto; padding: 3rem 2rem; line-height: 1.6; }
+  header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+  h1 { font-family: var(--serif); font-weight: normal; color: var(--accent); font-size: 2.5rem; margin-bottom: 0.5rem; }
+  .subtitle { color: var(--muted); font-size: 1.1rem; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 2rem; margin-bottom: 2rem; }
+  .card h2 { font-family: var(--serif); color: var(--accent); margin-top: 0; border-bottom: 1px solid #eaeaea; padding-bottom: 0.5rem; }
+  .link-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+  .doc-link { display: block; padding: 1rem; background: #f8f9fa; border: 1px solid var(--border); border-radius: 6px; text-decoration: none; color: var(--accent); font-weight: 500; transition: all 0.2s; }
+  .doc-link:hover { background: #eef3f7; border-color: var(--accent); padding-left: 1.25rem; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>AI Literacy Curriculum Archive</h1>
+    <div class="subtitle">Steve Schneider · SUNY AI Fellow for the Public Good</div>
+  </header>
+
+  <div class="card">
+    <h2>📚 Curriculum Scaffolds</h2>
+    <p>This archive contains the foundational generation transcripts and conceptual development records for the SUNY AI literacy integration mandate.</p>
+    <ul>
+      <li><strong><a href="artifacts/ai-literacy-learners-permit.html">Learner's Permit (LP)</a>:</strong> A 15-exercise foundational scaffold for AI literacy.</li>
+      <li><strong><a href="artifacts/ai-literacy-commercial-license.html">Agentic License (AL)</a>:</strong> A 15-exercise advanced operation scaffold.</li>
+    </ul>
+    <p style="color: var(--muted); font-size: 0.9em; margin-top: 1.5rem;"><em>Operationalizing AI literacy through the RTW (Reading, Thinking, Writing) framework.</em></p>
+  </div>
+
+  <div class="card">
+    <h2>Conversation Transcripts</h2>
+    <p>Explore the chronological development of the curriculum artifacts below:</p>
+    <div class="link-list">
+"""
+
+for base_name, new_name in generated_files:
+    index_html += f'      <a href="conversations/{new_name}" class="doc-link">{base_name}</a>\n'
+
+index_html += """    </div>
+  </div>
+  <footer style="margin-top: 3rem; text-align: center; color: var(--muted); font-size: 0.85em;">
+    <p>Archive Version: 2026-04-26-2052</p>
+  </footer>
+</body>
+</html>
+"""
+
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(index_html)
+
+# ==========================================
+# 3. README GENERATION
+# ==========================================
+readme_content = """# AI Literacy Curriculum Archive
+
+**Steve Schneider** | SUNY AI Fellow for the Public Good | Co-Director, AIX Center at SUNY Polytechnic Institute
+
+*Version: 2026-04-26-2052*
+
+This repository contains the foundational generation transcripts and conceptual development records for the SUNY AI Literacy Curriculum. The work herein operationalizes AI literacy through the **RTW (Reading, Thinking, Writing)** framework—treating generative AI as a medium for literate practice, rather than merely a subject matter.
+
+## 📚 Contents
+These Claude.ai design sessions produced two core artifacts:
+* **[The Learner's Permit (LP)](artifacts/ai-literacy-learners-permit.html):** A 15-exercise foundational scaffold for AI literacy.
+* **[The Agentic License (AL)](artifacts/ai-literacy-commercial-license.html):** A 15-exercise scaffold for agentic AI operation.
+
+**👉 [Explore the Live Conversation Archive here](https://stevesunypoly.github.io/ai-literacy-2026/)**
+
+### About the Project Context
+These materials were developed in alignment with SUNY Board Resolution 2024-64 regarding AI literacy integration across 64 campuses. All materials are open and freely adaptable.
+"""
+
+with open("README.md", "w", encoding="utf-8") as f:
+    f.write(readme_content)
+
+print("Archive completely rebuilt with unified root landing page! Version: 2026-04-26-2052")
