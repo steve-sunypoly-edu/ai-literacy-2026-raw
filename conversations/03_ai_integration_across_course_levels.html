@@ -5,31 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI integration across course levels</title>
 <style>
-:root { --bg: #fafaf8; --surface: #ffffff; --border: #c8c8c0; --text: #1a1a1a; --muted: #4a4a45; --accent: #1e4f78; --prompt-bg: #f0f0ec; --ts-color: #5a5a55; --mono: 'Courier New', monospace; --serif: Georgia, serif; }
-@media (prefers-color-scheme: dark) { :root { --bg: #111110; --surface: #1c1c1a; --border: #3a3a34; --text: #e8e8e0; --muted: #b0b0a8; --accent: #7bbde8; --prompt-bg: #222220; } }
-body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 800px; margin: 0 auto; padding: 2rem; line-height: 1.6; }
-header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
-h1 { font-family: var(--serif); font-weight: normal; margin: 0 0 0.5rem 0; color: var(--accent); }
-.summary-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; }
-details { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 1rem; overflow: hidden; }
-summary { padding: 1rem; cursor: pointer; background: var(--prompt-bg); display: flex; justify-content: space-between; font-weight: 500; gap: 1rem; }
-summary::-webkit-details-marker { display: none; }
-.ptext { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.ts { font-size: 0.85em; color: var(--ts-color); white-space: nowrap; }
-.exchange { padding: 1.5rem; border-top: 1px solid var(--border); }
-.full-prompt-block { background: var(--prompt-bg); padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem; font-style: italic; white-space: pre-wrap; border-left: 4px solid var(--accent); }
+:root { --bg: #fafaf8; --surface: #ffffff; --border: #c8c8c0; --text: #111111; --muted: #4a4a45; --accent: #1e4f78; --prompt-bg: #f4f4f0; --ts-color: #5a5a55; --mono: 'Courier New', monospace; --serif: Georgia, serif; }
+body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 800px; margin: 0 auto; padding: 1rem 2rem; line-height: 1.3; }
+header { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline; }
+h1 { font-family: var(--serif); font-weight: normal; margin: 0 0 0.25rem 0; color: var(--accent); font-size: 1.8rem; }
+.nav-link { color: var(--accent); text-decoration: none; font-weight: 500; font-size: 0.9em; }
+.nav-link:hover { text-decoration: underline; }
+.summary-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin-bottom: 2rem; font-size: 0.95em; }
+.exchange-block { margin-bottom: 1.5rem; }
+.prompt-box { background: var(--prompt-bg); padding: 1rem; border-radius: 8px 8px 0 0; border: 1px solid var(--border); border-bottom: none; white-space: pre-wrap; }
+.prompt-header { display: flex; justify-content: space-between; font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; font-family: var(--serif); }
+.prompt-text { font-family: var(--mono); font-size: 0.95em; color: #000000; line-height: 1.15; }
+.response-details { background: var(--surface); border: 1px solid var(--border); border-radius: 0 0 8px 8px; overflow: hidden; }
+.response-details summary { padding: 0.75rem 1rem; cursor: pointer; background: #eef3f7; color: var(--accent); font-weight: 600; list-style: none; display: flex; align-items: center; justify-content: center; transition: background 0.2s; font-size: 0.9em; }
+.response-details summary:hover { background: #e4eff7; }
+.response-details summary::-webkit-details-marker { display: none; }
+.response-box { padding: 1rem; border-top: 1px solid var(--border); font-size: 0.95em; }
 pre { background: var(--bg); padding: 1rem; border-radius: 4px; overflow-x: auto; font-family: var(--mono); font-size: 0.9em; }
 code { font-family: var(--mono); font-size: 0.9em; }
 blockquote { border-left: 3px solid var(--accent); margin: 0; padding-left: 1rem; color: var(--muted); }
 </style>
 </head>
 <body>
-<header><h1>AI integration across course levels</h1><p style="color: var(--muted);">AI Literacy Curriculum Project — Generated Record</p></header>
+<header>
+  <div>
+    <h1>AI integration across course levels</h1>
+    <p style="color: var(--muted); margin: 0;">AI Literacy Curriculum Project — Generated Record</p>
+  </div>
+  <a href="../index.html" class="nav-link">← Back to Hub</a>
+</header>
 <div class="summary-box"><p><strong>Conversation Overview</strong></p>
 <p>The user shared planning notes for AI integration across academic course levels, featuring a curriculum hierarchy and a word-count reference framework. The left side outlined an AI course sequence including AI FYE (First Year Experience), FYS with GenAI License, AI 288 with Agentic License, Gen Ed, Major, and STS 188 components. The right side showed an "RTW" (Ready To Write) scale mapping pages to word counts using a standard 400 words per page ratio for academic writing, with entries for 1 page (400 words), 3 pages (1,200 words), 10 pages (with 4,000 crossed out), and 30 pages (12,000 words).</p>
 <p>Claude initially misinterpreted some abbreviations, but the user clarified that RTW stands for "Ready To Write" and confirmed the agentic licensing concept relates to different levels of AI tool access for students across course contexts. The user indicated they need to write a comprehensive document, likely around 30 pages or 12,000 words based on the scale provided. Claude offered to help structure the document but requested clarification on the specific scope, audience, and purpose, suggesting possibilities like an AIX Center annual report, curriculum integration framework, or SUNY Gen Ed AI literacy proposal. The conversation demonstrates the user's work in educational AI integration and curriculum planning at an institutional level.</p></div>
-<details><summary><span class="ptext">Think about a task list. Discuss</span><span class="ts">03:27 PM</span></summary>
-        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>Think about a task list. Discuss</div><p>This looks like planning notes for AI integration across course levels, with a word-count/scope framework on the right. Here's my read:</p>
+
+        <div class="exchange-block">
+          <div class="prompt-box">
+            <div class="prompt-header"><span>Prompt 1</span><span class="ts">10:27 AM EST</span></div>
+            <div class="prompt-text">Think about a task list. Discuss</div>
+          </div>
+          <details class="response-details">
+            <summary>↳ View Claude's Response</summary>
+            <div class="response-box"><p>This looks like planning notes for AI integration across course levels, with a word-count/scope framework on the right. Here's my read:</p>
 <p><strong>Left side — course/context hierarchy:</strong>
 - ① AI FYE (First Year Experience)
 - FYS + GenAI License
@@ -67,9 +83,18 @@ blockquote { border-left: 3px solid var(--accent); margin: 0; padding-left: 1rem
 </table>
 <p>The RTW scale looks like a quick reference for assignment sizing — pages to words. The 4,000 for 10 pages is crossed out, suggesting you adjusted the ratio (maybe 10 pages = ~4,000 is too generous or you recalibrated).</p>
 <p><strong>As a task list</strong>, this reads as: mapping AI tool access/licensing across a curriculum sequence (FYS → Gen Ed → Major → upper division), with the RTW scale as a separate but related planning tool — possibly for writing assignment benchmarks.</p>
-<p>What's the actual context — is RTW a framework you're developing, or a rubric standard? And is "Agoric License" a specific tool or a placeholder?</p></div></details>
-<details><summary><span class="ptext">Rtw. Agentic. Words and pages: 400’words a page? I need to write a comprehensive document</span><span class="ts">03:28 PM</span></summary>
-        <div class="exchange"><div class='full-prompt-block'><strong>Full Prompt:</strong><br>Rtw. Agentic. Words and pages: 400’words a page? I need to write a comprehensive document</div><p>Ah — <strong>RTW = Ready To Write</strong>, and the scale is just a reference: ~400 words/page is standard double-spaced academic, ~250-300 for single-spaced.</p>
+<p>What's the actual context — is RTW a framework you're developing, or a rubric standard? And is "Agoric License" a specific tool or a placeholder?</p></div>
+          </details>
+        </div>
+
+        <div class="exchange-block">
+          <div class="prompt-box">
+            <div class="prompt-header"><span>Prompt 2</span><span class="ts">10:28 AM EST</span></div>
+            <div class="prompt-text">Rtw. Agentic. Words and pages: 400’words a page? I need to write a comprehensive document</div>
+          </div>
+          <details class="response-details">
+            <summary>↳ View Claude's Response</summary>
+            <div class="response-box"><p>Ah — <strong>RTW = Ready To Write</strong>, and the scale is just a reference: ~400 words/page is standard double-spaced academic, ~250-300 for single-spaced.</p>
 <p>So the right side is simply: if you need a 30-page comprehensive document, that's ~12,000 words.</p>
 <p>For the <strong>agentic license</strong> question — you're probably thinking about what AI access level students need for different course contexts (FYS vs. 288 vs. Major). That's a real institutional design question.</p>
 <p><strong>For the comprehensive document itself</strong> — what's the scope? Is this:</p>
@@ -79,5 +104,7 @@ blockquote { border-left: 3px solid var(--accent); margin: 0; padding-left: 1rem
 <li>The SUNY Gen Ed AI literacy proposal</li>
 <li>Something else</li>
 </ul>
-<p>Knowing the audience and purpose helps me help you structure it efficiently.</p></div></details>
+<p>Knowing the audience and purpose helps me help you structure it efficiently.</p></div>
+          </details>
+        </div>
 <footer><p>AIX Center · SUNY Polytechnic Institute</p></footer></body></html>
