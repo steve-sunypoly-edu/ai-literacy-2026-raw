@@ -6,20 +6,33 @@
 @media (prefers-color-scheme: dark) {
   :root { --bg: #121212; --surface: #1e1e1e; --border: #333; --text: #f1f3f5; --text-muted: #adb5bd; --accent: #66b2ff; --accent-bg: #2d3748; --prompt-bg: #2b2b2b; --note-bg: #2a281e; --note-border: #4a4533; }
 }
-body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.6; }
+body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 900px; margin: 0 auto; padding: 6rem 1.5rem 2rem; line-height: 1.6; }
 h1, h2, h3 { font-family: 'Georgia', serif; color: var(--accent); }
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.sticky-nav { position: fixed; top: 0; left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 0.75rem 0; }
+.nav-container { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; }
+.nav-group { display: flex; gap: 15px; align-items: center; }
+.nav-link { text-decoration: none; font-weight: 600; color: var(--accent); font-size: 0.9rem; }
+.nav-link:hover { text-decoration: underline; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
 .note-card { background: var(--note-bg); border: 2px solid var(--note-border); }
-.badge { display: inline-block; padding: 2px 8px; font-size: 0.75rem; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-weight: bold; margin-left: 10px; }
-.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1rem; border-radius: 8px; position: relative; margin: 1rem 0; overflow-x: auto; white-space: pre-wrap; }
+.badge { padding: 2px 8px; font-size: 0.75rem; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-weight: bold; }
+.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1rem; border-radius: 8px; margin: 1rem 0; white-space: pre-wrap; }
 .transcript-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
-.nav-footer { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); }
-.btn { text-decoration: none; padding: 8px 16px; border-radius: 6px; background: var(--accent); color: white; font-weight: 600; font-size: 0.9rem; }
-.btn-outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-th, td { border: 1px solid var(--border); padding: 10px; text-align: left; }
-th { background: var(--prompt-bg); }
-</style></head><body><header><a href='../index.html'>← Back to Hub</a><h1>AI literacy development through iterative refinement</h1></header><div class='card'><p><strong>Conversation Overview</strong></p>
+</style></head><body>
+        <nav class="sticky-nav">
+          <div class="nav-container">
+            <div class="nav-group">
+              <a href="../index.html" class="nav-link">🏠 Hub</a>
+              <a href="../artifacts/ai-literacy-learners-permit.html" class="nav-link">📜 LP</a>
+              <a href="../artifacts/ai-literacy-commercial-license.html" class="nav-link">🚀 AL</a>
+            </div>
+            <div class="nav-group">
+              <a style="opacity:0.3; pointer-events:none;" class="nav-link">⬅️ Prev</a>
+              <span style="font-size:0.8rem; font-weight:bold;">1 / 12</span>
+              <a href="02_ai-fye_document_structure_and_course_design.html" class="nav-link">Next ➡️</a>
+            </div>
+          </div>
+        </nav><h1>AI literacy development through iterative refinement</h1><div class='card'><p><strong>Conversation Overview</strong></p>
 <p>[The author], Professor of Communications and Humanities at SUNY Polytechnic Institute and Co-Director of the AIX Center, continued developing AI literacy curricula as part of SUNY's Board Resolution 2024-64 implementation. This session focused on finalizing two comprehensive curriculum documents: a Learner's Permit (15-exercise scaffold for basic AI literacy) and a Commercial Driver's License (15-exercise scaffold for agentic AI operation). [The author] requested both documents be generated as HTML files matching the aesthetic of a reference document from the Herkimer County AI Policy Initiative project.</p>
 <p>The conversation began with clarifications about the licensing progression structure, where Exercise 15 serves as the exam in both curricula. [The author] provided detailed feedback incorporating external reviews that had identified security vulnerabilities and the need for clearer scope definitions. Key structural decisions emerged, including the addition of an <code>/author</code> directory for human-only writing, a <code>/zip</code> folder for workbench snapshots, and an <code>/agent</code> subdirectory structure for the CDL course containing briefs, scripts, traces, and failure documentation.</p>
 <p>[The author] emphasized removing "coaching" language throughout both documents, shifting from motivational framing to declarative professorial tone. The workbench concept evolved into a persistent, cross-course infrastructure rather than a single-course deliverable, with the General AI License requiring evidence of sustained responsible use across multiple courses before CDL enrollment eligibility. The session concluded with [The author] requesting a comprehensive synthesis document designed to be portable context for future conversations or model sessions, capturing all founding assumptions, decision processes, and late-arriving structural elements. [The author] noted he had uploaded the materials to NotebookLM for further analysis and mentioned plans for an AI-FYE (First Year Experience) document that would position the Learner's Permit as the first five hours of FYS 188 and AI 188 courses, with the CDL as the foundation for AI 288.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 1</strong><br>review. reflect. refine. regenerate. with full consistencyof my ai literacy. ask questions first, and then we will do a deep dive.</div><div class='card'><p>Good, I've read it all. Rich, sprawling, productive — and it needs work. Before we dive, a few focused questions:</p>
@@ -1119,4 +1132,4 @@ discuss this first.</div><div class='card'><p>Good instinct. The question is fla
 - <strong>Learner's Permit (v8)</strong> — 15-exercise foundational scaffold, HTML and markdown
 - <strong>Commercial Driver's License (v4)</strong> — 15-exercise agentic scaffold, HTML and markdown
 - <strong>AI-FYE document</strong> — complete week-by-week first-year experience across four courses (AI Lab, STS 188, ART 188, EE 188), weeks 1–8 tooling spine + weeks 9–16 lab-to-lounge transition
--</p></div><footer class='nav-footer'><span></span><a href="02_ai-fye_document_structure_and_course_design.html" class="btn btn-outline">Next →</a></footer></body></html>
+-</p></div></body></html>

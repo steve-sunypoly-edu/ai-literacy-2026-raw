@@ -6,20 +6,33 @@
 @media (prefers-color-scheme: dark) {
   :root { --bg: #121212; --surface: #1e1e1e; --border: #333; --text: #f1f3f5; --text-muted: #adb5bd; --accent: #66b2ff; --accent-bg: #2d3748; --prompt-bg: #2b2b2b; --note-bg: #2a281e; --note-border: #4a4533; }
 }
-body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.6; }
+body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 900px; margin: 0 auto; padding: 6rem 1.5rem 2rem; line-height: 1.6; }
 h1, h2, h3 { font-family: 'Georgia', serif; color: var(--accent); }
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.sticky-nav { position: fixed; top: 0; left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 0.75rem 0; }
+.nav-container { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; }
+.nav-group { display: flex; gap: 15px; align-items: center; }
+.nav-link { text-decoration: none; font-weight: 600; color: var(--accent); font-size: 0.9rem; }
+.nav-link:hover { text-decoration: underline; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
 .note-card { background: var(--note-bg); border: 2px solid var(--note-border); }
-.badge { display: inline-block; padding: 2px 8px; font-size: 0.75rem; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-weight: bold; margin-left: 10px; }
-.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1rem; border-radius: 8px; position: relative; margin: 1rem 0; overflow-x: auto; white-space: pre-wrap; }
+.badge { padding: 2px 8px; font-size: 0.75rem; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-weight: bold; }
+.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1rem; border-radius: 8px; margin: 1rem 0; white-space: pre-wrap; }
 .transcript-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
-.nav-footer { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); }
-.btn { text-decoration: none; padding: 8px 16px; border-radius: 6px; background: var(--accent); color: white; font-weight: 600; font-size: 0.9rem; }
-.btn-outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-th, td { border: 1px solid var(--border); padding: 10px; text-align: left; }
-th { background: var(--prompt-bg); }
-</style></head><body><header><a href='../index.html'>← Back to Hub</a><h1>AI-FYE document structure and course design</h1></header><div class='card'><p><strong>Conversation Overview</strong></p>
+</style></head><body>
+        <nav class="sticky-nav">
+          <div class="nav-container">
+            <div class="nav-group">
+              <a href="../index.html" class="nav-link">🏠 Hub</a>
+              <a href="../artifacts/ai-literacy-learners-permit.html" class="nav-link">📜 LP</a>
+              <a href="../artifacts/ai-literacy-commercial-license.html" class="nav-link">🚀 AL</a>
+            </div>
+            <div class="nav-group">
+              <a href="01_ai_literacy_development_through_iterative_refinement.html" class="nav-link">⬅️ Prev</a>
+              <span style="font-size:0.8rem; font-weight:bold;">2 / 12</span>
+              <a href="03_ai_integration_across_course_levels.html" class="nav-link">Next ➡️</a>
+            </div>
+          </div>
+        </nav><h1>AI-FYE document structure and course design</h1><div class='card'><p><strong>Conversation Overview</strong></p>
 <p>[The author] is working as a SUNY AI Fellow for the Public Good, developing an AI literacy curriculum framework in response to SUNY Board Resolution 2024-64, which mandates AI literacy integration into general education by Fall 2026. He has been building a comprehensive AI literacy collection that includes frameworks like the "Learner's Permit" (LP) and "Commercial Driver's License" (CDL), and is now developing an "AI-FYE" (AI in the First Year Experience) program. [The author]'s approach to AI literacy centers on "reading, thinking, and writing using the tools, techniques, and technological systems consistent with one's peers" (RTW) - treating AI as the medium through which literate practice happens rather than as subject matter.</p>
 <p>The conversation focused on creating a faculty invitation document for the AI-FYE pilot program. [The author] outlined a specific architecture: 20 students in a pilot cohort taking AI 188 (a 1-credit "AI Salon" course) as a co-requisite with general education and major courses. The AI Salon would examine AI-assisted artifacts students produce across disciplines, creating cross-disciplinary comparison opportunities. [The author] emphasized that participating faculty keep their existing courses and assignments, only coordinating timing on key assignments. The program begins with a shared orientation day where all students and faculty complete the Learner's Permit together.</p>
 <p>[The author] demonstrated his collaborative approach to document development, noting that this document itself was "developed through sustained conversation with an AI system - generating design specs, working through multiple versions, validating and verifying across models" with the model getting "the last word" on outputs. He provided a concrete example of this iterative process: when an early reviewer suggested that 2-credit courses were too narrow for general education, "one prompt, one iteration" changed the entire program design. [The author] added a "What's Next" section explaining that participating faculty would join the project through a shared Claude Team Project to continue iterating and generating necessary pilot artifacts, with an additional track for developing grant proposals for Fall 2027 implementation. He also specified that student artifacts would be managed through Microsoft SharePoint with granular security controls, and emphasized that the program is "AI-forward by design" - faculty who join have already agreed to AI engagement as a selection condition.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 1</strong><br>i have now used these dox, including the syntehsid https://notebooklm.google.com/notebook/df78824c-e288-4c89-8971-5fcd2702dbbb and may begin to feed these dox back as reflective pieces to help for next round. Meantie, I now need the AI-FYE document. do a mind dump, tell me what you know. LP will be first five hours of FY 188 and AI 188. CDL will be first 15 hours of AI 288. position FYS 188 as a 1 credit course. AI 188 as a 1-credit ,. all the gen ed classes are 3 credit. the Major-188 (like, BIZ 188 and EE 188) is 2 or 3 credit. all require co-req AI 188; all agree to license idea. ai 188 will be a tooling class with a sequence, providng progressively complex ai-llm exercises for the first 8 weeks. after that, everyone is on their own. ai 288 is 2nd half of semester; since no co req, won&#x27;t be explicitly tied to courses, but we will work with students to do agentic projects for these classes. ask questions about FYE b4 you gen</div><div class='card'><p>Good instinct to front-load the questions. Here's what I need to know before I generate:</p>
@@ -119,4 +132,4 @@ iteracte -- emphasize hwo we do this: one reflection generates the entire progra
 <li><strong>The 2-credit example</strong> — names it explicitly: reviewer flagged it, one prompt, one iteration, change propagated through the whole program. That's RTW at scale, not editing</li>
 <li><strong>Grant track</strong> — separate call-out box for the Fall 2027 funding team</li>
 </ol>
-<p>"If You're Interested" stays as the closing CTA after it.</p></div><footer class='nav-footer'><a href="01_ai_literacy_development_through_iterative_refinement.html" class="btn btn-outline">← Previous</a><a href="03_ai_integration_across_course_levels.html" class="btn btn-outline">Next →</a></footer></body></html>
+<p>"If You're Interested" stays as the closing CTA after it.</p></div></body></html>

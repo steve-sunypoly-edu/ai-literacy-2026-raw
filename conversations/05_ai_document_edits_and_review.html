@@ -6,20 +6,33 @@
 @media (prefers-color-scheme: dark) {
   :root { --bg: #121212; --surface: #1e1e1e; --border: #333; --text: #f1f3f5; --text-muted: #adb5bd; --accent: #66b2ff; --accent-bg: #2d3748; --prompt-bg: #2b2b2b; --note-bg: #2a281e; --note-border: #4a4533; }
 }
-body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.6; }
+body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 900px; margin: 0 auto; padding: 6rem 1.5rem 2rem; line-height: 1.6; }
 h1, h2, h3 { font-family: 'Georgia', serif; color: var(--accent); }
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.sticky-nav { position: fixed; top: 0; left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 0.75rem 0; }
+.nav-container { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; }
+.nav-group { display: flex; gap: 15px; align-items: center; }
+.nav-link { text-decoration: none; font-weight: 600; color: var(--accent); font-size: 0.9rem; }
+.nav-link:hover { text-decoration: underline; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
 .note-card { background: var(--note-bg); border: 2px solid var(--note-border); }
-.badge { display: inline-block; padding: 2px 8px; font-size: 0.75rem; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-weight: bold; margin-left: 10px; }
-.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1rem; border-radius: 8px; position: relative; margin: 1rem 0; overflow-x: auto; white-space: pre-wrap; }
+.badge { padding: 2px 8px; font-size: 0.75rem; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-weight: bold; }
+.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1rem; border-radius: 8px; margin: 1rem 0; white-space: pre-wrap; }
 .transcript-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
-.nav-footer { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); }
-.btn { text-decoration: none; padding: 8px 16px; border-radius: 6px; background: var(--accent); color: white; font-weight: 600; font-size: 0.9rem; }
-.btn-outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-th, td { border: 1px solid var(--border); padding: 10px; text-align: left; }
-th { background: var(--prompt-bg); }
-</style></head><body><header><a href='../index.html'>← Back to Hub</a><h1>AI document edits and review</h1></header><div class='card'><p><strong>Conversation Overview</strong></p>
+</style></head><body>
+        <nav class="sticky-nav">
+          <div class="nav-container">
+            <div class="nav-group">
+              <a href="../index.html" class="nav-link">🏠 Hub</a>
+              <a href="../artifacts/ai-literacy-learners-permit.html" class="nav-link">📜 LP</a>
+              <a href="../artifacts/ai-literacy-commercial-license.html" class="nav-link">🚀 AL</a>
+            </div>
+            <div class="nav-group">
+              <a href="04_ai_literacy_curriculum_project_invitation.html" class="nav-link">⬅️ Prev</a>
+              <span style="font-size:0.8rem; font-weight:bold;">5 / 12</span>
+              <a href="06_the_teacher,_the_student_and_the_llm.html" class="nav-link">Next ➡️</a>
+            </div>
+          </div>
+        </nav><h1>AI document edits and review</h1><div class='card'><p><strong>Conversation Overview</strong></p>
 <p>[The author] (SMS) is a SUNY faculty member and AI Fellows for the Public Good participant developing an AI literacy curriculum framework. His core framework is RTW — Reading, Thinking, Writing — which defines AI literacy as practicing these skills using tools consistent with one's peers. He is building a suite of interconnected documents including the AI-FYE (AI in the First Year Experience) faculty invitation, a Learner's Permit orientation scaffold, and a Commercial Driver's License framework. [The author] works primarily through voice/audio input, which means his prompts are conversational and sometimes incomplete mid-thought; Claude is expected to track context carefully and reconstruct intent from fragments.</p>
 <p>The conversation had two phases. First, [The author] shared the full AI-FYE HTML document and the [Colleague] thread — a rich working conversation with a writing professor who challenged [The author]'s definition of writing-as-prompting. That thread produced three deliverables (reply to [Colleague], reflective memo, revision directions) and several key formulations [The author] wants preserved: "the transcript is the draft pile and the thinking record and the evidence of authorship all at once"; "the artifact without the transcript is like grading a painting without knowing if the student held the brush"; and the hypertext-node framing ("each prompt is a node, the conversation is the traversal, the artifact is one path's endpoint, not the map"). [The author] explicitly flagged the node/traversal formulation as worth developing as a theoretical anchor for transcript assessment, connected to his MICA framework and monadological approach.</p>
 <p>Second, [The author] and Claude worked through substantive revisions to the AI-FYE document itself, informed by the [Colleague] thread, [Colleague]'s critique (that AI-generated text severs the reader-author trust relationship, particularly in freshman composition contexts), and [The author]'s "AI for all people, activities, spaces, and places" foundational framework. Key decisions reached: the AI Salon should be reframed around "double vision" — students see their own work as both human-authored and machine-interpreted; the four coordinated courses are all labeled 188 and share an integrated calendar, scope, and workflow (not just timing); the Salon is AI-for-all-activities by design; assignments across participating courses should span a spectrum from fully AI-assisted to fully human-authored; and the "What This Is" section should lead with the meta-point that the document itself is a generated artifact. Three revised sections were finalized — What This Is / Introduction / Overview, The Course Structure, and Orientation Day — and [The author] requested the full HTML document with version stamps appended to each section for handoff to Claude Code. [The author]'s strong preference is to avoid AI-tell markers (smart quotes, certain phrasings) because they signal AI generation and cause readers to devalue the work. He also corrected "[Colleague] Gavin" to "[Colleague]" mid-conversation. Key colleagues mentioned: [Colleague] (writing professor, intellectual interlocutor on RTW and prompting theory) and [Colleague] (whose talk on struggle and the reader-author relationship is pending transcript and will anchor the pedagogical framing).</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 1</strong><br>Very well. Do you think we can do some edits and thinking about the AI f y e document?</div><div class='card'><p>Absolutely, I'd be happy to help with that. Just to clarify—when you say the AI document, are you referring to something related to your "AI in Action" framework, or is this one of the course materials you're developing for your classes? And what sort of edits or thinking are you looking to work</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 2</strong><br>it&#x27;s one of the recently generated documents. If you want, I can go find it and put it in project context.</div><div class='card'><p>Yeah, that would be brilliant. Go ahead and share it whenever you're ready—once I've got the context, we can dig into whatever edits or thinking you'd like to work through.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 3</strong><br>&lt;!DOCTYPE html&gt;
@@ -1041,4 +1054,4 @@ details[open]&gt;summary{border-radius:12px 12px 0 0;border-bottom-color:transpa
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>Sections revised today (2026-03-03): What This Is, Course Structure, Orientation Day. Remaining sections are stamped "Pending revision" so you know what still needs work when you're in Claude Code.</p></div><footer class='nav-footer'><a href="04_ai_literacy_curriculum_project_invitation.html" class="btn btn-outline">← Previous</a><a href="06_the_teacher,_the_student_and_the_llm.html" class="btn btn-outline">Next →</a></footer></body></html>
+<p>Sections revised today (2026-03-03): What This Is, Course Structure, Orientation Day. Remaining sections are stamped "Pending revision" so you know what still needs work when you're in Claude Code.</p></div></body></html>

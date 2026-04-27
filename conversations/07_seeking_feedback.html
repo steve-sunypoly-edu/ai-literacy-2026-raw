@@ -6,20 +6,33 @@
 @media (prefers-color-scheme: dark) {
   :root { --bg: #121212; --surface: #1e1e1e; --border: #333; --text: #f1f3f5; --text-muted: #adb5bd; --accent: #66b2ff; --accent-bg: #2d3748; --prompt-bg: #2b2b2b; --note-bg: #2a281e; --note-border: #4a4533; }
 }
-body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.6; }
+body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 900px; margin: 0 auto; padding: 6rem 1.5rem 2rem; line-height: 1.6; }
 h1, h2, h3 { font-family: 'Georgia', serif; color: var(--accent); }
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.sticky-nav { position: fixed; top: 0; left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 0.75rem 0; }
+.nav-container { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; }
+.nav-group { display: flex; gap: 15px; align-items: center; }
+.nav-link { text-decoration: none; font-weight: 600; color: var(--accent); font-size: 0.9rem; }
+.nav-link:hover { text-decoration: underline; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
 .note-card { background: var(--note-bg); border: 2px solid var(--note-border); }
-.badge { display: inline-block; padding: 2px 8px; font-size: 0.75rem; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-weight: bold; margin-left: 10px; }
-.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1rem; border-radius: 8px; position: relative; margin: 1rem 0; overflow-x: auto; white-space: pre-wrap; }
+.badge { padding: 2px 8px; font-size: 0.75rem; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-weight: bold; }
+.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1rem; border-radius: 8px; margin: 1rem 0; white-space: pre-wrap; }
 .transcript-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
-.nav-footer { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); }
-.btn { text-decoration: none; padding: 8px 16px; border-radius: 6px; background: var(--accent); color: white; font-weight: 600; font-size: 0.9rem; }
-.btn-outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-th, td { border: 1px solid var(--border); padding: 10px; text-align: left; }
-th { background: var(--prompt-bg); }
-</style></head><body><header><a href='../index.html'>← Back to Hub</a><h1>Seeking feedback</h1></header><div class='card'><p><strong>Conversation Overview</strong></p>
+</style></head><body>
+        <nav class="sticky-nav">
+          <div class="nav-container">
+            <div class="nav-group">
+              <a href="../index.html" class="nav-link">🏠 Hub</a>
+              <a href="../artifacts/ai-literacy-learners-permit.html" class="nav-link">📜 LP</a>
+              <a href="../artifacts/ai-literacy-commercial-license.html" class="nav-link">🚀 AL</a>
+            </div>
+            <div class="nav-group">
+              <a href="06_the_teacher,_the_student_and_the_llm.html" class="nav-link">⬅️ Prev</a>
+              <span style="font-size:0.8rem; font-weight:bold;">7 / 12</span>
+              <a href="08_ai_adoption_in_academic_integrity_and_learning_outcomes.html" class="nav-link">Next ➡️</a>
+            </div>
+          </div>
+        </nav><h1>Seeking feedback</h1><div class='card'><p><strong>Conversation Overview</strong></p>
 <p>Steven M. Schneider is a Professor of Communications &amp; Humanities and Co-Director of the Artificial Intelligence Exploration (AIX) Center at SUNY Polytechnic Institute, currently serving as a SUNY AI Fellow for the Public Good (2025–2026). The conversation centered on developing and refining a faculty-facing document articulating a framework for generative AI literacy in general education, grounded in his RTW (Read, Think, Write) definition of literacy and connected to the SUNY Board of Trustees Resolution 2024-64 mandating AI inclusion in the Information Literacy competency by Fall 2026.</p>
 <p>The conversation moved through several distinct phases: Claude first responded to an email exchange [The author] was having with a colleague ([Colleague], a writing professor) about AI and writing pedagogy, offering analysis through a hypertext/Ted Nelson lens. [The author] then refined his own email responses with Claude's input, ultimately deciding to hold his position and not over-explain. The bulk of the conversation involved generating and iteratively refining an HTML document for general education faculty, then a plain text version for use in Speechify. Key editorial decisions included: stripping sycophantic or "sloppy" prose, rewriting the RTW grid to accurately reflect the two-mode writing model (writing for knowledge vs. writing for production), removing a section on prompt-failure pedagogy, replacing Kate Crawford with Geoffrey Hinton in the further reading, and updating the mandate section heading. The final and most precise editorial intervention was removing all second-person address ("you've probably seen the demos") from the document — not depersonalizing the prose, but eliminating simulated intimacy. [The author]'s preferred replacement register was "Many faculty have seen a demonstration. Few have had a framework to go with it."</p>
 <p>[The author] demonstrated consistent editorial instincts throughout: he flags "slop" as a specific quality failure (prose that performs relatability or expertise without earning it), distinguishes between fluency and literacy with precision, and holds a strong position that the prompt/response transcript is the primary evidence of student thinking. He is developing the Learner's Permit (a 15-exercise scaffold) and an AI First-Year Experience (AI-FYE) pilot cohort architecture. The conversation closed with [The author] sharing a generated literature review paragraph attributed to outside scholars; Claude identified it as an example of the exact problem the framework's provenance note warns against — authoritative-sounding text with unverifiable citations, softened claims, and a performed scholarly structure that substitutes for actual argument.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 1</strong><br>thoughts?</div><div class='card'><p>The Ted Nelson reference you slipped in is the key to this whole exchange, and [Colleague] missed it.</p>
@@ -302,4 +315,4 @@ In short, the SUNY framework stands within a broader critical discourse. While m
 <p>Rettberg's actual work is on self-representation and narrative in digital culture. The critique attributed to her here may not be hers.</p>
 <p>The closing paragraph — "it's also clear that AI literacy must remain central" — arrives as a conclusion the text hasn't earned. It restates the framework's own premise as if it were a synthesis of competing views.</p>
 <p>The structural move — present framework, cite supporters, cite critics, conclude with synthesis — is the template for a generated literature review. It performs scholarly discourse without doing the work of it.</p>
-<p>The question is what this text is for. If it's a draft someone sent for feedback, the feedback is: source-check every citation, cut Dewey, sharpen the Selwyn/Watters claim or drop it, and rewrite the summary of the framework in its own terms. If it arrived unrequested as an addition to the document, it shouldn't be there.</p></div><footer class='nav-footer'><a href="06_the_teacher,_the_student_and_the_llm.html" class="btn btn-outline">← Previous</a><a href="08_ai_adoption_in_academic_integrity_and_learning_outcomes.html" class="btn btn-outline">Next →</a></footer></body></html>
+<p>The question is what this text is for. If it's a draft someone sent for feedback, the feedback is: source-check every citation, cut Dewey, sharpen the Selwyn/Watters claim or drop it, and rewrite the summary of the framework in its own terms. If it arrived unrequested as an addition to the document, it shouldn't be there.</p></div></body></html>

@@ -6,20 +6,33 @@
 @media (prefers-color-scheme: dark) {
   :root { --bg: #121212; --surface: #1e1e1e; --border: #333; --text: #f1f3f5; --text-muted: #adb5bd; --accent: #66b2ff; --accent-bg: #2d3748; --prompt-bg: #2b2b2b; --note-bg: #2a281e; --note-border: #4a4533; }
 }
-body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.6; }
+body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 900px; margin: 0 auto; padding: 6rem 1.5rem 2rem; line-height: 1.6; }
 h1, h2, h3 { font-family: 'Georgia', serif; color: var(--accent); }
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.sticky-nav { position: fixed; top: 0; left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 0.75rem 0; }
+.nav-container { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; }
+.nav-group { display: flex; gap: 15px; align-items: center; }
+.nav-link { text-decoration: none; font-weight: 600; color: var(--accent); font-size: 0.9rem; }
+.nav-link:hover { text-decoration: underline; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
 .note-card { background: var(--note-bg); border: 2px solid var(--note-border); }
-.badge { display: inline-block; padding: 2px 8px; font-size: 0.75rem; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-weight: bold; margin-left: 10px; }
-.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1rem; border-radius: 8px; position: relative; margin: 1rem 0; overflow-x: auto; white-space: pre-wrap; }
+.badge { padding: 2px 8px; font-size: 0.75rem; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-weight: bold; }
+.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1rem; border-radius: 8px; margin: 1rem 0; white-space: pre-wrap; }
 .transcript-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
-.nav-footer { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); }
-.btn { text-decoration: none; padding: 8px 16px; border-radius: 6px; background: var(--accent); color: white; font-weight: 600; font-size: 0.9rem; }
-.btn-outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-th, td { border: 1px solid var(--border); padding: 10px; text-align: left; }
-th { background: var(--prompt-bg); }
-</style></head><body><header><a href='../index.html'>← Back to Hub</a><h1>Project context report generation</h1></header><div class='card'><p><strong>Conversation overview</strong></p>
+</style></head><body>
+        <nav class="sticky-nav">
+          <div class="nav-container">
+            <div class="nav-group">
+              <a href="../index.html" class="nav-link">🏠 Hub</a>
+              <a href="../artifacts/ai-literacy-learners-permit.html" class="nav-link">📜 LP</a>
+              <a href="../artifacts/ai-literacy-commercial-license.html" class="nav-link">🚀 AL</a>
+            </div>
+            <div class="nav-group">
+              <a href="10_project_memory_update.html" class="nav-link">⬅️ Prev</a>
+              <span style="font-size:0.8rem; font-weight:bold;">11 / 12</span>
+              <a href="12_processing_podcast_links_with_curriculum_tagging.html" class="nav-link">Next ➡️</a>
+            </div>
+          </div>
+        </nav><h1>Project context report generation</h1><div class='card'><p><strong>Conversation overview</strong></p>
 <p>[The author], Professor of Communications &amp; Humanities and Co-Director of the AIX Center at SUNY Polytechnic Institute, asked Claude to generate a report of the Claude project's stored information: the project memory, project instructions, and a list of project files. He initially received a misread of his request — Claude proposed an elaborate synthesized project context report covering institutional mandate, theoretical architecture, credential stack, initiatives, collaborators, infrastructure, timeline, and open questions. [The author] corrected this immediately and clarified he wanted only the raw stored project data, not a synthesized report.</p>
 <p>Claude then produced the three requested components directly: the full project memory block (covering [The author]'s role, the RTW literacy framework, the credential stack including Learner's Permit through Agentic License, active Spring 2026 initiatives, the AI-FYE pilot, key colleagues, working principles, communication preferences, and tools/platforms), the operative project instructions from the system prompt, and a file listing of the eight documents stored in the project.</p>
 <p>The key correction to note: when [The author] asks for "project context" or "project info," he means the literal stored Claude project data — memory, instructions, files — not a synthesized or interpreted report. He expects Claude to read the request precisely and not over-engineer the response. His communication style is compressed and direct, and he corrects model overreach immediately.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 1</strong><br>generate a full project context report with the contents of project  instructions, memory and files....</div><div class='card'></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 2</strong><br>generate a full project context report with the contents of project  instructions, memory and files....discuss plan before generation</div><div class='card'><p>I'll propose a structure for a comprehensive project context report, then generate it in a format you specify.</p>
@@ -194,4 +207,4 @@ Key texts: Crawford's *Atlas of AI*; Gavin's *Generative AI and the Future of th
 /mnt/project/AI_Literacy_Learners_Permit_v6.md
 /mnt/project/pkm_synthesis_first_tiddler.md
 /mnt/project/SUNYBOTResolution202464_GeneralEducationUpdate_Dec2024.pdf
-</code></pre></div><footer class='nav-footer'><a href="10_project_memory_update.html" class="btn btn-outline">← Previous</a><a href="12_processing_podcast_links_with_curriculum_tagging.html" class="btn btn-outline">Next →</a></footer></body></html>
+</code></pre></div></body></html>

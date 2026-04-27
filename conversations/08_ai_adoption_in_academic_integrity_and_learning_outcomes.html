@@ -6,20 +6,33 @@
 @media (prefers-color-scheme: dark) {
   :root { --bg: #121212; --surface: #1e1e1e; --border: #333; --text: #f1f3f5; --text-muted: #adb5bd; --accent: #66b2ff; --accent-bg: #2d3748; --prompt-bg: #2b2b2b; --note-bg: #2a281e; --note-border: #4a4533; }
 }
-body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.6; }
+body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 900px; margin: 0 auto; padding: 6rem 1.5rem 2rem; line-height: 1.6; }
 h1, h2, h3 { font-family: 'Georgia', serif; color: var(--accent); }
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.sticky-nav { position: fixed; top: 0; left: 0; right: 0; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 0.75rem 0; }
+.nav-container { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; }
+.nav-group { display: flex; gap: 15px; align-items: center; }
+.nav-link { text-decoration: none; font-weight: 600; color: var(--accent); font-size: 0.9rem; }
+.nav-link:hover { text-decoration: underline; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
 .note-card { background: var(--note-bg); border: 2px solid var(--note-border); }
-.badge { display: inline-block; padding: 2px 8px; font-size: 0.75rem; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-weight: bold; margin-left: 10px; }
-.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1rem; border-radius: 8px; position: relative; margin: 1rem 0; overflow-x: auto; white-space: pre-wrap; }
+.badge { padding: 2px 8px; font-size: 0.75rem; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-weight: bold; }
+.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1rem; border-radius: 8px; margin: 1rem 0; white-space: pre-wrap; }
 .transcript-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
-.nav-footer { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); }
-.btn { text-decoration: none; padding: 8px 16px; border-radius: 6px; background: var(--accent); color: white; font-weight: 600; font-size: 0.9rem; }
-.btn-outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-th, td { border: 1px solid var(--border); padding: 10px; text-align: left; }
-th { background: var(--prompt-bg); }
-</style></head><body><header><a href='../index.html'>← Back to Hub</a><h1>AI adoption in academic integrity and learning outcomes</h1></header><div class='card'><p><strong>Conversation Overview</strong></p>
+</style></head><body>
+        <nav class="sticky-nav">
+          <div class="nav-container">
+            <div class="nav-group">
+              <a href="../index.html" class="nav-link">🏠 Hub</a>
+              <a href="../artifacts/ai-literacy-learners-permit.html" class="nav-link">📜 LP</a>
+              <a href="../artifacts/ai-literacy-commercial-license.html" class="nav-link">🚀 AL</a>
+            </div>
+            <div class="nav-group">
+              <a href="07_seeking_feedback.html" class="nav-link">⬅️ Prev</a>
+              <span style="font-size:0.8rem; font-weight:bold;">8 / 12</span>
+              <a href="09_ai_literacy_progression_framework.html" class="nav-link">Next ➡️</a>
+            </div>
+          </div>
+        </nav><h1>AI adoption in academic integrity and learning outcomes</h1><div class='card'><p><strong>Conversation Overview</strong></p>
 <p>This conversation involved a single exchange in which the person shared the full call-for-proposals track descriptions for an AAC&amp;U conference focused on responsible AI adoption in higher education. The person's opening ("Aacu Conf") signaled intent to work on positioning a conference proposal within this framework. Claude responded by mapping the person's existing work—specifically the RTW (Reading, Thinking, Writing) framework, the Learner's Permit (LP) and Commercial Driver's License (CDL) curriculum structures, and an AI-focused first-year experience (AI-FYE) initiative—against the six available conference tracks.</p>
 <p>Claude identified "Teaching, Learning, Assessment, and Curricular Reform" as the strongest fit, with "Academic Integrity" and "Student Success and the Cocurriculum" as secondary alignments. The response also introduced a framing device connecting the person's interest in hypertext and interactive fiction to the RTW framework, characterizing the prompt-response cycle as analogous to branching narrative structure, with the workbench serving as a record of the full traversal. Claude closed by asking whether the person was targeting a single track or pursuing a multi-track strategy, referencing a prior "Theory to Practice" solo session and a SUNY AI Fellows panel as potential parallel submissions. No decisions were finalized and no corrections or preference instructions were provided in this exchange.</p></div><div class='card' style='background:var(--prompt-bg)'><strong>Prompt 1</strong><br>Aacu
  Conf We invite proposals that bring this year’s conference’s focus on responsible AI adoption to life within one of the following conference tracks, which are designed to highlight both core practices and emerging opportunities:
@@ -42,4 +55,4 @@ Teaching, Learning, Assessment, and Curricular Reform: This track highlights inn
 - AI-FYE positions AI literacy as foundational scaffolding for other learning
 - Workbench as persistent infrastructure across courses</p>
 <p><strong>Your argument:</strong> RTW literacy is operationalized through <em>hypertext-like choice architecture</em>. The prompt-response cycle is the branching structure. Students navigate uncertainty (sycophancy, hallucination) as <em>interactive choices</em>, not abstract concepts. The workbench preserves the full traversal (transcript), making thinking visible.</p>
-<p>Which track are you leaning? Or are you treating this as a multi-track proposal—e.g., a short "Theory to Practice" in Teaching/Learning/Assessment plus the SUNY AI Fellows panel elsewhere?</p></div><footer class='nav-footer'><a href="07_seeking_feedback.html" class="btn btn-outline">← Previous</a><a href="09_ai_literacy_progression_framework.html" class="btn btn-outline">Next →</a></footer></body></html>
+<p>Which track are you leaning? Or are you treating this as a multi-track proposal—e.g., a short "Theory to Practice" in Teaching/Learning/Assessment plus the SUNY AI Fellows panel elsewhere?</p></div></body></html>
