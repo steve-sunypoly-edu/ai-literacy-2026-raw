@@ -1,103 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI adoption in academic integrity and learning outcomes</title>
-<style>
+<!DOCTYPE html><html><head><style>
 :root {
-  --bg: #f8f9fa;
-  --surface: #ffffff;
-  --border: #ced4da;
-  --text: #212529;
-  --text-muted: #495057;
-  --accent: #0f52ba;
-  --accent-hover: #0a3d8c;
-  --accent-bg: #e7f1ff;
-  --prompt-bg: #f1f3f5;
-  --focus-ring: #005fcc;
-  --shadow: rgba(0, 0, 0, 0.05);
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --serif: 'Georgia', serif;
-  --mono: 'SFMono-Regular', Consolas, monospace;
+  --bg: #f8f9fa; --surface: #ffffff; --border: #ced4da; --text: #212529; --text-muted: #495057;
+  --accent: #0f52ba; --accent-bg: #e7f1ff; --prompt-bg: #f1f3f5; --note-bg: #fffceb; --note-border: #f1e4a1;
 }
-
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #121212; --surface: #1e1e1e; --border: #333;
-    --text: #f1f3f5; --text-muted: #adb5bd; --accent: #66b2ff;
-    --accent-hover: #99ccff; --accent-bg: #2d3748;
-    --prompt-bg: #2b2b2b; --focus-ring: #99ccff;
-    --shadow: rgba(0, 0, 0, 0.3);
-  }
+  :root { --bg: #121212; --surface: #1e1e1e; --border: #333; --text: #f1f3f5; --text-muted: #adb5bd; --accent: #66b2ff; --accent-bg: #2d3748; --prompt-bg: #2b2b2b; --note-bg: #2a281e; --note-border: #4a4533; }
 }
-
-body {
-  font-family: var(--sans); background: var(--bg); color: var(--text);
-  max-width: 850px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.6; font-size: 1.05rem;
-}
-
-h1, h2, h3 { font-family: var(--serif); color: var(--accent); margin-top: 0; }
-h1 { font-size: 2.2rem; }
-
-a { color: var(--accent); text-underline-offset: 3px; font-weight: 500; }
-a:hover { color: var(--accent-hover); }
-
-.card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 12px; padding: 2rem; margin-bottom: 2rem;
-  box-shadow: 0 4px 12px var(--shadow);
-}
-
-.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
-
-header { border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: baseline; }
-.prompt-box { background: var(--prompt-bg); padding: 1.5rem; border-radius: 12px 12px 0 0; border: 1px solid var(--border); border-bottom: none; }
-.prompt-header { display: flex; justify-content: space-between; font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; }
-.prompt-text { font-family: var(--mono); font-size: 0.95em; white-space: pre-wrap; }
-.response-details { background: var(--surface); border: 1px solid var(--border); border-radius: 0 0 12px 12px; margin-bottom: 2rem; }
-.response-details summary { padding: 1rem; cursor: pointer; text-align: center; color: var(--accent); font-weight: 600; list-style: none; }
-.response-box { padding: 1.5rem; border-top: 1px solid var(--border); }
-</style>
-</head>
-<body>
-<header>
-  <div><h1>AI adoption in academic integrity and learning outcomes</h1><p>AI Literacy Curriculum Project — Record</p></div>
-  <a href="../index.html">← Back</a>
-</header>
-<main>
-<section class="card"><p><strong>Conversation Overview</strong></p>
+body { font-family: -apple-system, sans-serif; background: var(--bg); color: var(--text); max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.6; }
+h1, h2, h3 { font-family: 'Georgia', serif; color: var(--accent); }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.note-card { background: var(--note-bg); border: 2px solid var(--note-border); }
+.badge { display: inline-block; padding: 2px 8px; font-size: 0.75rem; border-radius: 4px; background: var(--accent-bg); color: var(--accent); font-weight: bold; margin-left: 10px; }
+.prompt-copy { background: #222; color: #00ff00; font-family: monospace; padding: 1rem; border-radius: 8px; position: relative; margin: 1rem 0; overflow-x: auto; }
+.transcript-item { border-bottom: 1px solid var(--border); padding: 1rem 0; }
+.nav-footer { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+.btn { text-decoration: none; padding: 8px 16px; border-radius: 6px; background: var(--accent); color: white; font-weight: 600; font-size: 0.9rem; }
+.btn-outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { border: 1px solid var(--border); padding: 10px; text-align: left; }
+th { background: var(--prompt-bg); }
+</style></head><body><header><a href='../index.html'>← Back to Hub</a><h1>AI adoption in academic integrity and learning outcomes</h1></header><div class='card'><p><strong>Conversation Overview</strong></p>
 <p>This conversation involved a single exchange in which the person shared the full call-for-proposals track descriptions for an AAC&amp;U conference focused on responsible AI adoption in higher education. The person's opening ("Aacu Conf") signaled intent to work on positioning a conference proposal within this framework. Claude responded by mapping the person's existing work—specifically the RTW (Reading, Thinking, Writing) framework, the Learner's Permit (LP) and Commercial Driver's License (CDL) curriculum structures, and an AI-focused first-year experience (AI-FYE) initiative—against the six available conference tracks.</p>
-<p>Claude identified "Teaching, Learning, Assessment, and Curricular Reform" as the strongest fit, with "Academic Integrity" and "Student Success and the Cocurriculum" as secondary alignments. The response also introduced a framing device connecting the person's interest in hypertext and interactive fiction to the RTW framework, characterizing the prompt-response cycle as analogous to branching narrative structure, with the workbench serving as a record of the full traversal. Claude closed by asking whether the person was targeting a single track or pursuing a multi-track strategy, referencing a prior "Theory to Practice" solo session and a SUNY AI Fellows panel as potential parallel submissions. No decisions were finalized and no corrections or preference instructions were provided in this exchange.</p></section>
-
-<article>
-  <div class="prompt-box">
-    <div class="prompt-header"><span>Prompt 1</span><span>07:45 PM EST</span></div>
-    <div class="prompt-text">Aacu
- Conf We invite proposals that bring this year’s conference’s focus on responsible AI adoption to life within one of the following conference tracks, which are designed to highlight both core practices and emerging opportunities:
-
-Academic Integrity: This track highlights strategies faculty, honor systems, and institutions are using to address academic integrity challenges emerging from the use of AI, including assessment redesign, policy development, and student engagement approaches.
-The Future of Work, the Professoriate, and Higher Education: This track explores how AI is reshaping academic work, faculty roles, and the broader higher education workforce. Sessions address evolving expectations and practices for research, teaching, service, professional development, and new forms of collaboration.
-Institutional Operations and Transformation: This track showcases how colleges and universities are leveraging AI to improve institutional effectiveness and reimagine core operations. Sessions focus on strategy, infrastructure, cross-campus collaboration, and change-management efforts that align AI adoption with institutional mission, culture, and long-term transformation.
-Policy, Governance, and Ethics: This track centers on the frameworks, policies, and ethical considerations guiding AI use in higher education. Sessions address institutional governance, data stewardship, equity, transparency, accountability, and the development of policies that balance innovation with responsibility.
-Student Success and the Cocurriculum: This track features approaches that integrate AI into advising, student support services, career development, and co-curricular learning. Sessions examine how institutions are using AI to enhance student engagement, belonging, persistence, and workforce readiness while ensuring equitable access and support.
-Teaching, Learning, Assessment, and Curricular Reform: This track highlights innovative teaching practices, assessment strategies, and curricular redesign efforts that respond to the opportunities and challenges posed by AI. Sessions explore how faculty and programs are rethinking learning outcomes, assignments, feedback, pedagogy, and program structures to prepare students for an AI-infused world while strengthening meaningful learning, including innovations in faculty development.</div>
-  </div>
-  <details class="response-details">
-    <summary>↳ View Response</summary>
-    <div class="response-box"><p>I see the pivot—hypertext as <em>branching structure</em>, not metaphor. Each prompt is a junction, each response a path, each artifact a conclusion. The user reads the choices available, thinks through the branch, and writes (prompts) to traverse it. That's genuinely "choose your own adventure" applied to AI literacy.</p>
-<p>Your RTW framework maps cleanly here:</p>
-<p><strong>Most natural fit: Teaching, Learning, Assessment, and Curricular Reform</strong>
-- The LP and CDL are curriculum redesign in action
-- Assessment embedded in transcript (not artifact alone)
-- "Action not philosophy" = the experiential opposition to abstract AI literacy frameworks</p>
-<p><strong>Secondary fit: Academic Integrity</strong>
-- Sycophancy (Exercise 3: Push Back) and hallucinations (Exercise 4: Trust Audit) teach <em>through</em> failure, not policy
-- Reframes integrity as epistemic practice, not compliance</p>
-<p><strong>Also present: Student Success and the Cocurriculum</strong>
-- AI-FYE positions AI literacy as foundational scaffolding for other learning
-- Workbench as persistent infrastructure across courses</p>
-<p><strong>Your argument:</strong> RTW literacy is operationalized through <em>hypertext-like choice architecture</em>. The prompt-response cycle is the branching structure. Students navigate uncertainty (sycophancy, hallucination) as <em>interactive choices</em>, not abstract concepts. The workbench preserves the full traversal (transcript), making thinking visible.</p>
-<p>Which track are you leaning? Or are you treating this as a multi-track proposal—e.g., a short "Theory to Practice" in Teaching/Learning/Assessment plus the SUNY AI Fellows panel elsewhere?</p></div>
-  </details>
-</article></main></body></html>
+<p>Claude identified "Teaching, Learning, Assessment, and Curricular Reform" as the strongest fit, with "Academic Integrity" and "Student Success and the Cocurriculum" as secondary alignments. The response also introduced a framing device connecting the person's interest in hypertext and interactive fiction to the RTW framework, characterizing the prompt-response cycle as analogous to branching narrative structure, with the workbench serving as a record of the full traversal. Claude closed by asking whether the person was targeting a single track or pursuing a multi-track strategy, referencing a prior "Theory to Practice" solo session and a SUNY AI Fellows panel as potential parallel submissions. No decisions were finalized and no corrections or preference instructions were provided in this exchange.</p></div><footer class='nav-footer'><a href="07_seeking_feedback.html" class="btn btn-outline">← Previous</a><a href="09_ai_literacy_progression_framework.html" class="btn btn-outline">Next →</a></footer></body></html>
